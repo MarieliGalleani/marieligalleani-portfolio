@@ -19,6 +19,8 @@ export interface Service {
   bullets: string[];
   /** Spans two columns in the bento grid. */
   wide?: boolean;
+  /** Small UI illustration shown beside the text in wide cards. */
+  visual?: 'roadmap' | 'video' | 'localize';
 }
 
 export interface Step {
@@ -158,7 +160,7 @@ export const agency: Record<Lang, AgencyContent> = {
           name: 'Market entry strategy',
           description: 'A clear, data-backed plan to enter Brazil and the next Latin American market.',
           bullets: ['Market & competitor research', 'Positioning and messaging', 'Pricing in BRL and local currencies', 'Go-to-market roadmap'],
-          wide: true,
+          wide: true, visual: 'roadmap',
         },
         {
           icon: 'language',
@@ -195,13 +197,13 @@ export const agency: Record<Lang, AgencyContent> = {
           name: 'Audiovisual production',
           description: 'In-house video and photo — made by the same team that plans the strategy, not outsourced.',
           bullets: ['Brand & product videos', 'Local talent and UGC', 'Photo shoots'],
-          wide: true,
+          wide: true, visual: 'video',
         },
         {
           icon: 'spark',
           name: 'Product & UX localization',
           description: 'Product design for local users: onboarding, AI features, design systems and MVPs.',
-          bullets: ['UX research with local users', 'Design systems', 'Functional MVPs'], wide: true,
+          bullets: ['UX research with local users', 'Design systems', 'Functional MVPs'], wide: true, visual: 'localize',
         },
         {
           icon: 'building',
@@ -369,14 +371,14 @@ export const agency: Record<Lang, AgencyContent> = {
       title: 'Tudo o que você precisa para lançar e crescer — <em>em um só lugar.</em>',
       lead: 'Estratégia, criação, mídia e tecnologia com um único time. Sem terceirização, sem repasses, sem templates genéricos.',
       items: [
-        { icon: 'compass', name: 'Estratégia de entrada no mercado', description: 'Um plano claro, baseado em dados, para entrar no Brasil e no próximo mercado latino-americano.', bullets: ['Pesquisa de mercado e concorrentes', 'Posicionamento e mensagem', 'Preço em reais e moedas locais', 'Roadmap de go-to-market'], wide: true },
+        { icon: 'compass', name: 'Estratégia de entrada no mercado', description: 'Um plano claro, baseado em dados, para entrar no Brasil e no próximo mercado latino-americano.', bullets: ['Pesquisa de mercado e concorrentes', 'Posicionamento e mensagem', 'Preço em reais e moedas locais', 'Roadmap de go-to-market'], wide: true, visual: 'roadmap' },
         { icon: 'language', name: 'Localização e transcriação', description: 'Site, produto, apresentações e anúncios reescritos em português do Brasil e espanhol latino-americano.', bullets: ['Site e UI do produto', 'Apresentações e e-mails de vendas', 'Guia de tom de voz'] },
         { icon: 'funnel', name: 'Infraestrutura comercial', description: 'CRM, funis de venda, landing pages e dashboards feitos sob medida — nunca templates genéricos.', bullets: ['CRM e pipeline', 'Landing pages e funis', 'Integração com WhatsApp', 'Dashboards de KPIs ao vivo'] },
         { icon: 'chart', name: 'Performance e mídia paga', description: 'Mídia paga com foco em ROI, otimização semanal e relatórios transparentes.', bullets: ['Meta, Google, TikTok e LinkedIn', 'Públicos e criativos locais', 'Rastreamento de conversões'] },
         { icon: 'palette', name: 'Marca e design premium', description: 'Identidade visual adaptada ao mercado e criativos que se destacam no feed.', bullets: ['Adaptação de identidade', 'Key visuals e criativos de anúncio', 'Templates de vendas e social'] },
         { icon: 'grid', name: 'Social media e conteúdo', description: 'De 12 a 20 posts por mês no idioma local — Reels, carrosséis e estáticos — mais gestão de comunidade.', bullets: ['Calendário editorial', 'Reels, carrosséis e estáticos', 'Gestão de comunidade'] },
-        { icon: 'camera', name: 'Produção audiovisual', description: 'Vídeo e foto feitos internamente — pelo mesmo time que pensa a estratégia, sem terceirizar.', bullets: ['Vídeos de marca e produto', 'Talentos locais e UGC', 'Sessões de fotos'], wide: true },
-        { icon: 'spark', name: 'Localização de produto e UX', description: 'Design de produto para o usuário local: onboarding, recursos de IA, design systems e MVPs.', bullets: ['Pesquisa com usuários locais', 'Design systems', 'MVPs funcionais'], wide: true },
+        { icon: 'camera', name: 'Produção audiovisual', description: 'Vídeo e foto feitos internamente — pelo mesmo time que pensa a estratégia, sem terceirizar.', bullets: ['Vídeos de marca e produto', 'Talentos locais e UGC', 'Sessões de fotos'], wide: true, visual: 'video' },
+        { icon: 'spark', name: 'Localização de produto e UX', description: 'Design de produto para o usuário local: onboarding, recursos de IA, design systems e MVPs.', bullets: ['Pesquisa com usuários locais', 'Design systems', 'MVPs funcionais'], wide: true, visual: 'localize' },
         { icon: 'building', name: 'Estrutura de operação local', description: 'As peças que fazem vender aqui funcionar — com uma rede de parceiros verificados para o resto.', bullets: ['Pix e meios de pagamento locais', 'WhatsApp Business', 'Fluxos de dados prontos para a LGPD', 'Parceiros contábeis e jurídicos'] },
       ],
     },
@@ -519,14 +521,14 @@ export const agency: Record<Lang, AgencyContent> = {
       title: 'Todo lo que necesitas para lanzar y crecer — <em>en un solo lugar.</em>',
       lead: 'Estrategia, creatividad, medios y tecnología con un único equipo. Sin tercerizar, sin traspasos, sin plantillas genéricas.',
       items: [
-        { icon: 'compass', name: 'Estrategia de entrada al mercado', description: 'Un plan claro, basado en datos, para entrar a Brasil y al siguiente mercado latinoamericano.', bullets: ['Investigación de mercado y competencia', 'Posicionamiento y mensaje', 'Precios en reales y monedas locales', 'Roadmap de go-to-market'], wide: true },
+        { icon: 'compass', name: 'Estrategia de entrada al mercado', description: 'Un plan claro, basado en datos, para entrar a Brasil y al siguiente mercado latinoamericano.', bullets: ['Investigación de mercado y competencia', 'Posicionamiento y mensaje', 'Precios en reales y monedas locales', 'Roadmap de go-to-market'], wide: true, visual: 'roadmap' },
         { icon: 'language', name: 'Localización y transcreación', description: 'Tu sitio, producto, presentaciones y anuncios reescritos en portugués de Brasil y español latinoamericano.', bullets: ['Sitio y UI del producto', 'Presentaciones y emails de ventas', 'Guía de tono de voz'] },
         { icon: 'funnel', name: 'Infraestructura comercial', description: 'CRM, embudos de venta, landing pages y dashboards a medida — nunca plantillas genéricas.', bullets: ['CRM y pipeline', 'Landing pages y embudos', 'Integración con WhatsApp', 'Dashboards de KPIs en vivo'] },
         { icon: 'chart', name: 'Performance y medios pagos', description: 'Medios pagos enfocados en ROI, con optimización semanal y reportes transparentes.', bullets: ['Meta, Google, TikTok y LinkedIn', 'Audiencias y creatividades locales', 'Seguimiento de conversiones'] },
         { icon: 'palette', name: 'Marca y diseño premium', description: 'Identidad visual adaptada al mercado y creatividades que destacan en el feed.', bullets: ['Adaptación de identidad', 'Key visuals y creatividades de anuncios', 'Plantillas de ventas y redes'] },
         { icon: 'grid', name: 'Redes sociales y contenido', description: 'De 12 a 20 publicaciones al mes en el idioma local — Reels, carruseles y estáticos — más gestión de comunidad.', bullets: ['Calendario editorial', 'Reels, carruseles y estáticos', 'Gestión de comunidad'] },
-        { icon: 'camera', name: 'Producción audiovisual', description: 'Video y foto hechos internamente — por el mismo equipo que piensa la estrategia, sin tercerizar.', bullets: ['Videos de marca y producto', 'Talento local y UGC', 'Sesiones de fotos'], wide: true },
-        { icon: 'spark', name: 'Localización de producto y UX', description: 'Diseño de producto para el usuario local: onboarding, funciones de IA, design systems y MVPs.', bullets: ['Investigación con usuarios locales', 'Design systems', 'MVPs funcionales'], wide: true },
+        { icon: 'camera', name: 'Producción audiovisual', description: 'Video y foto hechos internamente — por el mismo equipo que piensa la estrategia, sin tercerizar.', bullets: ['Videos de marca y producto', 'Talento local y UGC', 'Sesiones de fotos'], wide: true, visual: 'video' },
+        { icon: 'spark', name: 'Localización de producto y UX', description: 'Diseño de producto para el usuario local: onboarding, funciones de IA, design systems y MVPs.', bullets: ['Investigación con usuarios locales', 'Design systems', 'MVPs funcionales'], wide: true, visual: 'localize' },
         { icon: 'building', name: 'Estructura de operación local', description: 'Las piezas que hacen que vender aquí funcione — con una red de socios verificados para el resto.', bullets: ['Pix y medios de pago locales', 'WhatsApp Business', 'Flujos de datos listos para la LGPD', 'Socios contables y legales'] },
       ],
     },

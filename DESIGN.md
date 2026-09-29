@@ -208,6 +208,12 @@ and the `1px` of the `.visually-hidden` utility). Mobile-first.
   and pins, radar rings around the São Paulo hub, and city labels with each market's local payment
 rails (Pix, OXXO, PSE, Yape, Webpay, Mercado Pago). Regenerate with `node scripts/generate-world-map.mjs`. On `lg` the
   launch-plan cards float over the Pacific and Indian oceans; on small screens the map zooms into the Americas.
+- **Stats box** — the stats section is one inverse container (`--radius-xl`, border) with three
+  figures split by hairlines.
+- **Service visuals** — wide service cards show a small CSS illustration beside the text
+  (`ServiceVisual.astro`: roadmap, video editor, localized CTA in EN/PT-BR/ES-MX).
+- **Process timeline** — numbered markers joined by a line (solid for the first leg, dashed after),
+  a card under each step.
 - **Section header** — `.section__header` (centered; `--left` variant) with `.badge`,
   `.section__title` (`--text-3xl`, `--tracking-display`) and `.section__lead`.
 - **Badge** — pill, uppercase `--text-xs`, accent dot with a soft halo.
@@ -219,6 +225,7 @@ rails (Pix, OXXO, PSE, Yape, Webpay, Mercado Pago). Regenerate with `node script
 - **Services bento** — 3 columns on `lg`; "wide" services span 2.
 - **Pricing** — three cards; the featured plan uses `.inverse`.
 - **FAQ** — native `<details>/<summary>` with a plus icon; FAQPage JSON-LD.
-- **Case card** — cover in a gradient frame, eyebrow, title (link overlay), accent outcome, tags.
+- **Case card** — the first case spans the grid as a horizontal card (media left, text right) on `lg`;
+  cover in a gradient frame, eyebrow, title (link overlay), accent outcome, tags.
 - **Media frame** — `.frame`: `--radius-lg` + `--shadow-lg` for covers, videos and galleries.
 - **Wordmark** — emerald rounded "G" mark + agency name.

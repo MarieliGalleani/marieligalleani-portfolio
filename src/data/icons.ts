@@ -15,4 +15,5 @@ export type IconName =
   | 'check'
   | 'arrow'
   | 'globe'
-  | 'plus';
+  | 'plus'
+  | 'play';

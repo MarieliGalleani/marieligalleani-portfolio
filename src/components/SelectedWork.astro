@@ -54,4 +54,25 @@ const cases = (await getCases(lang)).filter((c) => c.data.video || c.data.galler
       grid-column: 1 / -1;
     }
   }
+
+  /* Featured case: media left, text right, so it doesn't dominate the page. */
+  @media (min-width: 64rem) {
+    .work-grid__wide :global(.case) {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+    }
+
+    .work-grid__wide :global(.case__media img) {
+      height: 100%;
+    }
+
+    .work-grid__wide :global(.case__body) {
+      justify-content: center;
+      padding: var(--space-7);
+    }
+
+    .work-grid__wide :global(.case__title) {
+      font-size: var(--text-2xl);
+    }
+  }
 </style>

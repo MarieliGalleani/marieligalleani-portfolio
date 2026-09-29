@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import BookButton from './BookButton.astro';
+import ServiceVisual from './ServiceVisual.astro';
 import { agency } from '@/data/agency';
 import type { Lang } from '@/i18n/ui';
 
@@ -22,15 +23,20 @@ const s = agency[lang].services;
 
     <ul role="list" class="bento">
       {s.items.map((item, i) => (
-        <li class:list={['card', 'card--hover', 'svc', 'reveal', { 'svc--wide': item.wide, 'svc--hero': i === 0 }]}>
-          <span class="icon-tile"><Icon name={item.icon} /></span>
-          <h3 class="svc__name">{item.name}</h3>
-          <p class="svc__desc">{item.description}</p>
-          <ul role="list" class="svc__list">
-            {item.bullets.map((b) => (
-              <li><Icon name="check" />{b}</li>
-            ))}
-          </ul>
+        <li class:list={['card', 'card--hover', 'svc', 'reveal', { 'svc--wide': item.wide, 'svc--hero': i === 0, 'svc--viz': item.visual }]}>
+          <div class="svc__text">
+            <span class="icon-tile"><Icon name={item.icon} /></span>
+            <h3 class="svc__name">{item.name}</h3>
+            <p class="svc__desc">{item.description}</p>
+            {item.visual !== 'roadmap' && (
+              <ul role="list" class="svc__list">
+                {item.bullets.map((b) => (
+                  <li><Icon name="check" />{b}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+          {item.visual && <ServiceVisual kind={item.visual} steps={item.bullets} />}
         </li>
       ))}
     </ul>
@@ -49,9 +55,15 @@ const s = agency[lang].services;
 
   .svc {
     display: grid;
-    gap: var(--space-3);
+    gap: var(--space-5);
     align-content: start;
     padding: var(--space-6);
+  }
+
+  .svc__text {
+    display: grid;
+    gap: var(--space-3);
+    align-content: start;
   }
 
   .svc--hero {
@@ -107,6 +119,16 @@ const s = agency[lang].services;
 
     .svc--wide .svc__list {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Wide cards with a visual: text left, illustration right. */
+    .svc--viz {
+      grid-template-columns: 1fr 1.1fr;
+      align-items: stretch;
+    }
+
+    .svc--viz .svc__list {
+      grid-template-columns: 1fr;
     }
   }
 </style>

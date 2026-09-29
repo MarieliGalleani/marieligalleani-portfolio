@@ -19,13 +19,13 @@ const p = agency[lang].process;
     </header>
     <ol role="list" class="steps">
       {p.steps.map((step, i) => (
-        <li class="card step reveal">
-          <div class="step__top">
-            <span class="step__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+        <li class="step reveal">
+          <span class="step__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <div class="card step__body">
             <span class="step__when">{step.when}</span>
+            <h3 class="step__name">{step.name}</h3>
+            <p class="step__desc">{step.description}</p>
           </div>
-          <h3 class="step__name">{step.name}</h3>
-          <p class="step__desc">{step.description}</p>
         </li>
       ))}
     </ol>
@@ -39,19 +39,21 @@ const p = agency[lang].process;
     counter-reset: none;
   }
 
+  /* Timeline: numbered markers joined by a line, a card under each. */
   .step {
     position: relative;
     display: grid;
-    gap: var(--space-3);
+    gap: var(--space-4);
     align-content: start;
-    padding: var(--space-6);
   }
 
-  .step__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .step__body {
+    display: grid;
+    flex: 1;
     gap: var(--space-3);
+    align-content: start;
+    height: 100%;
+    padding: var(--space-6);
   }
 
   .step__num {
@@ -63,9 +65,11 @@ const p = agency[lang].process;
     background: var(--color-accent);
     color: var(--color-on-accent);
     font-weight: var(--weight-bold);
+    box-shadow: 0 0 0 var(--space-2) var(--color-accent-soft);
   }
 
   .step__when {
+    justify-self: start;
     padding: var(--space-1) var(--space-3);
     border-radius: var(--radius-pill);
     background: var(--color-accent-soft);
@@ -75,7 +79,6 @@ const p = agency[lang].process;
   }
 
   .step__name {
-    margin-top: var(--space-2);
     font-size: var(--text-xl);
   }
 
@@ -92,6 +95,24 @@ const p = agency[lang].process;
   @media (min-width: 64rem) {
     .steps {
       grid-template-columns: repeat(4, 1fr);
+    }
+
+    .step {
+      grid-template-rows: auto 1fr;
+    }
+
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: calc(var(--size-touch) / 2);
+      left: calc(var(--size-touch) + var(--space-3));
+      right: calc(var(--space-3) - var(--space-4));
+      border-top: calc(var(--border-width) * 2) dashed var(--color-border-strong);
+    }
+
+    .step:first-child::after {
+      border-top-style: solid;
+      border-top-color: var(--color-accent);
     }
   }
 </style>
