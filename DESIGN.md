@@ -201,10 +201,13 @@ and the `1px` of the `.visually-hidden` utility). Mobile-first.
 ## 9. Components (reference)
 
 - **Inverse band** — `.inverse`: dark background, glow (`::before`) and masked grid (`::after`).
+- **Hero frame** — the hero is one rounded container (`.hero__frame`, `--radius-xl`, glow) whose
+  main visual is the world map: the map rises behind the headline and fades in from the top.
 - **World map (hero)** — `WorldMap.astro`: dotted land (`public/media/world-dots.svg` used as a
   CSS mask, so dots take `--map-dot` and glow `--color-accent` around Latin America), SVG routes
-  and pins, city labels. Regenerate with `node scripts/generate-world-map.mjs`. On `lg` the
-  launch-plan cards float over the oceans; on small screens the map zooms into the Americas.
+  and pins, radar rings around the São Paulo hub, and city labels with each market's local payment
+rails (Pix, OXXO, PSE, Yape, Webpay, Mercado Pago). Regenerate with `node scripts/generate-world-map.mjs`. On `lg` the
+  launch-plan cards float over the Pacific and Indian oceans; on small screens the map zooms into the Americas.
 - **Section header** — `.section__header` (centered; `--left` variant) with `.badge`,
   `.section__title` (`--text-3xl`, `--tracking-display`) and `.section__lead`.
 - **Badge** — pill, uppercase `--text-xs`, accent dot with a soft halo.
