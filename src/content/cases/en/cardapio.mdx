@@ -1,0 +1,67 @@
+---
+title: "Cardápio — a storefront and back office for artisan bakeries"
+client: "Small food business · confectionery"
+role: "Product design & full-stack build"
+timeline: "2026"
+tools: ["Figma", "Vue 3", "Vuetify", "TypeScript", "Fastify", "Prisma", "PostgreSQL"]
+summary: "A mobile-first store in the style of delivery apps, plus a real-time back office for orders, menu, stock, recipe costing and pricing — built for one-person businesses."
+outcome: "8 of 11 modules ready — from menu to Pix checkout"
+tags: ["Functional MVP", "E-commerce", "Mobile-first"]
+cover: "../../../assets/work/cardapio/cover.jpg"
+coverAlt: "Cardápio mockup: the real-time orders board of the owner panel next to a phone showing the bakery storefront."
+order: 4
+video:
+  mp4: "/media/cardapio.mp4"
+  webm: "/media/cardapio.webm"
+  poster: "/media/cardapio-poster.jpg"
+  label: "Cardápio walkthrough on a phone: browse the menu, open a product, choose the 12-piece box, add it to the bag, then review the bag and checkout."
+gallery:
+  - src: "../../../assets/work/cardapio/screen-1.jpg"
+    alt: "Customer store on the phone: menu, product options and checkout with pickup or delivery."
+  - src: "../../../assets/work/cardapio/screen-2.jpg"
+    alt: "Owner dashboard: sales today, this week and month, average ticket, best sellers and margin."
+  - src: "../../../assets/work/cardapio/screen-3.jpg"
+    alt: "Menu editor: drag to reorder categories and products, variations and availability toggles."
+  - src: "../../../assets/work/cardapio/screen-4.jpg"
+    alt: "Recipe costing: cost per unit from stock, suggested price and real vs. target margin."
+repo: "https://github.com/MarieliGalleani/cardapio-"
+---
+
+## Context
+
+Small bakeries sell through WhatsApp and Instagram DMs: prices in a notebook, orders in chat, stock in the owner's head. Delivery marketplaces solve discovery but take a big cut and own the customer relationship.
+
+## Problem
+
+- Orders get lost in chat, and the owner can't see the day at a glance
+- Nobody knows the real cost of a brigadeiro — so prices are guessed and margins disappear
+- The customer experience depends on how fast the owner answers messages
+
+## My role
+
+Product design and full-stack build: flows, UI for both sides (store and back office), data model and implementation with Vue 3 + Vuetify on the front and Fastify + Prisma + PostgreSQL on the back.
+
+## Process
+
+**Research →** listed the real jobs of a one-person bakery: take orders, cook, deliver, get paid, restock.
+**Design →** a store that feels like the delivery apps customers already know, and a back office that fits on a laptop at the kitchen counter.
+**Build →** shipped module by module, with domain rules (cart, pricing, Pix, opening hours) covered by unit tests.
+**Measure →** the dashboard shows sales, average ticket, best sellers and estimated margin from the recipes.
+
+## Key decisions
+
+1. **Familiar over novel.** The store follows the delivery-app pattern — categories, photos, options, bag — so there is nothing to learn.
+2. **Price from the recipe.** Each recipe pulls ingredient costs from stock and suggests a price for the target margin; when an ingredient gets more expensive, the margin updates.
+3. **A board for the day.** Orders move across *New → Preparing → Ready / On the way*, with a sound alert for new ones and automatic stock deduction.
+
+## Outcome
+
+- **8 of 11 planned modules ready**: menu, stock, recipe costing, real-time orders, dashboard, settings, store and checkout (Pix, card, cash, WhatsApp)
+- Delivery fees by neighborhood, pre-orders and pause-the-store controls
+- Next: coupons, reviews and per-km delivery fees
+
+## Learnings
+
+For small businesses, the most valuable screen isn't the storefront — it's the **recipe costing**. Showing the real margin changed how prices are set.
+
+*The brand "Doce Ateliê" and the product illustrations in these screens are demo content.*

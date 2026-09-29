@@ -1,0 +1,56 @@
+[
+{"out":"lab-cover","theme":{"bg":"#070a1a","c1":"#3b5bfd55","c2":"#8b5cf655","chrome":"dark"},"items":[
+ {"type":"win","x":520,"y":70,"w":1000,"src":"screenshots/lab_app_command.png","url":"OperaIA.lab — Command Center","z":1},
+ {"type":"win","x":80,"y":300,"w":1040,"src":"screenshots/lab_app_office.png","url":"OperaIA.lab — Escritório digital","z":2}]},
+{"out":"lab-1","theme":{"bg":"#070a1a","c1":"#3b5bfd44","c2":"#8b5cf644","chrome":"dark"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/lab_app_office.png","url":"OperaIA.lab — Escritório digital"}]},
+{"out":"lab-2","theme":{"bg":"#070a1a","c1":"#3b5bfd44","c2":"#8b5cf644","chrome":"dark"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/lab_app_team.png","url":"OperaIA.lab — Equipe digital"}]},
+{"out":"lab-3","theme":{"bg":"#070a1a","c1":"#3b5bfd44","c2":"#8b5cf644","chrome":"dark"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/lab_app_campus.png","url":"OperaIA.lab — Campus"}]},
+
+{"out":"core-cover","theme":{"bg":"#050816","c1":"#06b6d455","c2":"#7c3aed55","chrome":"dark"},"items":[
+ {"type":"win","x":560,"y":70,"w":960,"src":"screenshots/nexo-nav2.png","url":"OperaIA — Analytics","z":1},
+ {"type":"win","x":80,"y":290,"w":1060,"src":"screenshots/nexo-dash.png","url":"OperaIA — O que fazer hoje","z":2}]},
+{"out":"core-1","theme":{"bg":"#050816","c1":"#06b6d444","c2":"#7c3aed44","chrome":"dark"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/nexo-dash.png","url":"OperaIA — O que fazer hoje"}]},
+{"out":"core-2","theme":{"bg":"#050816","c1":"#06b6d444","c2":"#7c3aed44","chrome":"dark"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/nexo-1.png","url":"OperaIA — Conectores"}]},
+{"out":"core-3","theme":{"bg":"#050816","c1":"#06b6d444","c2":"#7c3aed44","chrome":"dark"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/nexo-nav3.png","url":"OperaIA — Clientes"}]},
+{"out":"core-4","theme":{"bg":"#050816","c1":"#06b6d444","c2":"#7c3aed44","chrome":"dark"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/nexo-connected.png","url":"OperaIA — Second Brain"}]},
+
+{"out":"odonto-cover","theme":{"bg":"#062522","c1":"#14b8a655","c2":"#0ea5e944","chrome":"light"},"items":[
+ {"type":"win","x":560,"y":70,"w":960,"src":"screenshots/odonto-agenda.png","url":"OdontoClinic — Agenda","z":1},
+ {"type":"win","x":80,"y":290,"w":1060,"src":"screenshots/odonto-tooth.png","url":"OdontoClinic — Prontuário","z":2}]},
+{"out":"odonto-1","theme":{"bg":"#062522","c1":"#14b8a644","c2":"#0ea5e933","chrome":"light"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/odonto-home.png","url":"OdontoClinic — Meu dia"}]},
+{"out":"odonto-2","theme":{"bg":"#062522","c1":"#14b8a644","c2":"#0ea5e933","chrome":"light"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/odonto-agenda.png","url":"OdontoClinic — Agenda"}]},
+{"out":"odonto-3","theme":{"bg":"#062522","c1":"#14b8a644","c2":"#0ea5e933","chrome":"light"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/odonto-tooth.png","url":"OdontoClinic — Odontograma"}]},
+{"out":"odonto-4","theme":{"bg":"#062522","c1":"#14b8a644","c2":"#0ea5e933","chrome":"light"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/odonto-financeiro.png","url":"OdontoClinic — Financeiro"}]},
+
+{"out":"cardapio-cover","theme":{"bg":"#2a0f1c","c1":"#e84a7f66","c2":"#f7a07255","chrome":"light"},"items":[
+ {"type":"win","x":90,"y":110,"w":1120,"src":"screenshots/card-admin-pedidos.png","url":"Doce Ateliê — Painel"},
+ {"type":"phone","x":1180,"y":190,"w":320,"src":"screenshots/card-m-home.png","sb":"#ffffff"}]},
+{"out":"cardapio-1","theme":{"bg":"#2a0f1c","c1":"#e84a7f55","c2":"#f7a07244","chrome":"light"},"items":[
+ {"type":"phone","x":190,"y":130,"w":340,"src":"screenshots/card-m-home.png"},
+ {"type":"phone","x":630,"y":90,"w":340,"src":"screenshots/card-m-product.png"},
+ {"type":"phone","x":1070,"y":130,"w":340,"src":"screenshots/card-m-checkout.png"}]},
+{"out":"cardapio-2","theme":{"bg":"#2a0f1c","c1":"#e84a7f44","c2":"#f7a07233","chrome":"light"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/card-admin-dashboard.png","url":"Doce Ateliê — Dashboard"}]},
+{"out":"cardapio-3","theme":{"bg":"#2a0f1c","c1":"#e84a7f44","c2":"#f7a07233","chrome":"light"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/card-admin-cardapio.png","url":"Doce Ateliê — Cardápio"}]},
+{"out":"cardapio-4","theme":{"bg":"#2a0f1c","c1":"#e84a7f44","c2":"#f7a07233","chrome":"light"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/card-admin-fichas.png","url":"Doce Ateliê — Ficha técnica"}]},
+
+{"out":"agenda-cover","theme":{"bg":"#07231f","c1":"#0f766e66","c2":"#34d39944","chrome":"light"},"items":[
+ {"type":"win","x":90,"y":110,"w":1120,"src":"screenshots/agenda-agenda.png","url":"Agenda OperaIA"},
+ {"type":"phone","x":1180,"y":190,"w":320,"src":"screenshots/m-agenda-pacientes.png","sb":"#f3f4f3"}]},
+{"out":"agenda-1","theme":{"bg":"#07231f","c1":"#0f766e55","c2":"#34d39933","chrome":"light"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/agenda-painel.png","url":"Agenda OperaIA — Painel"}]},
+{"out":"agenda-2","theme":{"bg":"#07231f","c1":"#0f766e55","c2":"#34d39933","chrome":"light"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/agenda-pacientes.png","url":"Agenda OperaIA — Pacientes"}]},
+{"out":"agenda-3","theme":{"bg":"#07231f","c1":"#0f766e55","c2":"#34d39933","chrome":"light"},"items":[
+ {"type":"phone","x":400,"y":110,"w":340,"src":"screenshots/m-agenda-login.png"},{"type":"phone","x":860,"y":110,"w":340,"src":"screenshots/m-agenda-pacientes.png","sb":"#f3f4f3"}]},
+
+{"out":"atlas-cover","theme":{"bg":"#0b0b0c","c1":"#d4a57444","c2":"#3b82f633","chrome":"dark"},"items":[
+ {"type":"win","x":560,"y":70,"w":960,"src":"screenshots/atlas-app2.png","url":"OperaIA Atlas","z":1},
+ {"type":"win","x":80,"y":290,"w":1060,"src":"screenshots/atlas-map1.png","url":"Atlas — Planejamento de projeto","z":2}]},
+{"out":"atlas-1","theme":{"bg":"#0b0b0c","c1":"#d4a57433","c2":"#3b82f622","chrome":"dark"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/atlas-map2.png","url":"Atlas — Rotina digital"}]},
+{"out":"atlas-2","theme":{"bg":"#0b0b0c","c1":"#d4a57433","c2":"#3b82f622","chrome":"dark"},"items":[{"type":"win","x":80,"y":150,"w":1060,"src":"screenshots/atlas-landing.png","url":"OperaIA Atlas"},{"type":"phone","x":1180,"y":190,"w":320,"src":"screenshots/m-atlas-landing.png","sb":"#0b0b0c","sbText":"#eee"}]},
+
+{"out":"onii-cover","theme":{"bg":"#1a0b06","c1":"#f0582866","c2":"#ff8a4c33","chrome":"light"},"items":[
+ {"type":"win","x":560,"y":70,"w":960,"src":"screenshots/onii-foundations-cores.png","url":"Design System Onii — Cores","z":1},
+ {"type":"win","x":80,"y":290,"w":1060,"src":"screenshots/ds-onii.png","url":"Design System Onii","z":2}]},
+{"out":"onii-1","theme":{"bg":"#1a0b06","c1":"#f0582844","c2":"#ff8a4c22","chrome":"light"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/onii-components-button.png","url":"Design System Onii — Buttons"}]},
+{"out":"onii-2","theme":{"bg":"#1a0b06","c1":"#f0582844","c2":"#ff8a4c22","chrome":"light"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/onii-foundations-tipografia.png","url":"Design System Onii — Tipografia"}]},
+{"out":"onii-3","theme":{"bg":"#1a0b06","c1":"#f0582844","c2":"#ff8a4c22","chrome":"light"},"items":[{"type":"win","x":120,"y":85,"w":1360,"src":"screenshots/onii-foundations-perfis-marca.png","url":"Design System Onii — Perfis de marca"}]}
+]

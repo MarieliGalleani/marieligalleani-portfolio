@@ -1,0 +1,100 @@
+---
+import { testimonials } from '@/data/testimonials';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="testimonials" class="section" aria-labelledby="testimonials-title">
+  <div class="container">
+    <header class="section__header">
+      <p class="section__index"><span>05</span> {t('testimonials.eyebrow')}</p>
+      <h2 id="testimonials-title" class="section__title">{t('testimonials.title')}</h2>
+    </header>
+
+    <ul role="list" class="quotes">
+      {testimonials[lang].map((item) => (
+        <li class="quote reveal">
+          <figure>
+            <span class="quote__mark" aria-hidden="true">“</span>
+            <blockquote class="quote__text">
+              <p>{item.quote}</p>
+            </blockquote>
+            <figcaption class="quote__author">
+              <strong>{item.name}</strong>
+              <span>{item.role}, {item.company}</span>
+            </figcaption>
+          </figure>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .quotes {
+    display: grid;
+    border-top: var(--border-width) solid var(--color-border-strong);
+  }
+
+  .quote {
+    padding-block: var(--space-6) var(--space-7);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .quote figure {
+    display: grid;
+    gap: var(--space-4);
+    height: 100%;
+  }
+
+  .quote__mark {
+    font-family: var(--font-serif);
+    font-size: var(--text-4xl);
+    line-height: var(--leading-display);
+    color: var(--color-accent);
+    height: var(--space-8);
+  }
+
+  .quote__text {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    line-height: var(--leading-snug);
+  }
+
+  .quote__author {
+    display: grid;
+    gap: var(--space-1);
+    margin-top: auto;
+    font-size: var(--text-sm);
+  }
+
+  .quote__author strong {
+    font-weight: var(--weight-medium);
+  }
+
+  .quote__author span {
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 64rem) {
+    .quotes {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .quote {
+      padding-right: var(--space-6);
+      border-bottom: 0;
+    }
+
+    .quote + .quote {
+      padding-left: var(--space-6);
+      border-left: var(--border-width) solid var(--color-border);
+    }
+  }
+</style>

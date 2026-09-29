@@ -1,0 +1,12 @@
+---
+import type { GetStaticPaths } from 'astro';
+import HomePage from '@/views/HomePage.astro';
+import { langs, defaultLang, type Lang } from '@/i18n/ui';
+
+export const getStaticPaths = (() =>
+  langs.filter((l) => l !== defaultLang).map((lang) => ({ params: { lang } }))) satisfies GetStaticPaths;
+
+const lang = Astro.params.lang as Lang;
+---
+
+<HomePage lang={lang} />

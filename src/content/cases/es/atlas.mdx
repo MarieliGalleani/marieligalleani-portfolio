@@ -1,0 +1,60 @@
+---
+title: "OperaIA Atlas — mapas mentales, notas y una bóveda en un espacio tranquilo"
+client: "Producto propio · productividad"
+role: "Fundadora · diseño de producto y build"
+timeline: "2026 · en curso"
+tools: ["Figma", "Vue 3", "Vue Flow", "Pinia", "Fastify", "Prisma", "PostgreSQL"]
+summary: "Un espacio de trabajo pensado para el teclado, para organizar ideas como mapas, conectarlas con notas y una bóveda segura y encontrar cualquier cosa rápido."
+outcome: "De la plantilla a un mapa estructurado en segundos, con el teclado"
+tags: ["Productividad", "Design + Build", "Diseño de interacción"]
+cover: "../../../assets/work/atlas/cover.jpg"
+coverAlt: "Mockup de OperaIA Atlas: un mapa mental de planificación de proyecto delante de la home oscura del espacio de trabajo, con carpetas y plantillas."
+order: 6
+video:
+  mp4: "/media/atlas.mp4"
+  webm: "/media/atlas.webm"
+  poster: "/media/atlas-poster.jpg"
+  label: "Recorrido por OperaIA Atlas: crear un mapa desde la plantilla de planificación de proyecto y sumar temas con el teclado (Tab para un hijo, Enter para un hermano)."
+gallery:
+  - src: "../../../assets/work/atlas/screen-1.jpg"
+    alt: "Un mapa de \"Rutina digital\": trabajo, estudios, personal y herramientas, cada rama con su color."
+  - src: "../../../assets/work/atlas/screen-2.jpg"
+    alt: "Landing page en computadora y teléfono: \"Organiza. Conecta. Encuentra.\""
+---
+
+## Contexto
+
+Las herramientas para pensar son pizarras libres que terminan en caos o editores de documentos rígidos. Quería algo en el medio: la velocidad de un outline con la visión general de un mapa — y un lugar para guardar las notas y credenciales de cada proyecto.
+
+## Problema
+
+- Las herramientas de mapas mentales dependen del mouse y son lentas para estructurar
+- Mapas, notas y "¿dónde guardé esa contraseña?" viven en tres apps distintas
+- Empezar desde cero es la parte más difícil
+
+## Mi rol
+
+Fundadora: concepto, diseño de interacción, identidad visual y el front-end en Vue 3 con Vue Flow, con una API en Fastify + Prisma en construcción en paralelo.
+
+## Proceso
+
+**Definición →** tres verbos para el producto: *organizar, conectar, encontrar*.
+**Diseño →** una identidad calma y editorial (títulos con serifa, un acento cálido) y un modelo de teclado tomado de los outliners.
+**Build →** mapas en Vue Flow con layout automático, alternancia mapa/outline, workspaces, carpetas, bloc de notas y bóveda.
+**Medición →** el objetivo es el tiempo hasta la estructura: qué tan rápido una idea en blanco se vuelve un mapa útil.
+
+## Decisiones clave
+
+1. **Teclado primero.** *Tab* crea un hijo, *Enter* un hermano, *F2* renombra — las pistas están siempre en pantalla.
+2. **Plantillas, no páginas en blanco.** Planificación de proyecto, reunión, rutina digital y estudios dan estructura con un clic.
+3. **Layout automático con color por rama.** Nunca arrastras nodos para mantener el orden; cada rama conserva su color.
+
+## Resultado
+
+- Mapas con layout automático, vistas de mapa y outline, deshacer/rehacer y guardado automático
+- Workspaces, carpetas, mapas recientes y un bloc de notas rápido en la home
+- Una bóveda para las partes sensibles de cada proyecto y búsqueda en mapas, nodos y etiquetas
+
+## Aprendizajes
+
+Los buenos valores por defecto valen más que las funcionalidades: **plantillas más dos teclas** hicieron más por la velocidad que cualquier barra de herramientas.

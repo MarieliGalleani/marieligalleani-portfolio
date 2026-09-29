@@ -1,0 +1,68 @@
+---
+title: "OperaIA — un cockpit de IA que le dice al CEO qué hacer hoy"
+client: "Producto propio · SaaS B2B"
+role: "Fundadora · diseño de producto y build"
+timeline: "2026 · en curso"
+tools: ["Figma", "React", "TypeScript", "Recharts", "NestJS", "Prisma", "PostgreSQL", "n8n"]
+summary: "Un SaaS multi-tenant que conecta ERP, CRM, anuncios y banco y lo convierte en una decisión clara por día — en lugar de otro dashboard más."
+outcome: "Diseñado para ir del registro a la primera decisión de IA en menos de 5 minutos"
+tags: ["Producto con IA", "SaaS B2B", "UX de datos"]
+cover: "../../../assets/work/operaia-core/cover.jpg"
+coverAlt: "Mockup de OperaIA: el cockpit \"Qué hacer hoy\" delante de una pantalla de analytics con gráficos de ingresos y CAC."
+order: 2
+video:
+  mp4: "/media/operaia-core.mp4"
+  webm: "/media/operaia-core.webm"
+  poster: "/media/operaia-core-poster.jpg"
+  label: "Recorrido por OperaIA: inicio de sesión, conexión de un ERP, el Second Brain sincronizando el contexto de la empresa y luego el cockpit del día, analytics y clientes."
+gallery:
+  - src: "../../../assets/work/operaia-core/screen-1.jpg"
+    alt: "\"Qué hacer hoy\": el diagnóstico crítico con causa, acción y lo que está en juego."
+  - src: "../../../assets/work/operaia-core/screen-2.jpg"
+    alt: "Fuentes de datos: conecta ERP, CRM, anuncios y bancos; un pipeline n8n normaliza todo."
+  - src: "../../../assets/work/operaia-core/screen-3.jpg"
+    alt: "Clientes: riesgo de churn, health score y LTV por cuenta."
+  - src: "../../../assets/work/operaia-core/screen-4.jpg"
+    alt: "Second Brain: memoria de la empresa, integraciones e indicadores cargan antes de empezar el día."
+repo: "https://github.com/MarieliGalleani/operaia-core-nexo"
+---
+
+## Contexto
+
+Los fundadores de empresas en crecimiento tienen datos en todas partes — ERP, CRM, plataformas de anuncios, banco — y aun así empiezan el día adivinando. Las herramientas de BI responden preguntas que ya sabes hacer. OperaIA lo invierte: la IA **habla primero**, cada mañana, con una decisión.
+
+## Problema
+
+Los dashboards crean trabajo en lugar de quitarlo.
+
+- El CEO no tiene tiempo de explorar gráficos para encontrar el único problema que importa
+- Los datos de distintas herramientas nunca coinciden (nombres, períodos y monedas diferentes)
+- Un insight sin acción recomendada ni impacto financiero rara vez se ejecuta
+
+## Mi rol
+
+Fundadora: estrategia de producto, definición del beta, UX y UI de todos los flujos y el front-end. Escribí la constitución de producto y el roadmap que deciden qué entra — y qué no.
+
+## Proceso
+
+**Definición →** una única promesa de beta: *registro → planilla conectada → decisión del día → conversación con el Consejero* en menos de cinco minutos la primera vez y en menos de un minuto después.
+**Diseño →** onboarding por conectores, un pipeline de datos visible (conectores → ingesta → normalización → validación → motor de IA → agentes → insights) y un cockpit diario.
+**Build →** monorepo con front-end en React y API en NestJS + Prisma + PostgreSQL; n8n normaliza los datos entrantes.
+**Medición →** el producto sigue lo que importa para la promesa: tiempo hasta la primera decisión y regreso al día siguiente.
+
+## Decisiones clave
+
+1. **Una decisión, no veinte widgets.** El cockpit abre con un único *diagnóstico crítico*: la causa, qué hacer y qué está en juego en dinero.
+2. **Mostrar la máquina trabajando.** La sincronización del "Second Brain" hace visible la preparación de la IA — memoria, integraciones, indicadores — para que la respuesta se sienta ganada, no mágica.
+3. **Agentes especializados.** FinanceIA, MarketingIA y CustomerIA se ocupan cada uno de un dominio, con sus propios insights e historial de acciones ejecutadas.
+
+## Resultado
+
+- Un cockpit diario con diagnóstico, acción e impacto en una pantalla
+- 8 conectores pensados para el stack más común de las pymes brasileñas (Bling, HubSpot, Meta Ads, Google Ads, bancos, Slack, SAP)
+- Analytics, salud de los clientes y el historial completo de lo que hicieron los agentes
+- Un alcance de beta claro y escrito, que mantiene el producto enfocado
+
+## Aprendizajes
+
+Escribir la *definición de terminado* del beta — en minutos, no en funcionalidades — fue el artefacto de diseño más útil del proyecto. Hizo fácil responder cualquier "¿agregamos esto?".

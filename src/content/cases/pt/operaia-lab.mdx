@@ -1,0 +1,66 @@
+---
+title: "OperaIA.lab — um escritório virtual operado por agentes de IA"
+client: "Produto próprio · startup de IA"
+role: "Fundadora · design de produto e build"
+timeline: "2026 · em andamento"
+tools: ["Figma", "Vue 3", "TypeScript", "Pixi.js", "Fastify", "PostgreSQL"]
+summary: "Um escritório digital autônomo onde agentes de IA especializados recebem demandas, coordenam missões e prestam contas — visível como um ambiente de trabalho vivo e navegável."
+outcome: "9 especialistas de IA trabalhando em um escritório vivo e navegável"
+tags: ["Produto com IA", "UX de agentes", "Design + Build"]
+cover: "../../../assets/work/operaia-lab/cover.jpg"
+coverAlt: "Mockup do OperaIA.lab: o Command Center atrás de um escritório isométrico em pixel art, com agentes de IA em suas mesas."
+order: 1
+video:
+  mp4: "/media/operaia-lab.mp4"
+  webm: "/media/operaia-lab.webm"
+  poster: "/media/operaia-lab-poster.jpg"
+  label: "Passeio pelo escritório virtual do OperaIA.lab: a câmera percorre o escritório isométrico enquanto os agentes de IA trabalham."
+gallery:
+  - src: "../../../assets/work/operaia-lab/screen-1.jpg"
+    alt: "O escritório isométrico: cada especialista de IA tem mesa, papel e status visível."
+  - src: "../../../assets/work/operaia-lab/screen-2.jpg"
+    alt: "Equipe digital: cada especialista com sua missão, projetos e última ação."
+  - src: "../../../assets/work/operaia-lab/screen-3.jpg"
+    alt: "Campus: a recepção, onde chegam as novas demandas."
+repo: "https://github.com/MarieliGalleani/operaia-lab"
+---
+
+## Contexto
+
+Agentes de IA já pesquisam, escrevem e automatizam — mas, para times pequenos, eles são invisíveis: ninguém sabe o que estão fazendo, quem pediu ou se deu certo. O OperaIA.lab é a minha resposta: uma **organização digital** de agentes especializados com uma camada operacional persistente, mostrada como um escritório que dá para percorrer.
+
+## Problema
+
+Como tornar o trabalho autônomo **compreensível e confiável** para quem não lê logs?
+
+- O estado dos agentes vivia em filas e rastros, não em uma interface
+- As passagens de tarefa entre agentes (e humanos) eram opacas
+- Não existia um lugar único para ver "o que precisa de mim agora"
+
+## Meu papel
+
+Desenhei e construí de ponta a ponta como fundadora: visão de produto, arquitetura de informação, a UI do Command Center, o escritório isométrico e o front-end em TypeScript sobre um backend em monólito modular (fila de missões, workers, supervisor e memória operacional).
+
+## Processo
+
+**Pesquisa →** mapeei o que um time pequeno realmente precisa dos agentes: delegar, acompanhar, aprovar.
+**Design →** defini o ciclo de vida do agente (ocioso, trabalhando, aguardando humano, concluído, falhou) e uma home de "estado do seu escritório".
+**Build →** lancei o escritório em Pixi.js atrás de uma camada de portas e adaptadores, para desenhar a UI com dados de demonstração antes de o backend existir.
+**Medição →** heartbeat e health checks mostram se o escritório está de fato operando — não só renderizando.
+
+## Decisões-chave
+
+1. **Estado do agente no espaço.** Cada especialista — CEO Opera, CTO Mag, Product Designer Luna, PM Nexus e outros — tem uma mesa. O status é lido num relance, como entrar numa sala.
+2. **Humanos aprovam, agentes executam.** Ações sensíveis vão para *Aprovações*; a home só pede o que realmente precisa de você ("1 item precisa de você").
+3. **Primeiro o cérebro, depois as interfaces.** A camada operacional é estabilizada antes de novas superfícies — uma regra escrita no próprio projeto.
+
+## Resultado
+
+- Um Command Center que responde "qual o estado do meu escritório?" em uma tela
+- Uma equipe digital com **9 especialistas**, cada um com papel, projetos e última ação
+- Um escritório isométrico com navegação por teclado e presença dos agentes em tempo real
+- Um backend modular com missões persistentes, supervisão contínua e memória, rodando em produção
+
+## Aprendizados
+
+Em produtos com IA, **confiança é o problema central de UX**. Visibilidade, ações reversíveis e um "o que precisa de mim" claro valem mais do que a capacidade bruta do modelo.

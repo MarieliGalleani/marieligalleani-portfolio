@@ -1,0 +1,66 @@
+---
+title: "OperaIA.lab — a virtual office run by AI agents"
+client: "Own product · AI startup"
+role: "Founder · product design & build"
+timeline: "2026 · ongoing"
+tools: ["Figma", "Vue 3", "TypeScript", "Pixi.js", "Fastify", "PostgreSQL"]
+summary: "An autonomous digital office where specialized AI agents take on demands, coordinate missions and report back — made visible as a living, explorable workplace."
+outcome: "9 AI specialists working in a live, explorable office"
+tags: ["AI Product", "Agent UX", "Design + Build"]
+cover: "../../../assets/work/operaia-lab/cover.jpg"
+coverAlt: "OperaIA.lab mockup: the Command Center behind an isometric pixel-art office where AI agents sit at their desks."
+order: 1
+video:
+  mp4: "/media/operaia-lab.mp4"
+  webm: "/media/operaia-lab.webm"
+  poster: "/media/operaia-lab-poster.jpg"
+  label: "Walkthrough of the OperaIA.lab virtual office: the camera pans across the isometric office while AI agents work at their desks."
+gallery:
+  - src: "../../../assets/work/operaia-lab/screen-1.jpg"
+    alt: "The isometric office: each AI specialist has a desk, a role and a visible status."
+  - src: "../../../assets/work/operaia-lab/screen-2.jpg"
+    alt: "Digital team: every specialist with its mission, projects and last action."
+  - src: "../../../assets/work/operaia-lab/screen-3.jpg"
+    alt: "Campus: the reception area where new demands arrive."
+repo: "https://github.com/MarieliGalleani/operaia-lab"
+---
+
+## Context
+
+AI agents can already research, write and automate — but for small teams they are invisible: nobody knows what they are doing, who asked for it, or whether it worked. OperaIA.lab is my answer: a **digital organization** of specialized agents with a persistent operational layer, shown as an office you can walk through.
+
+## Problem
+
+How do you make autonomous work **understandable and trustworthy** for people who don't read logs?
+
+- Agent state lived in queues and traces, not in any interface
+- Hand-offs between agents (and humans) were opaque
+- There was no single place to see "what needs me right now"
+
+## My role
+
+I designed and built it end to end as founder: product vision, information architecture, the Command Center UI, the isometric office and the TypeScript front end on top of a modular-monolith backend (mission queue, workers, supervisor, operational memory).
+
+## Process
+
+**Research →** mapped what a small team actually needs from agents: delegate, follow, approve.
+**Design →** defined the agent lifecycle (idle, working, waiting for a human, done, failed) and a "state of your office" home.
+**Build →** shipped the office with Pixi.js behind a ports-and-adapters layer, so the UI could be designed against mock data before the backend existed.
+**Measure →** heartbeat and health checks show whether the office is really operating — not just rendering.
+
+## Key decisions
+
+1. **Make agent state spatial.** Each specialist — CEO Opera, CTO Mag, Product Designer Luna, PM Nexus and others — has a desk. Status is readable at a glance, like walking into a room.
+2. **Humans approve, agents execute.** Sensitive actions land in *Approvals*; the home only asks for what truly needs you ("1 item needs you").
+3. **Brain first, interfaces later.** The core operational layer is stabilized before new surfaces are added — a rule written into the project itself.
+
+## Outcome
+
+- A Command Center that answers "what is the state of my office?" in one screen
+- A digital team of **9 specialists**, each with role, projects and last action
+- An isometric office with keyboard navigation and live agent presence
+- A modular backend with persistent missions, continuous supervision and memory, running in production
+
+## Learnings
+
+In AI products, **trust is the core UX problem**. Visibility, reversible actions and a clear "what needs me" beat raw model capability every time.

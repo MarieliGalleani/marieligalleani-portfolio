@@ -1,0 +1,66 @@
+---
+title: "OperaIA.lab — una oficina virtual operada por agentes de IA"
+client: "Producto propio · startup de IA"
+role: "Fundadora · diseño de producto y build"
+timeline: "2026 · en curso"
+tools: ["Figma", "Vue 3", "TypeScript", "Pixi.js", "Fastify", "PostgreSQL"]
+summary: "Una oficina digital autónoma donde agentes de IA especializados reciben demandas, coordinan misiones y rinden cuentas — visible como un espacio de trabajo vivo y navegable."
+outcome: "9 especialistas de IA trabajando en una oficina viva y navegable"
+tags: ["Producto con IA", "UX de agentes", "Design + Build"]
+cover: "../../../assets/work/operaia-lab/cover.jpg"
+coverAlt: "Mockup de OperaIA.lab: el Command Center detrás de una oficina isométrica en pixel art, con agentes de IA en sus escritorios."
+order: 1
+video:
+  mp4: "/media/operaia-lab.mp4"
+  webm: "/media/operaia-lab.webm"
+  poster: "/media/operaia-lab-poster.jpg"
+  label: "Recorrido por la oficina virtual de OperaIA.lab: la cámara recorre la oficina isométrica mientras los agentes de IA trabajan."
+gallery:
+  - src: "../../../assets/work/operaia-lab/screen-1.jpg"
+    alt: "La oficina isométrica: cada especialista de IA tiene escritorio, rol y estado visible."
+  - src: "../../../assets/work/operaia-lab/screen-2.jpg"
+    alt: "Equipo digital: cada especialista con su misión, proyectos y última acción."
+  - src: "../../../assets/work/operaia-lab/screen-3.jpg"
+    alt: "Campus: la recepción, donde llegan las nuevas demandas."
+repo: "https://github.com/MarieliGalleani/operaia-lab"
+---
+
+## Contexto
+
+Los agentes de IA ya investigan, escriben y automatizan — pero para equipos pequeños son invisibles: nadie sabe qué están haciendo, quién lo pidió ni si funcionó. OperaIA.lab es mi respuesta: una **organización digital** de agentes especializados con una capa operacional persistente, mostrada como una oficina que se puede recorrer.
+
+## Problema
+
+¿Cómo hacer que el trabajo autónomo sea **comprensible y confiable** para quien no lee logs?
+
+- El estado de los agentes vivía en colas y trazas, no en una interfaz
+- Los traspasos entre agentes (y humanos) eran opacos
+- No había un lugar único para ver "qué me necesita ahora"
+
+## Mi rol
+
+Lo diseñé y construí de punta a punta como fundadora: visión de producto, arquitectura de información, la UI del Command Center, la oficina isométrica y el front-end en TypeScript sobre un backend de monolito modular (cola de misiones, workers, supervisor y memoria operacional).
+
+## Proceso
+
+**Investigación →** mapeé lo que un equipo pequeño realmente necesita de los agentes: delegar, seguir, aprobar.
+**Diseño →** definí el ciclo de vida del agente (inactivo, trabajando, esperando a un humano, terminado, falló) y una home de "estado de tu oficina".
+**Build →** lancé la oficina en Pixi.js detrás de una capa de puertos y adaptadores, para diseñar la UI con datos de demostración antes de que existiera el backend.
+**Medición →** heartbeat y health checks muestran si la oficina realmente está operando — no solo renderizando.
+
+## Decisiones clave
+
+1. **El estado del agente en el espacio.** Cada especialista — CEO Opera, CTO Mag, Product Designer Luna, PM Nexus y otros — tiene un escritorio. El estado se lee de un vistazo, como entrar a una sala.
+2. **Los humanos aprueban, los agentes ejecutan.** Las acciones sensibles van a *Aprobaciones*; la home solo pide lo que realmente te necesita ("1 ítem te necesita").
+3. **Primero el cerebro, después las interfaces.** La capa operacional se estabiliza antes de sumar nuevas superficies — una regla escrita en el propio proyecto.
+
+## Resultado
+
+- Un Command Center que responde "¿cuál es el estado de mi oficina?" en una pantalla
+- Un equipo digital de **9 especialistas**, cada uno con rol, proyectos y última acción
+- Una oficina isométrica con navegación por teclado y presencia de los agentes en tiempo real
+- Un backend modular con misiones persistentes, supervisión continua y memoria, en producción
+
+## Aprendizajes
+
+En productos con IA, **la confianza es el problema central de UX**. La visibilidad, las acciones reversibles y un "qué me necesita" claro valen más que la capacidad bruta del modelo.

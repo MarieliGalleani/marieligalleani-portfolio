@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1600px;height:1000px;overflow:hidden}
+body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;position:relative;background:var(--bg)}
+.bg{position:absolute;inset:0;background:radial-gradient(1200px 800px at 15% 10%,var(--c1),transparent 60%),radial-gradient(1000px 700px at 90% 90%,var(--c2),transparent 60%),var(--bg)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%)}
+.win{position:absolute;border-radius:14px;overflow:hidden;box-shadow:0 50px 100px -20px rgba(0,0,0,.45),0 30px 60px -30px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06);background:var(--chrome)}
+.bar{height:40px;display:flex;align-items:center;gap:8px;padding:0 16px;background:var(--chrome);border-bottom:1px solid var(--chromeLine)}
+.dot{width:12px;height:12px;border-radius:50%}
+.url{margin-left:18px;flex:1;max-width:420px;height:24px;border-radius:7px;background:var(--pill);display:flex;align-items:center;gap:6px;padding:0 10px;font-size:12px;color:var(--pillText)}
+.screen{position:relative;overflow:hidden;background:#fff}
+.screen img,.screen .hole{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.phone{position:absolute;border-radius:58px;padding:13px;background:#0b0b0f;box-shadow:0 50px 90px -20px rgba(0,0,0,.55),0 0 0 2px #2a2a33,inset 0 0 0 2px #3b3b46}
+.phone .screen{border-radius:46px;width:100%;height:100%;display:flex;flex-direction:column}
+.sb{flex:0 0 50px;display:flex;align-items:center;justify-content:space-between;padding:6px 34px 0;font-size:15px;font-weight:600}
+.phone .screen img,.phone .screen .hole{flex:1;min-height:0}
+.island{position:absolute;top:24px;left:50%;transform:translateX(-50%);width:110px;height:32px;border-radius:20px;background:#000;z-index:2}
+.hole{background:#f0f !important}
+</style></head><body>
+<div class="bg"></div><div class="grid"></div>
+<div id="root"></div>
+<script>
+const cfg = JSON.parse(decodeURIComponent(location.hash.slice(1)));
+const t = cfg.theme||{};
+const dark = t.chrome==='dark';
+const vars = {'--bg':t.bg||'#0f0f14','--c1':t.c1||'#4527d955','--c2':t.c2||'#e84a7f44','--line':t.line||'rgba(255,255,255,.04)',
+ '--chrome':dark?'#1c1c22':'#f3f3f5','--chromeLine':dark?'#2a2a31':'#e2e2e6','--pill':dark?'#2a2a31':'#fff','--pillText':dark?'#9a9aa6':'#6b6b76'};
+for (const [k,v] of Object.entries(vars)) document.body.style.setProperty(k,v);
+const root=document.getElementById('root');
+const shot = src => src==='HOLE' ? '<div class="hole"></div>' : `<img src="${src}">`;
+for (const el of cfg.items) {
+  if (el.type==='win') {
+    const h = el.h ?? el.w*0.625;
+    root.insertAdjacentHTML('beforeend',`<div class="win" style="left:${el.x}px;top:${el.y}px;width:${el.w}px;z-index:${el.z||1}">
+      <div class="bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span>
+      <span class="url"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>${el.url||''}</span></div>
+      <div class="screen" id="${el.id||''}" style="height:${h}px">${shot(el.src)}</div></div>`);
+  } else if (el.type==='phone') {
+    const w=el.w, h=el.h??w*2.164;
+    root.insertAdjacentHTML('beforeend',`<div class="phone" style="left:${el.x}px;top:${el.y}px;width:${w}px;height:${h}px;z-index:${el.z||3}"><div class="island"></div><div class="screen" id="${el.id||''}" style="background:${el.sb||'#fff'}"><div class="sb" style="color:${el.sbText||'#111'}"><span>9:41</span><span>●●● ▮</span></div>${shot(el.src)}</div></div>`);
+  }
+}
+window.holes = [...document.querySelectorAll('.hole')].map(h=>{const r=h.getBoundingClientRect();return {x:Math.round(r.left),y:Math.round(r.top),w:Math.round(r.width),h:Math.round(r.height)}});
+</script></body></html>

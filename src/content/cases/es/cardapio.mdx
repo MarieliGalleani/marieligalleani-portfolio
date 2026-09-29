@@ -1,0 +1,67 @@
+---
+title: "Cardápio — tienda y back office para pastelerías artesanales"
+client: "Pequeño negocio gastronómico · pastelería"
+role: "Diseño de producto y build full-stack"
+timeline: "2026"
+tools: ["Figma", "Vue 3", "Vuetify", "TypeScript", "Fastify", "Prisma", "PostgreSQL"]
+summary: "Una tienda mobile-first al estilo de las apps de delivery, más un back office en tiempo real para pedidos, menú, stock, costeo de recetas y precios — pensado para quien lleva el negocio sola."
+outcome: "8 de 11 módulos listos — del menú al checkout con Pix"
+tags: ["MVP funcional", "E-commerce", "Mobile-first"]
+cover: "../../../assets/work/cardapio/cover.jpg"
+coverAlt: "Mockup de Cardápio: el tablero de pedidos en tiempo real del panel de la dueña junto a un teléfono con la tienda de la pastelería."
+order: 4
+video:
+  mp4: "/media/cardapio.mp4"
+  webm: "/media/cardapio.webm"
+  poster: "/media/cardapio-poster.jpg"
+  label: "Recorrido por Cardápio en el teléfono: navegar el menú, abrir un producto, elegir la caja de 12, agregarla a la bolsa y revisar la bolsa y el checkout."
+gallery:
+  - src: "../../../assets/work/cardapio/screen-1.jpg"
+    alt: "Tienda del cliente en el teléfono: menú, opciones del producto y checkout con retiro o envío."
+  - src: "../../../assets/work/cardapio/screen-2.jpg"
+    alt: "Dashboard de la dueña: ventas del día, la semana y el mes, ticket promedio, más vendidos y margen."
+  - src: "../../../assets/work/cardapio/screen-3.jpg"
+    alt: "Editor de menú: arrastra para reordenar categorías y productos, variaciones y disponibilidad."
+  - src: "../../../assets/work/cardapio/screen-4.jpg"
+    alt: "Costeo de recetas: costo por unidad desde el stock, precio sugerido y margen real vs. meta."
+repo: "https://github.com/MarieliGalleani/cardapio-"
+---
+
+## Contexto
+
+Las pequeñas pastelerías venden por WhatsApp y por mensajes de Instagram: precios en un cuaderno, pedidos en el chat, stock en la cabeza de la dueña. Los marketplaces de delivery resuelven el descubrimiento, pero cobran una comisión alta y se quedan con la relación con el cliente.
+
+## Problema
+
+- Los pedidos se pierden en el chat y la dueña no ve el día de un vistazo
+- Nadie sabe el costo real de un brigadeiro — así que el precio se adivina y el margen desaparece
+- La experiencia del cliente depende de qué tan rápido responde la dueña
+
+## Mi rol
+
+Diseño de producto y build full-stack: flujos, UI de los dos lados (tienda y back office), modelo de datos e implementación con Vue 3 + Vuetify en el front y Fastify + Prisma + PostgreSQL en el back.
+
+## Proceso
+
+**Investigación →** listé los trabajos reales de una pastelería de una sola persona: recibir pedidos, producir, entregar, cobrar y reponer.
+**Diseño →** una tienda que se siente como las apps de delivery que el cliente ya conoce y un back office que cabe en una laptop sobre la mesada de la cocina.
+**Build →** entregas módulo por módulo, con las reglas de dominio (bolsa, precios, Pix, horarios) cubiertas por tests unitarios.
+**Medición →** el dashboard muestra ventas, ticket promedio, más vendidos y margen estimado a partir de las recetas.
+
+## Decisiones clave
+
+1. **Familiar antes que novedoso.** La tienda sigue el patrón de las apps de delivery — categorías, fotos, opciones, bolsa — así que no hay nada que aprender.
+2. **El precio sale de la receta.** Cada receta toma el costo de los ingredientes del stock y sugiere el precio para el margen deseado; si un ingrediente sube, el margen se actualiza.
+3. **Un tablero para el día.** Los pedidos avanzan por *Nuevos → En preparación → Listos / En camino*, con alerta sonora para los nuevos y descuento automático de stock.
+
+## Resultado
+
+- **8 de 11 módulos planificados listos**: menú, stock, costeo de recetas, pedidos en tiempo real, dashboard, configuración, tienda y checkout (Pix, tarjeta, efectivo, WhatsApp)
+- Costo de envío por barrio, encargos y pausa temporal de la tienda
+- Próximos pasos: cupones, reseñas y costo de envío por km
+
+## Aprendizajes
+
+Para los pequeños negocios, la pantalla más valiosa no es la tienda — es el **costeo de recetas**. Mostrar el margen real cambió la forma de fijar precios.
+
+*La marca "Doce Ateliê" y las ilustraciones de productos en estas pantallas son contenido de demostración.*

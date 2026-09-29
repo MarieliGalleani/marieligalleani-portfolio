@@ -1,0 +1,43 @@
+---
+import CaseCard from './CaseCard.astro';
+import BookButton from './BookButton.astro';
+import { useTranslations, type Lang } from '@/i18n/ui';
+import { getCases } from '@/lib/cases';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+const cases = await getCases(lang);
+---
+
+<section id="work" class="section section--surface" aria-labelledby="work-title">
+  <div class="container">
+    <header class="section__header section__header--split">
+      <p class="section__index"><span>02</span> {t('work.eyebrow')}</p>
+      <h2 id="work-title" class="section__title">{t('work.title')}</h2>
+      <p class="section__lead">{t('work.lead')}</p>
+    </header>
+
+    <ul role="list" class="work-list">
+      {cases.map((entry, i) => (
+        <li>
+          <CaseCard entry={entry} lang={lang} index={i} eager={i === 0} />
+        </li>
+      ))}
+    </ul>
+
+    <div class="section__cta">
+      <BookButton lang={lang} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .work-list {
+    display: grid;
+    gap: var(--space-9);
+  }
+</style>

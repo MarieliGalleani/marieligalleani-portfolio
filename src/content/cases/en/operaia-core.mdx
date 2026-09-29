@@ -1,0 +1,68 @@
+---
+title: "OperaIA — an AI cockpit that tells CEOs what to do today"
+client: "Own product · B2B SaaS"
+role: "Founder · product design & build"
+timeline: "2026 · ongoing"
+tools: ["Figma", "React", "TypeScript", "Recharts", "NestJS", "Prisma", "PostgreSQL", "n8n"]
+summary: "A multi-tenant SaaS that connects ERP, CRM, ads and bank data and turns it into one clear decision a day — instead of yet another dashboard."
+outcome: "Designed for sign-up → first AI decision in under 5 minutes"
+tags: ["AI Product", "B2B SaaS", "Data UX"]
+cover: "../../../assets/work/operaia-core/cover.jpg"
+coverAlt: "OperaIA mockup: the \"What to do today\" cockpit in front of an analytics screen with revenue and CAC charts."
+order: 2
+video:
+  mp4: "/media/operaia-core.mp4"
+  webm: "/media/operaia-core.webm"
+  poster: "/media/operaia-core-poster.jpg"
+  label: "OperaIA walkthrough: sign in, connect an ERP, watch the Second Brain sync the company context, then open the daily cockpit, analytics and customers."
+gallery:
+  - src: "../../../assets/work/operaia-core/screen-1.jpg"
+    alt: "\"What to do today\": the critical diagnosis with cause, action and what is at stake."
+  - src: "../../../assets/work/operaia-core/screen-2.jpg"
+    alt: "Data sources: connect ERP, CRM, ads and banks; an n8n pipeline normalizes everything."
+  - src: "../../../assets/work/operaia-core/screen-3.jpg"
+    alt: "Customers: churn risk, health score and LTV per account."
+  - src: "../../../assets/work/operaia-core/screen-4.jpg"
+    alt: "Second Brain: company memory, integrations and indicators load before the day starts."
+repo: "https://github.com/MarieliGalleani/operaia-core-nexo"
+---
+
+## Context
+
+Founders of growing companies have data everywhere — ERP, CRM, ad platforms, bank — and still start the day guessing. BI tools answer questions you already know to ask. OperaIA flips that: the AI **speaks first**, every morning, with a decision.
+
+## Problem
+
+Dashboards create work instead of removing it.
+
+- CEOs don't have time to explore charts to find the one problem that matters
+- Data from different tools never lines up (different names, periods, currencies)
+- Insights without a recommended action and its financial impact rarely get acted on
+
+## My role
+
+Founder: product strategy, the beta definition, UX and UI of every flow, and the front end. I wrote the product constitution and roadmap that decide what goes in — and what doesn't.
+
+## Process
+
+**Define →** a single beta promise: *sign up → connect a spreadsheet → get today's decision → talk to an advisor* in under five minutes the first time, under a minute after that.
+**Design →** onboarding by connectors, a visible data pipeline (connectors → ingestion → normalization → validation → AI engine → agents → insights) and a daily cockpit.
+**Build →** monorepo with a React front end and a NestJS + Prisma + PostgreSQL API; n8n normalizes incoming data.
+**Measure →** the product tracks what matters for the promise: time to first decision and next-day return.
+
+## Key decisions
+
+1. **One decision, not twenty widgets.** The cockpit opens with a single *critical diagnosis*: the cause, what to do, and what's at stake in money.
+2. **Show the machine working.** The "Second Brain" sync makes the AI's preparation visible — memory, integrations, indicators — so the answer feels earned, not magic.
+3. **Specialized agents.** FinanceIA, MarketingIA and CustomerIA each own a domain, with their own insights and history of executed actions.
+
+## Outcome
+
+- A daily cockpit with diagnosis, action and impact on one screen
+- 8 connectors designed for the most common Brazilian SMB stack (Bling, HubSpot, Meta Ads, Google Ads, banks, Slack, SAP)
+- Analytics, customer health and a full history of what the agents did
+- A clear, written beta scope that keeps the product focused
+
+## Learnings
+
+Writing the *definition of done* for the beta — in minutes, not features — was the most useful design artifact of the project. It made every "should we add this?" easy to answer.
