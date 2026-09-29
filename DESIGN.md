@@ -148,6 +148,7 @@ in the stack below.
 | `--shadow-md` | `0 4px 16px -4px rgb(22 21 26 / 0.10)` | `0 4px 16px -4px rgb(0 0 0 / 0.5)` |
 | `--shadow-lg` | `0 16px 40px -12px rgb(22 21 26 / 0.18)` | `0 16px 40px -12px rgb(0 0 0 / 0.6)` |
 | `--border-width` | `1px` | `1px` |
+| `--underline-offset` | `0.2em` | `0.2em` (link underlines) |
 | `--blur-md` | `12px` | `12px` (header backdrop blur) |
 | `--focus-ring` | `0 0 0 3px var(--color-bg), 0 0 0 5px var(--color-focus)` | same |
 

@@ -19,7 +19,7 @@ const t = useTranslations(lang);
     </header>
 
     <ol role="list" class="steps">
-      {processSteps.map((step, i) => (
+      {processSteps[lang].map((step, i) => (
         <li class="step">
           <span class="step__number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
           <h3 class="step__name">{step.name}</h3>

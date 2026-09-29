@@ -1,0 +1,39 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/Hero.astro';
+import Services from '@/components/Services.astro';
+import SelectedWork from '@/components/SelectedWork.astro';
+import HowIWork from '@/components/HowIWork.astro';
+import About from '@/components/About.astro';
+import Testimonials from '@/components/Testimonials.astro';
+import FinalCTA from '@/components/FinalCTA.astro';
+import { site } from '@/config/site';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={t('home.title')} description={t('home.description')} lang={lang}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: site.name,
+    jobTitle: site.role,
+    url: site.url,
+    email: `mailto:${site.email}`,
+    address: { '@type': 'PostalAddress', addressCountry: 'BR' },
+    sameAs: Object.values(site.social),
+  })} />
+  <Hero lang={lang} />
+  <Services lang={lang} />
+  <SelectedWork lang={lang} />
+  <HowIWork lang={lang} />
+  <About lang={lang} />
+  <Testimonials lang={lang} />
+  <FinalCTA lang={lang} />
+</BaseLayout>

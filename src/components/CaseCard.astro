@@ -1,7 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import { useTranslations, type Lang } from '@/i18n/ui';
+import { useTranslations, localizePath, type Lang } from '@/i18n/ui';
+import { caseSlug } from '@/lib/cases';
 
 interface Props {
   entry: CollectionEntry<'cases'>;
@@ -13,7 +14,7 @@ interface Props {
 const { entry, lang = 'en', eager = false } = Astro.props;
 const t = useTranslations(lang);
 const { title, client, outcome, tags, cover, coverAlt } = entry.data;
-const href = `/work/${entry.id}/`;
+const href = localizePath(lang, `/work/${caseSlug(entry)}/`);
 ---
 
 <article class="card case-card">
@@ -31,7 +32,7 @@ const href = `/work/${entry.id}/`;
       <a href={href}>{title}</a>
     </h3>
     <p class="case-card__outcome">{outcome}</p>
-    <ul class="tags" aria-label="Tags">
+    <ul class="tags" aria-label={t('a11y.tags')}>
       {tags.map((tag) => <li class="tag">{tag}</li>)}
     </ul>
     <p class="case-card__more" aria-hidden="true">{t('work.readCase')} →</p>

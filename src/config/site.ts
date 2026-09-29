@@ -5,7 +5,6 @@ export const site = {
   name: 'Marieli Galleani',
   role: 'Product Designer',
   url: 'https://marieligalleani.com.br',
-  defaultLocale: 'en' as const,
   // TODO: replace with the real Cal.com link (e.g. https://cal.com/marieligalleani/intro)
   bookingUrl: 'https://cal.com/marieligalleani/30min',
   email: 'hello@marieligalleani.com.br',

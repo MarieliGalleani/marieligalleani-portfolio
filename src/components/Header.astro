@@ -1,7 +1,8 @@
 ---
 import BookButton from './BookButton.astro';
 import { site } from '@/config/site';
-import { useTranslations, type Lang } from '@/i18n/ui';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { useTranslations, localizePath, type Lang } from '@/i18n/ui';
 
 interface Props {
   lang?: Lang;
@@ -9,21 +10,22 @@ interface Props {
 
 const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang);
+const home = localizePath(lang, '/');
 const links = [
-  { href: '/#services', label: t('nav.services') },
-  { href: '/#work', label: t('nav.work') },
-  { href: '/#process', label: t('nav.process') },
-  { href: '/#about', label: t('nav.about') },
+  { href: `${home}#services`, label: t('nav.services') },
+  { href: `${home}#work`, label: t('nav.work') },
+  { href: `${home}#process`, label: t('nav.process') },
+  { href: `${home}#about`, label: t('nav.about') },
 ];
 ---
 
 <header class="header">
   <div class="container header__inner">
-    <a class="header__logo" href="/" aria-label={`${site.name} — home`}>
+    <a class="header__logo" href={home} aria-label={`${site.name} — ${t('a11y.home')}`}>
       <span aria-hidden="true" class="header__mark">MG</span>
       <span class="header__name">{site.name}</span>
     </a>
-    <nav class="header__nav" aria-label="Main">
+    <nav class="header__nav" aria-label={t('nav.main')}>
       <ul role="list">
         {links.map((l) => (
           <li>
@@ -32,7 +34,10 @@ const links = [
         ))}
       </ul>
     </nav>
-    <BookButton size="small" lang={lang} />
+    <div class="header__actions">
+      <LanguageSwitcher lang={lang} />
+      <BookButton size="small" lang={lang} label={t('cta.bookShort')} />
+    </div>
   </div>
 </header>
 
@@ -79,6 +84,12 @@ const links = [
 
   .header__name {
     display: none;
+  }
+
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
   }
 
   .header__nav {

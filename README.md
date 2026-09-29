@@ -2,7 +2,10 @@
 
 Portfólio de captação de clientes da **Marieli Galleani — Product Designer**.
 Site estático em **Astro + TypeScript**, CSS próprio baseado em design tokens ([DESIGN.md](DESIGN.md)),
-cases em **MDX** via Content Collections. Idioma: inglês (estrutura pronta para PT).
+cases em **MDX** via Content Collections.
+
+**Idiomas:** inglês (padrão, em `/`), português (`/pt/`) e espanhol (`/es/`), com seletor EN · PT · ES
+no header, `hreflang` em todas as páginas e sitemap com as versões alternativas.
 
 - Zero JavaScript enviado ao navegador (só HTML + CSS)
 - Imagens otimizadas pelo `<Image />` do Astro (WebP responsivo)
@@ -29,14 +32,21 @@ cases em **MDX** via Content Collections. Idioma: inglês (estrutura pronta para
     │   ├── Hero / Services / SelectedWork / CaseCard
     │   └── HowIWork / About / Testimonials / FinalCTA
     ├── config/site.ts         # Nome, link do Cal.com, e-mail, redes sociais  ← edite aqui
-    ├── content/cases/*.mdx    # Um arquivo por case (o nome do arquivo vira a URL)
+    ├── content/cases/
+    │   ├── en/*.mdx           # Cases em inglês (o nome do arquivo vira a URL)
+    │   ├── pt/*.mdx           # Mesmos arquivos traduzidos para português
+    │   └── es/*.mdx           # … e para espanhol
     ├── content.config.ts      # Schema do frontmatter dos cases
-    ├── data/                  # Conteúdo editável: services.ts, process.ts, testimonials.ts
-    ├── i18n/ui.ts             # Todos os textos de interface (EN; adicionar PT aqui)
-    ├── layouts/BaseLayout.astro  # <head>, SEO, OG, placeholder de analytics
+    ├── data/                  # Conteúdo por idioma: services.ts, process.ts, testimonials.ts
+    ├── i18n/ui.ts             # Textos de interface em EN/PT/ES + helpers de rota
+    ├── lib/cases.ts           # Busca cases por idioma (com fallback para EN)
+    ├── layouts/BaseLayout.astro  # <head>, SEO, OG, hreflang, placeholder de analytics
+    ├── views/                 # HomePage e CasePage (usadas pelas rotas de todos os idiomas)
     ├── pages/
-    │   ├── index.astro        # Home (ordem das seções)
-    │   ├── work/[slug].astro  # Página de case
+    │   ├── index.astro        # Home EN  → /
+    │   ├── work/[slug].astro  # Case EN  → /work/slug/
+    │   ├── [lang]/index.astro        # Home PT/ES → /pt/, /es/
+    │   ├── [lang]/work/[slug].astro  # Case PT/ES → /pt/work/slug/, /es/work/slug/
     │   ├── 404.astro
     │   └── robots.txt.ts
     └── styles/
@@ -49,11 +59,11 @@ cases em **MDX** via Content Collections. Idioma: inglês (estrutura pronta para
 | Quero mudar… | Arquivo |
 |---|---|
 | Link do Cal.com, e-mail, LinkedIn | `src/config/site.ts` |
-| Textos do hero, títulos das seções, CTAs | `src/i18n/ui.ts` |
-| Serviços, prazos e preços ("from $X") | `src/data/services.ts` |
+| Textos do hero, About, títulos das seções, CTAs (nos 3 idiomas) | `src/i18n/ui.ts` |
+| Serviços, prazos e preços ("from $X") | `src/data/services.ts` (um bloco por idioma) |
 | Etapas do "How I work" | `src/data/process.ts` |
 | Depoimentos | `src/data/testimonials.ts` |
-| Texto do About | `src/components/About.astro` |
+| Estrutura do About | `src/components/About.astro` |
 | Cores, fontes, espaçamentos | `DESIGN.md` + `src/styles/tokens.css` |
 | Analytics | `src/layouts/BaseLayout.astro` (bloco comentado no `<head>`) |
 
@@ -76,10 +86,10 @@ Para testar dark mode, mude o tema do sistema ou use DevTools → Rendering → 
 
 ## Adicionar um case
 
-1. Copie `docs/case-template.mdx` para `src/content/cases/meu-case.mdx`
+1. Copie `docs/case-template.mdx` para `src/content/cases/en/meu-case.mdx`
    → a página será `/work/meu-case/`.
 2. Coloque a capa em `src/assets/cases/meu-case.jpg` (ideal: 1600×1000, JPG ou PNG) e
-   aponte `cover: "../../assets/cases/meu-case.jpg"`. Escreva um `coverAlt` descritivo.
+   aponte `cover: "../../../assets/cases/meu-case.jpg"`. Escreva um `coverAlt` descritivo.
 3. Preencha o frontmatter:
 
    | Campo | Uso |
@@ -97,7 +107,12 @@ Para testar dark mode, mude o tema do sistema ou use DevTools → Rendering → 
 4. Escreva o corpo com as seções fixas: **Context, Problem, My role, Process, Key decisions,
    Outcome, Learnings** (`## Título`). Imagens no corpo: `import img from '../../assets/…'`
    e `<Image src={img} alt="…" />` (importando `Image` de `astro:assets`).
-5. `npm run dev` para conferir. O schema valida o frontmatter — campos faltando geram erro.
+5. Traduza: copie o arquivo para `src/content/cases/pt/meu-case.mdx` e `src/content/cases/es/meu-case.mdx`
+   **com o mesmo nome** (é ele que liga as versões) e traduza textos e títulos das seções
+   (PT: Contexto, Problema, Meu papel, Processo, Decisões-chave, Resultado, Aprendizados;
+   ES: Contexto, Problema, Mi rol, Proceso, Decisiones clave, Resultado, Aprendizajes).
+   Se a tradução ainda não existir, `/pt/` e `/es/` mostram a versão em inglês.
+6. `npm run dev` para conferir. O schema valida o frontmatter — campos faltando geram erro.
 
 ---
 
@@ -153,15 +168,25 @@ A propagação costuma levar de minutos a algumas horas. Depois, emita o certifi
 ## Antes de publicar (checklist)
 
 - [ ] `src/config/site.ts`: link real do Cal.com, e-mail e LinkedIn
-- [ ] `src/data/services.ts`: preços reais no lugar de `$X,XXX`
+- [ ] `src/data/services.ts`: preços reais no lugar de `$X,XXX` / `US$ X.XXX` (nos 3 idiomas)
+- [ ] Revisar as traduções PT/ES (feitas a partir do texto em inglês)
 - [ ] Cases: trocar textos `[Placeholder]`, números e capas pelas reais
 - [ ] `src/data/testimonials.ts`: depoimentos reais (ou remover `<Testimonials />` da home)
 - [ ] Analytics: descomentar um provedor em `BaseLayout.astro`
 - [ ] `public/og-default.png`: imagem OG final (1200×630)
 
-## Adicionar português depois
+## Idiomas
 
-1. Em `src/i18n/ui.ts`, adicione `pt` em `languages` e um objeto `pt` com as mesmas chaves.
-2. Em `astro.config.mjs`, use `locales: ['en', 'pt']`.
-3. Crie `src/pages/pt/index.astro` passando `lang="pt"` aos componentes (todos aceitam `lang`).
-4. Para cases traduzidos, use `src/content/cases/pt/*.mdx` e filtre pelo prefixo do `id`.
+| Idioma | URL | Textos |
+|---|---|---|
+| Inglês (padrão) | `/`, `/work/slug/` | `ui.ts` → `en`, `cases/en/` |
+| Português | `/pt/`, `/pt/work/slug/` | `ui.ts` → `pt`, `cases/pt/` |
+| Espanhol | `/es/`, `/es/work/slug/` | `ui.ts` → `es`, `cases/es/` |
+
+- O seletor EN · PT · ES leva para **a mesma página** no outro idioma.
+- Toda página declara `<html lang>`, `hreflang` das versões e `og:locale`; o sitemap inclui as alternativas.
+- O TypeScript acusa erro se faltar alguma chave de texto em PT ou ES.
+
+**Adicionar outro idioma:** inclua-o em `languages` e `locales` em `src/i18n/ui.ts` (com um objeto
+de textos completo), em `services.ts`, `process.ts` e `testimonials.ts`, em `i18n.locales` e no
+`sitemap` do `astro.config.mjs`, e crie `src/content/cases/<idioma>/`.

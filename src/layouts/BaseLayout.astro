@@ -3,7 +3,7 @@ import '@/styles/global.css';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import { site } from '@/config/site';
-import { useTranslations, type Lang } from '@/i18n/ui';
+import { useTranslations, langs, locales, localizePath, stripLang, defaultLang, type Lang } from '@/i18n/ui';
 
 interface Props {
   title: string;
@@ -12,22 +12,31 @@ interface Props {
   image?: string;
   type?: 'website' | 'article';
   lang?: Lang;
+  /** Emit hreflang alternates (disable on pages that only exist in one language, e.g. 404). */
+  alternates?: boolean;
 }
 
-const { title, description, image = site.ogImage, type = 'website', lang = site.defaultLocale } = Astro.props;
+const { title, description, image = site.ogImage, type = 'website', lang = defaultLang, alternates = true } = Astro.props;
 const t = useTranslations(lang);
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
+const basePath = stripLang(Astro.url.pathname);
+const alternateLinks = langs.map((l) => ({
+  hreflang: locales[l].hreflang,
+  href: new URL(localizePath(l, basePath), Astro.site).href,
+}));
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={locales[lang].hreflang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {alternates && alternateLinks.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    {alternates && <link rel="alternate" hreflang="x-default" href={alternateLinks[0].href} />}
     <meta name="generator" content={Astro.generator} />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -42,7 +51,8 @@ const ogImage = new URL(image, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={locales[lang].og} />
+    {alternates && langs.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={locales[l].og} />)}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />

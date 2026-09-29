@@ -83,6 +83,7 @@
   --shadow-md: 0 4px 16px -4px rgb(22 21 26 / 0.1);
   --shadow-lg: 0 16px 40px -12px rgb(22 21 26 / 0.18);
   --border-width: 1px;
+  --underline-offset: 0.2em;
   --blur-md: 12px;
   --focus-ring: 0 0 0 3px var(--color-bg), 0 0 0 5px var(--color-focus);
 

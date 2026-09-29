@@ -1,35 +1,5 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import Hero from '@/components/Hero.astro';
-import Services from '@/components/Services.astro';
-import SelectedWork from '@/components/SelectedWork.astro';
-import HowIWork from '@/components/HowIWork.astro';
-import About from '@/components/About.astro';
-import Testimonials from '@/components/Testimonials.astro';
-import FinalCTA from '@/components/FinalCTA.astro';
-import { site } from '@/config/site';
-
-const title = `${site.name} — Product Designer who ships`;
-const description =
-  'Product Designer for AI startups, growing SaaS and non-technical founders. AI product design, design system sprints and functional MVPs — from research to a working product.';
+import HomePage from '@/views/HomePage.astro';
 ---
 
-<BaseLayout title={title} description={description}>
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: site.name,
-    jobTitle: site.role,
-    url: site.url,
-    email: `mailto:${site.email}`,
-    address: { '@type': 'PostalAddress', addressCountry: 'BR' },
-    sameAs: Object.values(site.social),
-  })} />
-  <Hero />
-  <Services />
-  <SelectedWork />
-  <HowIWork />
-  <About />
-  <Testimonials />
-  <FinalCTA />
-</BaseLayout>
+<HomePage lang="en" />

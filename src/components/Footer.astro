@@ -22,13 +22,13 @@ const links = [
     <p class="footer__brand">
       <strong>{site.name}</strong> · {site.role}
     </p>
-    <nav aria-label="Social and contact">
+    <nav aria-label={t('a11y.social')}>
       <ul role="list" class="footer__links">
         {links.map((l) => (
           <li>
             <a href={l.href} {...(l.external ? { target: '_blank', rel: 'noopener me' } : {})}>
               {l.label}
-              {l.external && <span class="visually-hidden">(opens in a new tab)</span>}
+              {l.external && <span class="visually-hidden">{t('a11y.newTab')}</span>}
             </a>
           </li>
         ))}

@@ -18,24 +18,13 @@ const t = useTranslations(lang);
     </header>
 
     <div class="about__body">
-      <p class="about__lead">
-        I’m a Product Designer who likes to see things live. I work with AI startups, growing SaaS
-        teams and non-technical founders to turn fuzzy ideas into products people understand and use.
-      </p>
-      <p>
-        My sweet spot is the space between design and build: I research, design and then help ship —
-        with design systems your engineers love, no-code builds or working code. Lately I’ve been
-        focused on AI products: making agents and automations visible, trustworthy and useful.
-      </p>
-      <p>
-        I’m based in <strong>Brazil</strong>, which means my working hours overlap with{' '}
-        <strong>US mornings</strong> and <strong>European afternoons</strong> — real-time calls,
-        fast feedback loops, no waiting a day for answers.
-      </p>
+      <p class="about__lead">{t('about.p1')}</p>
+      <p>{t('about.p2')}</p>
+      <p set:html={t('about.p3')} />
       <ul role="list" class="about__facts">
-        <li><span>Based in</span> Brazil (UTC−3)</li>
-        <li><span>Overlap</span> US mornings · EU afternoons</li>
-        <li><span>Languages</span> English · Portuguese</li>
+        <li><span>{t('about.basedLabel')}</span> {t('about.basedValue')}</li>
+        <li><span>{t('about.overlapLabel')}</span> {t('about.overlapValue')}</li>
+        <li><span>{t('about.langsLabel')}</span> {t('about.langsValue')}</li>
       </ul>
       <BookButton lang={lang} />
     </div>

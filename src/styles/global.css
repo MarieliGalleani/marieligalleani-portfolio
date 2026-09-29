@@ -65,7 +65,7 @@ p {
 
 a {
   color: var(--color-accent);
-  text-underline-offset: 0.2em;
+  text-underline-offset: var(--underline-offset);
   text-decoration-thickness: var(--border-width);
   transition: color var(--duration-fast) var(--ease-out);
 }

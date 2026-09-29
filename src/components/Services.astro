@@ -20,7 +20,7 @@ const t = useTranslations(lang);
     </header>
 
     <ul role="list" class="services">
-      {services.map((s) => (
+      {services[lang].map((s) => (
         <li class:list={['card', 'service', { 'service--featured': s.featured }]}>
           <h3 class="service__name">{s.name}</h3>
           <p class="service__tagline">{s.tagline}</p>

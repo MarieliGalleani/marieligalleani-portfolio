@@ -1,0 +1,24 @@
+---
+import type { GetStaticPaths } from 'astro';
+import CasePage from '@/views/CasePage.astro';
+import { langs, defaultLang } from '@/i18n/ui';
+import { getCases, caseSlug } from '@/lib/cases';
+
+export const getStaticPaths = (async () => {
+  const paths = [];
+  for (const lang of langs.filter((l) => l !== defaultLang)) {
+    const cases = await getCases(lang);
+    paths.push(
+      ...cases.map((entry, i) => ({
+        params: { lang, slug: caseSlug(entry) },
+        props: { entry, next: cases[(i + 1) % cases.length], lang },
+      })),
+    );
+  }
+  return paths;
+}) satisfies GetStaticPaths;
+
+const { entry, next, lang } = Astro.props;
+---
+
+<CasePage entry={entry} next={next} lang={lang} />

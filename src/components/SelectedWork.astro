@@ -1,8 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
 import CaseCard from './CaseCard.astro';
 import BookButton from './BookButton.astro';
 import { useTranslations, type Lang } from '@/i18n/ui';
+import { getCases } from '@/lib/cases';
 
 interface Props {
   lang?: Lang;
@@ -10,9 +10,7 @@ interface Props {
 
 const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang);
-const cases = (await getCollection('cases', ({ data }) => !data.draft)).sort(
-  (a, b) => a.data.order - b.data.order,
-);
+const cases = await getCases(lang);
 ---
 
 <section id="work" class="section" aria-labelledby="work-title">

@@ -11,10 +11,19 @@ export default defineConfig({
     // /work/slug/index.html — works on any static host without rewrites
     format: 'directory',
   },
-  // Ready for Portuguese later: add 'pt' to locales and create src/pages/pt/.
+  // English at /, Portuguese at /pt/, Spanish at /es/. Keep in sync with src/i18n/ui.ts.
   i18n: {
-    locales: ['en'],
+    locales: ['en', 'pt', 'es'],
     defaultLocale: 'en',
+    routing: { prefixDefaultLocale: false },
   },
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: { en: 'en', pt: 'pt-BR', es: 'es' },
+      },
+    }),
+  ],
 });
