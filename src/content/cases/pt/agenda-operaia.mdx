@@ -1,57 +1,63 @@
 ---
-title: "Agenda Operaia — agendamento para clínicas"
-client: "Clínicas de saúde (SaaS)"
-role: "Product Designer — da pesquisa ao lançamento"
-timeline: "10 semanas (placeholder)"
-tools: ["Figma", "FlutterFlow", "Maze", "WhatsApp API"]
-summary: "Um sistema de agendamento que ajuda clínicas pequenas a lotar a agenda e reduzir faltas, sem precisar de uma recepção dedicada."
-outcome: "−35% de faltas nas clínicas piloto"
-tags: ["SaaS", "Saúde", "MVP funcional"]
-cover: "../../../assets/cases/agenda-operaia.jpg"
-coverAlt: "Capa do case Agenda Operaia: gradiente verde com as palavras Agenda Operaia, clinic scheduling."
-order: 3
+title: "Agenda OperaIA — um app de agendamento que a clínica instala"
+client: "SaaS de saúde · clínicas"
+role: "Design de produto e build full-stack"
+timeline: "2026"
+tools: ["Figma", "Vue 3", "TypeScript", "PWA / Workbox", "Express", "Prisma", "Google Calendar API"]
+summary: "Um app de agendamento instalável para clínicas: agenda da equipe sincronizada com o Google Agenda, prontuário com link de triagem, lembretes e ligação com um toque."
+outcome: "Instalável no computador e no celular, sincronizado com o Google Agenda"
+tags: ["Saúde", "PWA", "MVP funcional"]
+cover: "../../../assets/work/agenda-operaia/cover.jpg"
+coverAlt: "Mockup da Agenda OperaIA: a agenda da clínica com o próximo atendimento e o calendário do mês, ao lado de um celular com a lista de pacientes."
+order: 5
+video:
+  mp4: "/media/agenda-operaia.mp4"
+  webm: "/media/agenda-operaia.webm"
+  poster: "/media/agenda-operaia-poster.jpg"
+  label: "Passeio pela Agenda OperaIA: login, próximo atendimento e agenda da equipe, escolha de um dia e a lista de pacientes em lista e em grade."
+gallery:
+  - src: "../../../assets/work/agenda-operaia/screen-1.jpg"
+    alt: "Painel: o paciente em atendimento agora, o resto do dia e quem precisa de atenção (como aniversariantes)."
+  - src: "../../../assets/work/agenda-operaia/screen-2.jpg"
+    alt: "Pacientes: busca, filtros, situação e ações rápidas para contato ou prontuário."
+  - src: "../../../assets/work/agenda-operaia/screen-3.jpg"
+    alt: "No celular: login e lista de pacientes com navegação inferior — instalável como app."
 ---
 
 ## Contexto
 
-[Placeholder] Clínicas pequenas ainda agendam pacientes por telefone e papel. As recepcionistas se dividem entre
-ligações, confirmações e cancelamentos de última hora — e horários vazios custam dinheiro.
+Clínicas pequenas funcionam com uma mistura de Google Agenda, WhatsApp e fichas de papel. Cada profissional tem sua própria agenda, a recepção não enxerga todo mundo de uma vez e as informações do paciente chegam espalhadas.
 
 ## Problema
 
-[Placeholder] As clínicas perdiam receita com faltas e tempo da equipe com confirmações manuais.
-
-- ~20% das consultas eram faltas
-- Pacientes só conseguiam agendar em horário comercial
-- Donos de clínica não tinham visibilidade da ocupação
+- Nenhuma visão única do dia da equipe, mesmo com todos já usando o Google Agenda
+- Informações de triagem (queixas, fotos) chegam por mensagem e se perdem
+- A equipe pula entre celular, notebook e papel — e nenhum deles é "o sistema"
 
 ## Meu papel
 
-[Placeholder] Liderei pesquisa, UX e UI, e construí o MVP funcional em FlutterFlow
-para que as clínicas piloto o usassem em condições reais.
+Design de produto e build full-stack: fluxos, UI e implementação — um PWA em Vue 3 e uma API em Express + Prisma com integração ao Google Agenda, notificações push e administração de várias clínicas.
 
 ## Processo
 
-[Placeholder] **Pesquisa →** acompanhei recepcionistas em 3 clínicas.
-**Design →** desenhei o agendamento do paciente (mobile-first) e o painel da clínica.
-**Build →** MVP funcional em FlutterFlow com lembretes automáticos por WhatsApp.
-**Medição →** comparei a taxa de faltas antes e depois nas clínicas piloto.
+**Pesquisa →** mapeei o dia da clínica: confirmar, receber, atender, registrar, lembrar.
+**Design →** um painel centrado no *agora*, uma agenda da equipe que junta a agenda de cada profissional e um prontuário com triagem.
+**Build →** um PWA instalável (computador, Android e iPhone) em cima das agendas que a clínica já usa — sem migração.
+**Medição →** um relatório de "equipe hoje" mostra atendimentos confirmados e tempo registrado por profissional em relação à semana anterior.
 
 ## Decisões-chave
 
-1. **WhatsApp em vez de e-mail.** É onde os pacientes realmente respondem.
-2. **Confirmar ou remarcar com um toque.** Reduzir atrito valeu mais que adicionar funcionalidades.
-3. **Painel de ocupação primeiro.** Donos compram o que mostra a receita perdida.
+1. **Construir sobre o Google Agenda, não substituí-lo.** A clínica mantém suas agendas; o app acrescenta a visão da equipe, pacientes e prontuários por cima.
+2. **Instalar, não baixar.** Um PWA vira app na tela inicial de qualquer aparelho sem loja de apps — e liga para o paciente com um toque.
+3. **Triagem antes da consulta.** Um link privado permite que o paciente envie queixas e fotos com antecedência, que caem direto no prontuário.
 
 ## Resultado
 
-[Placeholder — substituir por números reais]
-
-- **−35%** de faltas nas clínicas piloto
-- **60%** dos agendamentos feitos fora do horário comercial
-- **5 horas/semana** economizadas por recepcionista
+- Agenda da equipe com próximo atendimento, calendário do mês e lista do dia
+- Prontuário com link de triagem, visitas, tratamentos e importação de pacientes
+- Lembrete 15 minutos antes de cada consulta, página pública de agendamento e marca por clínica
+- Um painel da plataforma para criar clínicas, planos e funcionalidades
 
 ## Aprendizados
 
-[Placeholder] Lançar um MVP funcional cedo revelou casos extremos (agendamentos familiares, sessões
-recorrentes) que nenhum teste de protótipo teria mostrado.
+O jeito mais rápido de uma clínica adotar um software novo é **não pedir que ela abandone as ferramentas em que confia**. Integrar com o Google Agenda eliminou a maior objeção.

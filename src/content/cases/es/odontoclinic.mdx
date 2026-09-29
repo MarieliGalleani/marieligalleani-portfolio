@@ -1,0 +1,64 @@
+---
+title: "OdontoClinic — el día, la historia clínica y la caja de la clínica en un solo lugar"
+client: "SaaS de salud · clínicas odontológicas"
+role: "Diseño de producto y front-end"
+timeline: "2026"
+tools: ["Figma", "Vue 3", "Vuetify", "Pinia", "Three.js"]
+summary: "Una plataforma para clínicas diseñada alrededor del día del dentista: agenda en vivo por profesional y sala, odontograma anatómico por cara del diente, finanzas y documentos."
+outcome: "Registro por cara del diente en un odontograma anatómico de 32 piezas"
+tags: ["Salud", "SaaS B2B", "UI compleja"]
+cover: "../../../assets/work/odontoclinic/cover.jpg"
+coverAlt: "Mockup de OdontoClinic: la historia clínica con odontograma anatómico delante de la agenda de la clínica dividida por profesional."
+order: 3
+video:
+  mp4: "/media/odontoclinic.mp4"
+  webm: "/media/odontoclinic.webm"
+  poster: "/media/odontoclinic-poster.jpg"
+  label: "Recorrido por OdontoClinic: de \"Mi día\" a la agenda, la lista de pacientes y la historia clínica, donde se selecciona un diente y se marcan sus caras."
+gallery:
+  - src: "../../../assets/work/odontoclinic/screen-1.jpg"
+    alt: "\"Mi día\": a quién se atiende ahora, quién sigue y qué necesita atención — conciencia operativa, no BI."
+  - src: "../../../assets/work/odontoclinic/screen-2.jpg"
+    alt: "Agenda clínica: una columna por profesional, con el estado de cada turno."
+  - src: "../../../assets/work/odontoclinic/screen-3.jpg"
+    alt: "Odontograma anatómico: selecciona un diente, marca sus caras y aplica un estado clínico."
+  - src: "../../../assets/work/odontoclinic/screen-4.jpg"
+    alt: "Finanzas: ingresos, gastos, morosidad y ticket promedio del mes."
+---
+
+## Contexto
+
+Las clínicas odontológicas equilibran tres cosas a la vez: el sillón (quién sigue), la historia clínica (qué se hizo en cada diente) y la caja (quién pagó). La mayoría de los sistemas separa esto en módulos que no se hablan, y el dentista termina memorizando el día.
+
+## Problema
+
+- La pantalla inicial de casi todo software de clínica es un reporte, no una herramienta para *hoy*
+- Los odontogramas son íconos diminutos o texto libre — difíciles de leer, fáciles de errar
+- Las alertas importantes (alergias, tratamientos pendientes, controles) quedan escondidas
+
+## Mi rol
+
+Diseño de producto y front-end: arquitectura de información, el diseño de todas las pantallas y un front-end de alta fidelidad, totalmente navegable, hecho en Vue 3 y Vuetify, listo para conectar a un backend.
+
+## Proceso
+
+**Investigación →** mapeé el día de la clínica desde la recepción hasta la facturación y listé lo que el dentista debe saber *antes* de llamar al siguiente paciente.
+**Diseño →** una home "Mi día", agenda por profesional y sala y una historia clínica centrada en el odontograma.
+**Build →** front-end interactivo con datos de demostración realistas, paleta de comandos (⌘K) y soporte para varias sedes.
+**Validación →** el camino principal — ver el día → abrir la historia → registrar el procedimiento — funciona de punta a punta con datos realistas.
+
+## Decisiones clave
+
+1. **Conciencia operativa, no BI.** "Mi día" muestra *ahora*, *próximos* y *atención* — el subtítulo lo dice literalmente.
+2. **Un odontograma anatómico.** Dientes con forma real en numeración FDI; selecciona un diente, marca las caras (oclusal, mesial, distal, vestibular, lingual) y aplica un estado (sano, en tratamiento, concluido, extraído, implante, conducto, caries, restauración).
+3. **Las alertas viajan con el paciente.** Alergias y alertas clínicas aparecen en el encabezado de la historia y en la lista de pacientes, no en una pestaña aparte.
+
+## Resultado
+
+- Un front-end que cubre agenda, pacientes, historias clínicas, finanzas y documentos
+- Registro por cara en un odontograma anatómico de 32 piezas, con una leyenda de estados clara
+- Una home que responde "¿qué necesito saber ahora?" en segundos
+
+## Aprendizajes
+
+En UI de salud, la densidad está bien — **la ambigüedad no**. Dientes con forma real y estados explícitos hicieron la historia clínica más rápida de leer que cualquier set de íconos.

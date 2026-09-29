@@ -1,6 +1,6 @@
 /**
- * Generates placeholder cover images for the example cases and the default OG image.
- * Replace the files in src/assets/cases/ with real screenshots when you have them.
+ * Generates the placeholder cover for the scientific-software case and the default OG image.
+ * Real project mockups live in src/assets/work/ (see scripts/mockups/).
  * Run: npm run covers
  */
 import sharp from 'sharp';
@@ -8,8 +8,6 @@ import { mkdir } from 'node:fs/promises';
 
 const covers = [
   { file: 'src/assets/cases/scientific-software.jpg', label: 'Design System', sub: 'Scientific software', a: '#4527D9', b: '#0B1F3A' },
-  { file: 'src/assets/cases/operaia-lab.jpg', label: 'Operaia Lab', sub: 'AI agents virtual office', a: '#7B2FF7', b: '#12002E' },
-  { file: 'src/assets/cases/agenda-operaia.jpg', label: 'Agenda Operaia', sub: 'Clinic scheduling', a: '#0E7A4F', b: '#062A1C' },
 ];
 
 const svg = ({ label, sub, a, b }, w, h) => `

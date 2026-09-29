@@ -1,0 +1,62 @@
+---
+title: "Design System Onii — documentación que los devs realmente usan"
+client: "SaaS B2B · soluciones autónomas"
+role: "Design system y front-end"
+timeline: "2026"
+tools: ["Figma", "Vue 3", "Vuetify 3", "Design tokens"]
+summary: "Documentación interactiva que une Vuetify 3 con los componentes Onii, tokens y snippets listos para copiar — más perfiles de marca que cambian el tema de todo en vivo."
+outcome: "Más de 50 componentes documentados con demo en vivo y código"
+tags: ["Design System", "Documentación", "Temas"]
+cover: "../../../assets/work/ds-onii/cover.jpg"
+coverAlt: "Mockup del Design System Onii: la home de la documentación con un hero oscuro delante de la página de colores."
+order: 7
+video:
+  mp4: "/media/ds-onii.mp4"
+  webm: "/media/ds-onii.webm"
+  poster: "/media/ds-onii-poster.jpg"
+  label: "Recorrido por el Design System Onii: navegar los tokens de color, crear un perfil de marca con nuevos colores primario y secundario y ver toda la documentación cambiar de tema."
+gallery:
+  - src: "../../../assets/work/ds-onii/screen-1.jpg"
+    alt: "Botones: guía de uso, playground en vivo y el código para copiar."
+  - src: "../../../assets/work/ds-onii/screen-2.jpg"
+    alt: "Tipografía: familias, escala y archivos para descargar, con tokens listos para copiar."
+  - src: "../../../assets/work/ds-onii/screen-3.jpg"
+    alt: "Perfiles de marca: carga colores, fuentes y logo de otra empresa y aplícalos en todo el sistema."
+---
+
+## Contexto
+
+El dashboard de Onii está hecho con Vuetify 3, pero el look del producto vivía en archivos de Figma y en la cabeza de pocas personas. Las pantallas nuevas se desviaban: botones un poco distintos, colores escritos a mano, componentes rehechos desde cero.
+
+## Problema
+
+- Los devs no tenían una referencia única que coincidiera con producción
+- Los tokens existían en Figma, pero no como algo para pegar en el código
+- Los clientes white label necesitaban su propia marca sin duplicar la UI
+
+## Mi rol
+
+Design system y front-end: estructura de la documentación, foundations (color, tipografía, logo, íconos), patrones Onii sobre Vuetify y el propio sitio de documentación.
+
+## Proceso
+
+**Auditoría →** comparé Figma y el dashboard para listar los componentes y variaciones realmente en uso.
+**Foundations →** convertí la paleta y la escala tipográfica en tokens `--brand-*` con mapeo a Vuetify.
+**Documentación →** una página por componente: contexto de uso, demo en vivo, "Mostrar código" y botón de copiar.
+**Adopción →** la documentación refleja el dashboard, así que lo que los devs copian es lo que llega a producción.
+
+## Decisiones clave
+
+1. **Envolver Vuetify, no reemplazarlo.** Los componentes Onii mantienen Vuetify por debajo, así las actualizaciones siguen siendo baratas y los devs usan lo que ya conocen.
+2. **Todo listo para copiar.** Cada token y ejemplo tiene un snippet; el camino más rápido es el correcto.
+3. **Perfiles de marca como datos.** Colores, fuentes y logo forman un perfil que cambia el tema de toda la documentación en vivo — el perfil por defecto de Onii nunca se puede borrar.
+
+## Resultado
+
+- **Más de 50 páginas de componentes** en containment, formularios, navegación, visualización de datos y feedback
+- Foundations de color, tipografía, logo e íconos con tokens listos para copiar
+- Temas white label en vivo mediante perfiles de marca
+
+## Aprendizajes
+
+Un design system se adopta cuando es **el camino más corto para entregar**, no cuando es el más completo. Las demos en vivo y un botón de copiar hicieron más por la adopción que cualquier guideline.

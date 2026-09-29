@@ -1,0 +1,67 @@
+---
+title: "Cardápio — vitrine e back office para confeitarias artesanais"
+client: "Pequeno negócio de alimentação · confeitaria"
+role: "Design de produto e build full-stack"
+timeline: "2026"
+tools: ["Figma", "Vue 3", "Vuetify", "TypeScript", "Fastify", "Prisma", "PostgreSQL"]
+summary: "Uma loja mobile-first no estilo dos apps de delivery, mais um back office em tempo real para pedidos, cardápio, estoque, ficha técnica e precificação — feito para quem toca o negócio sozinha."
+outcome: "8 de 11 módulos prontos — do cardápio ao checkout com Pix"
+tags: ["MVP funcional", "E-commerce", "Mobile-first"]
+cover: "../../../assets/work/cardapio/cover.jpg"
+coverAlt: "Mockup do Cardápio: o quadro de pedidos em tempo real do painel da dona ao lado de um celular com a vitrine da confeitaria."
+order: 4
+video:
+  mp4: "/media/cardapio.mp4"
+  webm: "/media/cardapio.webm"
+  poster: "/media/cardapio-poster.jpg"
+  label: "Passeio pelo Cardápio no celular: navegar pelo cardápio, abrir um produto, escolher a caixa com 12, adicionar à sacola e revisar a sacola e o checkout."
+gallery:
+  - src: "../../../assets/work/cardapio/screen-1.jpg"
+    alt: "Loja do cliente no celular: cardápio, opções do produto e checkout com retirada ou entrega."
+  - src: "../../../assets/work/cardapio/screen-2.jpg"
+    alt: "Dashboard da dona: vendas do dia, da semana e do mês, ticket médio, mais vendidos e margem."
+  - src: "../../../assets/work/cardapio/screen-3.jpg"
+    alt: "Editor de cardápio: arraste para reordenar categorias e produtos, variações e disponibilidade."
+  - src: "../../../assets/work/cardapio/screen-4.jpg"
+    alt: "Ficha técnica: custo por unidade vindo do estoque, preço sugerido e margem real vs. meta."
+repo: "https://github.com/MarieliGalleani/cardapio-"
+---
+
+## Contexto
+
+Pequenas confeitarias vendem pelo WhatsApp e pelo direct do Instagram: preços num caderno, pedidos no chat, estoque na cabeça da dona. Os marketplaces de delivery resolvem a descoberta, mas cobram uma comissão alta e ficam com o relacionamento com o cliente.
+
+## Problema
+
+- Pedidos se perdem no chat, e a dona não enxerga o dia de uma vez
+- Ninguém sabe o custo real de um brigadeiro — então o preço é chutado e a margem some
+- A experiência do cliente depende de quão rápido a dona responde as mensagens
+
+## Meu papel
+
+Design de produto e build full-stack: fluxos, UI dos dois lados (loja e back office), modelo de dados e implementação com Vue 3 + Vuetify no front e Fastify + Prisma + PostgreSQL no back.
+
+## Processo
+
+**Pesquisa →** listei os trabalhos reais de uma confeitaria de uma pessoa só: receber pedidos, produzir, entregar, receber e repor.
+**Design →** uma loja que parece os apps de delivery que o cliente já conhece e um back office que cabe num notebook na bancada da cozinha.
+**Build →** entregas módulo a módulo, com as regras de domínio (sacola, preços, Pix, horário de funcionamento) cobertas por testes unitários.
+**Medição →** o dashboard mostra vendas, ticket médio, mais vendidos e margem estimada a partir das fichas técnicas.
+
+## Decisões-chave
+
+1. **Familiar em vez de inédito.** A loja segue o padrão dos apps de delivery — categorias, fotos, opções, sacola — então não há nada para aprender.
+2. **Preço a partir da receita.** Cada ficha técnica puxa o custo dos ingredientes do estoque e sugere o preço para a margem desejada; quando um ingrediente encarece, a margem se atualiza.
+3. **Um quadro para o dia.** Os pedidos andam por *Novos → Em preparo → Prontos / A caminho*, com alerta sonoro para novos pedidos e baixa automática no estoque.
+
+## Resultado
+
+- **8 de 11 módulos planejados prontos**: cardápio, estoque, ficha técnica, pedidos em tempo real, dashboard, configurações, loja e checkout (Pix, cartão, dinheiro, WhatsApp)
+- Taxa de entrega por bairro, encomendas e pausa temporária da loja
+- Próximos passos: cupons, avaliações e taxa de entrega por km
+
+## Aprendizados
+
+Para pequenos negócios, a tela mais valiosa não é a vitrine — é a **ficha técnica**. Mostrar a margem real mudou a forma de definir preços.
+
+*A marca "Doce Ateliê" e as ilustrações dos produtos nestas telas são conteúdo de demonstração.*

@@ -3,6 +3,7 @@ import { Image, getImage } from 'astro:assets';
 import { render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import FinalCTA from '@/components/FinalCTA.astro';
+import ShowcaseVideo from '@/components/ShowcaseVideo.astro';
 import { site } from '@/config/site';
 import { useTranslations, localizePath, type Lang } from '@/i18n/ui';
 import { caseSlug } from '@/lib/cases';
@@ -16,7 +17,7 @@ interface Props {
 const { entry, next, lang } = Astro.props;
 const { Content } = await render(entry);
 const t = useTranslations(lang);
-const { title, client, role, timeline, tools, summary, outcome, tags, cover, coverAlt } = entry.data;
+const { title, client, role, timeline, tools, summary, outcome, tags, cover, coverAlt, video, gallery, repo } = entry.data;
 const ogImage = await getImage({ src: cover, width: 1200, height: 630, format: 'jpg', fit: 'cover' });
 const showNext = next.id !== entry.id;
 ---
@@ -34,6 +35,9 @@ const showNext = next.id !== entry.id;
       </div>
 
       <div class="container">
+        {video ? (
+          <ShowcaseVideo {...video} lang={lang} />
+        ) : (
         <Image
           class="case__cover"
           src={cover}
@@ -43,6 +47,7 @@ const showNext = next.id !== entry.id;
           loading="eager"
           fetchpriority="high"
         />
+        )}
       </div>
 
       <div class="container container--narrow">
@@ -64,6 +69,14 @@ const showNext = next.id !== entry.id;
             <dd>{tools.join(', ')}</dd>
           </div>
         </dl>
+        {repo && (
+          <p class="case__repo">
+            <a href={repo} target="_blank" rel="noopener">
+              {t('case.repo')} <span aria-hidden="true">↗</span>
+              <span class="visually-hidden">{t('a11y.newTab')}</span>
+            </a>
+          </p>
+        )}
 
         <div class="case__outcome">
           <p class="eyebrow">{t('case.outcome')}</p>
@@ -75,6 +88,25 @@ const showNext = next.id !== entry.id;
     <div class="container container--narrow prose">
       <Content />
     </div>
+
+    {gallery.length > 0 && (
+      <section class="container gallery" aria-labelledby="gallery-title">
+        <h2 id="gallery-title" class="gallery__title">{t('case.gallery')}</h2>
+        <ul role="list" class="gallery__grid">
+          {gallery.map((g, i) => (
+            <li class:list={['gallery__item', { 'gallery__item--wide': i === 0 }]}>
+              <Image
+                src={g.src}
+                alt={g.alt}
+                widths={[640, 960, 1280, 1600]}
+                sizes={i === 0 ? '(min-width: 72rem) 72rem, 100vw' : '(min-width: 48rem) 36rem, 100vw'}
+                loading="lazy"
+              />
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
   </article>
 
   {showNext && (
@@ -113,7 +145,7 @@ const showNext = next.id !== entry.id;
   }
 
   .case__title {
-    font-size: var(--text-4xl);
+    font-size: var(--text-3xl);
     line-height: var(--leading-tight);
   }
 
@@ -166,6 +198,44 @@ const showNext = next.id !== entry.id;
     line-height: var(--leading-snug);
     letter-spacing: var(--tracking-tight);
     color: var(--color-accent);
+  }
+
+  .case__repo {
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+  }
+
+  .gallery {
+    padding-bottom: var(--space-8);
+  }
+
+  .gallery__title {
+    margin-bottom: var(--space-5);
+    font-size: var(--text-2xl);
+  }
+
+  .gallery__grid {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .gallery__item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--ratio-cover);
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+  }
+
+  @media (min-width: 48rem) {
+    .gallery__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery__item--wide {
+      grid-column: 1 / -1;
+    }
   }
 
   /* MDX body */

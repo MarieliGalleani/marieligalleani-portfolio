@@ -1,0 +1,151 @@
+---
+/**
+ * Auto-scrolling strip of real product covers under the hero.
+ * CSS-only (zero JS): pauses on hover/focus, with a visible pause toggle (WCAG 2.2.2),
+ * and stays still for people who prefer reduced motion.
+ */
+import { Image } from 'astro:assets';
+import { getCases, caseSlug } from '@/lib/cases';
+import { useTranslations, localizePath, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+const cases = (await getCases(lang)).filter((c) => c.data.video || c.data.gallery.length > 0);
+---
+
+{cases.length > 0 && (
+  <div class="reel">
+    <input class="reel__toggle visually-hidden" type="checkbox" id="reel-pause" />
+    <label class="reel__pause" for="reel-pause">
+      <span class="reel__pause-icon" aria-hidden="true"></span>
+      {t('reel.pause')}
+    </label>
+    <div class="reel__viewport" role="region" aria-label={t('reel.label')}>
+      <ul role="list" class="reel__track">
+        {[0, 1].map((copy) =>
+          cases.map((c) => (
+            <li class="reel__item" aria-hidden={copy === 1 ? 'true' : undefined}>
+              <a
+                href={localizePath(lang, `/work/${caseSlug(c)}/`)}
+                tabindex={copy === 1 ? -1 : undefined}
+                aria-label={c.data.title}
+              >
+                <Image src={c.data.cover} alt="" widths={[480, 720]} sizes="(min-width: 48rem) 30rem, 80vw" loading="eager" />
+              </a>
+            </li>
+          )),
+        )}
+      </ul>
+    </div>
+  </div>
+)}
+
+<style>
+  .reel {
+    position: relative;
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+  }
+
+  .reel__viewport {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .reel__track {
+    display: flex;
+    gap: var(--space-5);
+    width: max-content;
+    animation: reel 70s linear infinite;
+  }
+
+  .reel__item a {
+    display: block;
+    border-radius: var(--radius-lg);
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .reel__item img {
+    display: block;
+    width: clamp(16rem, 60vw, 30rem);
+    height: auto;
+    aspect-ratio: var(--ratio-cover);
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .reel__item a:hover {
+    transform: translateY(calc(var(--space-1) * -1));
+  }
+
+  .reel:hover .reel__track,
+  .reel:focus-within .reel__track,
+  .reel__toggle:checked ~ .reel__viewport .reel__track {
+    animation-play-state: paused;
+  }
+
+  .reel__pause {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--size-touch);
+    margin-inline: var(--gutter);
+    padding-inline: var(--space-4);
+    border: var(--border-width) solid var(--color-border-strong);
+    border-radius: var(--radius-pill);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    cursor: pointer;
+    order: 2;
+  }
+
+  .reel__pause:hover {
+    color: var(--color-text);
+    border-color: var(--color-text);
+  }
+
+  .reel__toggle:focus-visible + .reel__pause {
+    box-shadow: var(--focus-ring);
+  }
+
+  .reel__toggle:checked + .reel__pause {
+    background: var(--color-accent-soft);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .reel__pause-icon {
+    width: var(--space-3);
+    height: var(--space-3);
+    border-inline: var(--space-1) solid currentColor;
+  }
+
+  @keyframes reel {
+    to {
+      transform: translateX(calc(-50% - var(--space-5) / 2));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reel__track {
+      animation: none;
+    }
+
+    .reel__viewport {
+      overflow-x: auto;
+    }
+
+    .reel__pause {
+      display: none;
+    }
+  }
+</style>

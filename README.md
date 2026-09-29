@@ -22,11 +22,14 @@ no header, `hreflang` em todas as páginas e sitemap com as versões alternativa
 ├── astro.config.mjs           # Domínio, sitemap, MDX, i18n
 ├── docs/case-template.mdx     # Modelo para novos cases (copiar para src/content/cases/)
 ├── public/                    # Copiado como está para dist/ (favicon, og-default.png)
+│   └── media/                 # Vídeos dos cases (MP4 + WebM + poster)
 ├── scripts/
+│   ├── mockups/               # Estúdio de mockups: capas, telas e vídeos em moldura
 │   ├── generate-covers.mjs    # Gera capas placeholder e a OG padrão (npm run covers)
 │   └── contrast.mjs           # Checa contraste WCAG entre duas cores
 └── src/
-    ├── assets/cases/          # Capas dos cases (otimizadas no build)
+    ├── assets/work/<case>/    # Mockups reais: cover.jpg + screen-N.jpg (otimizados no build)
+    ├── assets/cases/          # Capa placeholder do case scientific-software
     ├── components/            # Seções da home e peças reutilizáveis
     │   ├── Header / Footer / BookButton
     │   ├── Hero / Services / SelectedWork / CaseCard
@@ -102,6 +105,9 @@ Para testar dark mode, mude o tema do sistema ou use DevTools → Rendering → 
    | `tags` | Tags do card |
    | `cover`, `coverAlt` | Imagem de capa + texto alternativo |
    | `order` | Ordem na home (1 = primeiro); "Next case" segue essa ordem |
+   | `video` | Opcional: `{ mp4, webm, poster, label }` em `/media/…` — substitui a capa no topo do case |
+   | `gallery` | Opcional: lista de `{ src, alt }` — seção "Telas" no fim do case |
+   | `repo` | Opcional: link público do código ("Ver o código no GitHub") |
    | `draft` | `true` esconde o case do site |
 
 4. Escreva o corpo com as seções fixas: **Context, Problem, My role, Process, Key decisions,
@@ -115,6 +121,27 @@ Para testar dark mode, mude o tema do sistema ou use DevTools → Rendering → 
 6. `npm run dev` para conferir. O schema valida o frontmatter — campos faltando geram erro.
 
 ---
+
+## Cases e mockups
+
+O portfólio traz 7 projetos reais (telas capturadas dos apps rodando, com dados fictícios)
+e o case placeholder `scientific-software`:
+
+| Ordem | Case | Vídeo | Código |
+|---|---|---|---|
+| 1 | OperaIA.lab | escritório isométrico com agentes | público |
+| 2 | OperaIA (Core) | login → conectores → Second Brain → cockpit | público |
+| 3 | OdontoClinic | agenda → prontuário → odontograma | privado |
+| 4 | Cardápio (Doce Ateliê) | loja no celular → sacola → checkout | público |
+| 5 | Agenda OperaIA | login → agenda da equipe → pacientes | privado |
+| 6 | OperaIA Atlas | modelo → mapa → tópicos pelo teclado | privado |
+| 7 | Design System Onii | tokens → perfil de marca → re-tema ao vivo | privado |
+
+- A home tem uma **vitrine animada** (CSS puro) com as capas; ela pausa no hover, tem botão de
+  pausa e fica parada para quem prefere movimento reduzido.
+- Os vídeos só tocam quando aparecem na tela, têm botão de pausar/reproduzir e **não** tocam
+  sozinhos com `prefers-reduced-motion`.
+- Para gerar novos mockups, veja [`scripts/mockups/README.md`](scripts/mockups/README.md).
 
 ## Build
 

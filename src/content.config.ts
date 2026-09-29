@@ -19,6 +19,17 @@ const cases = defineCollection({
       tags: z.array(z.string()),
       cover: image(),
       coverAlt: z.string(),
+      /**
+       * Optional looping walkthrough shown in the case hero instead of the static cover.
+       * Files live in public/media/ (Astro doesn't process video). Paths are root-relative.
+       */
+      video: z
+        .object({ mp4: z.string(), webm: z.string().optional(), poster: z.string(), label: z.string() })
+        .optional(),
+      /** Framed screens shown in the "Screens" section of the case page. */
+      gallery: z.array(z.object({ src: image(), alt: z.string() })).default([]),
+      /** Public source code, if any. */
+      repo: z.url().optional(),
       /** Sort order on the home page (1 = first). */
       order: z.number(),
       draft: z.boolean().default(false),

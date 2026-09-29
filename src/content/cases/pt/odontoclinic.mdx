@@ -1,0 +1,64 @@
+---
+title: "OdontoClinic — o dia, o prontuário e o caixa da clínica em um só lugar"
+client: "SaaS de saúde · clínicas odontológicas"
+role: "Design de produto e front-end"
+timeline: "2026"
+tools: ["Figma", "Vue 3", "Vuetify", "Pinia", "Three.js"]
+summary: "Uma plataforma para clínicas desenhada em torno do dia do dentista: agenda ao vivo por profissional e sala, odontograma anatômico por face do dente, financeiro e documentos."
+outcome: "Registro por face do dente em um odontograma anatômico de 32 dentes"
+tags: ["Saúde", "SaaS B2B", "UI complexa"]
+cover: "../../../assets/work/odontoclinic/cover.jpg"
+coverAlt: "Mockup da OdontoClinic: o prontuário com odontograma anatômico na frente da agenda da clínica dividida por profissional."
+order: 3
+video:
+  mp4: "/media/odontoclinic.mp4"
+  webm: "/media/odontoclinic.webm"
+  poster: "/media/odontoclinic-poster.jpg"
+  label: "Passeio pela OdontoClinic: do \"Meu dia\" para a agenda, a lista de pacientes e o prontuário, onde um dente é selecionado e suas faces são marcadas."
+gallery:
+  - src: "../../../assets/work/odontoclinic/screen-1.jpg"
+    alt: "\"Meu dia\": quem está em atendimento, quem é o próximo e o que precisa de atenção — consciência operacional, não BI."
+  - src: "../../../assets/work/odontoclinic/screen-2.jpg"
+    alt: "Agenda clínica: uma coluna por profissional, com status de cada consulta."
+  - src: "../../../assets/work/odontoclinic/screen-3.jpg"
+    alt: "Odontograma anatômico: selecione um dente, marque as faces e aplique um status clínico."
+  - src: "../../../assets/work/odontoclinic/screen-4.jpg"
+    alt: "Financeiro: receita, despesas, inadimplência e ticket médio do mês."
+---
+
+## Contexto
+
+Clínicas odontológicas equilibram três coisas ao mesmo tempo: a cadeira (quem é o próximo), o prontuário (o que foi feito em cada dente) e o caixa (quem pagou). A maioria dos sistemas separa isso em módulos que não conversam, e o dentista acaba decorando o dia.
+
+## Problema
+
+- A tela inicial da maioria dos softwares de clínica é um relatório, não uma ferramenta para *hoje*
+- Odontogramas são ícones minúsculos ou texto livre — difíceis de ler, fáceis de errar
+- Alertas importantes (alergias, tratamentos pendentes, retornos) ficam escondidos
+
+## Meu papel
+
+Design de produto e front-end: arquitetura de informação, o design de todas as telas e um front-end de alta fidelidade, totalmente navegável, feito em Vue 3 e Vuetify, pronto para conectar a um backend.
+
+## Processo
+
+**Pesquisa →** mapeei o dia da clínica da recepção ao faturamento e listei o que o dentista precisa saber *antes* de chamar o próximo paciente.
+**Design →** uma home "Meu dia", agenda por profissional e sala e um prontuário centrado no odontograma.
+**Build →** front-end interativo com dados de demonstração realistas, paleta de comandos (⌘K) e suporte a várias unidades.
+**Validação →** o caminho principal — ver o dia → abrir o prontuário → registrar o procedimento — funciona de ponta a ponta com dados realistas.
+
+## Decisões-chave
+
+1. **Consciência operacional, não BI.** O "Meu dia" mostra *agora*, *próximos* e *atenção* — o subtítulo diz isso literalmente.
+2. **Um odontograma anatômico.** Dentes com forma real na numeração FDI; selecione um dente, marque as faces (oclusal, mesial, distal, vestibular, lingual) e aplique um status (saudável, em tratamento, concluído, extraído, implante, canal, cárie, restauração).
+3. **Os alertas andam com o paciente.** Alergias e alertas clínicos aparecem no topo do prontuário e na lista de pacientes, não em uma aba separada.
+
+## Resultado
+
+- Um front-end que cobre agenda, pacientes, prontuário, financeiro e documentos
+- Registro por face em um odontograma anatômico de 32 dentes, com legenda clara de status
+- Uma home que responde "o que preciso saber agora?" em segundos
+
+## Aprendizados
+
+Em UI de saúde, densidade tudo bem — **ambiguidade, não**. Dentes com forma real e status explícitos tornaram o prontuário mais rápido de ler do que qualquer conjunto de ícones.

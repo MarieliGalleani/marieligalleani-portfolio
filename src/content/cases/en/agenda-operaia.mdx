@@ -1,57 +1,63 @@
 ---
-title: "Agenda Operaia — scheduling for clinics"
-client: "Healthcare clinics (SaaS)"
-role: "Product Designer — research to launch"
-timeline: "10 weeks (placeholder)"
-tools: ["Figma", "FlutterFlow", "Maze", "WhatsApp API"]
-summary: "A scheduling system that lets small clinics fill their calendars and cut no-shows, without a dedicated front desk."
-outcome: "−35% no-shows in pilot clinics"
-tags: ["SaaS", "Healthcare", "Functional MVP"]
-cover: "../../../assets/cases/agenda-operaia.jpg"
-coverAlt: "Cover for the Agenda Operaia case: green gradient with the words Agenda Operaia, clinic scheduling."
-order: 3
+title: "Agenda OperaIA — a scheduling app clinics can install"
+client: "Healthcare SaaS · clinics"
+role: "Product design & full-stack build"
+timeline: "2026"
+tools: ["Figma", "Vue 3", "TypeScript", "PWA / Workbox", "Express", "Prisma", "Google Calendar API"]
+summary: "An installable scheduling app for clinics: a team agenda synced with Google Calendar, patient records with triage links, reminders and one-tap calls."
+outcome: "Installable on desktop and phone, synced with Google Calendar"
+tags: ["Healthcare", "PWA", "Functional MVP"]
+cover: "../../../assets/work/agenda-operaia/cover.jpg"
+coverAlt: "Agenda OperaIA mockup: the clinic agenda with the next appointment and a monthly calendar, next to a phone showing the patient list."
+order: 5
+video:
+  mp4: "/media/agenda-operaia.mp4"
+  webm: "/media/agenda-operaia.webm"
+  poster: "/media/agenda-operaia-poster.jpg"
+  label: "Agenda OperaIA walkthrough: sign in, see the next appointment and the team agenda, pick a day, then browse patients as a list and as a grid."
+gallery:
+  - src: "../../../assets/work/agenda-operaia/screen-1.jpg"
+    alt: "Dashboard: the patient being seen now, the rest of the day and who needs attention (like birthdays)."
+  - src: "../../../assets/work/agenda-operaia/screen-2.jpg"
+    alt: "Patients: search, filters, status and quick actions to contact or open the chart."
+  - src: "../../../assets/work/agenda-operaia/screen-3.jpg"
+    alt: "On the phone: sign-in and the patient list with bottom navigation — installable as an app."
 ---
 
 ## Context
 
-[Placeholder] Small clinics still schedule patients by phone and paper. Receptionists juggle
-calls, confirmations and last-minute cancellations — and empty slots cost money.
+Small clinics run on a mix of Google Calendar, WhatsApp and paper forms. Each professional has their own calendar, reception can't see everyone at once, and patient information arrives scattered.
 
 ## Problem
 
-[Placeholder] Clinics were losing revenue to no-shows and staff time to manual confirmations.
-
-- ~20% of appointments were no-shows
-- Patients could only book during business hours
-- Clinic owners had no visibility of occupancy
+- No single view of the team's day, even though everyone already uses Google Calendar
+- Triage information (complaints, photos) arrives by message and gets lost
+- Staff jump between phone, laptop and paper — none of them "the system"
 
 ## My role
 
-[Placeholder] I led research, UX and UI, and built the functional MVP in FlutterFlow
-so pilot clinics could use it in real conditions.
+Product design and full-stack build: flows, UI, and the implementation — a Vue 3 PWA and an Express + Prisma API with Google Calendar integration, push notifications and multi-clinic administration.
 
 ## Process
 
-[Placeholder] **Research →** shadowed receptionists in 3 clinics.
-**Design →** designed patient booking (mobile-first) and the clinic dashboard.
-**Build →** functional MVP in FlutterFlow with automated WhatsApp reminders.
-**Measure →** compared no-show rates before and after in pilot clinics.
+**Research →** mapped the clinic's day: confirm, receive, attend, record, remind.
+**Design →** a dashboard centered on *now*, a team agenda that merges every professional's calendar, and a patient record with triage.
+**Build →** an installable PWA (desktop, Android and iPhone) on top of the calendars clinics already use — no migration.
+**Measure →** a "team today" report shows confirmed appointments and time recorded per professional against the previous week.
 
 ## Key decisions
 
-1. **WhatsApp over email.** That's where patients actually answer.
-2. **One-tap confirm or reschedule.** Reducing friction beat adding features.
-3. **Occupancy dashboard first.** Owners buy what shows them lost revenue.
+1. **Build on Google Calendar, don't replace it.** Clinics keep their calendars; the app adds the team view, patients and records on top.
+2. **Install, don't download.** A PWA gives a home-screen app on any device without app stores — and one-tap calls to patients.
+3. **Triage before the visit.** A private link lets the patient send complaints and photos in advance, which land in the chart.
 
 ## Outcome
 
-[Placeholder — replace with real numbers]
-
-- **−35%** no-shows in pilot clinics
-- **60%** of bookings made outside business hours
-- **5 hours/week** saved per receptionist
+- Team agenda with the next appointment, monthly calendar and today's list
+- Patient records with triage links, visits, treatments and imported patient lists
+- Reminders 15 minutes before each appointment, public booking page and per-clinic branding
+- A platform admin to create clinics, plans and features
 
 ## Learnings
 
-[Placeholder] Shipping a functional MVP early revealed edge cases (family bookings, recurring
-sessions) that no prototype test would have surfaced.
+The fastest way to get a clinic to adopt new software is to **not ask them to leave the tools they trust**. Integrating with Google Calendar removed the biggest objection.

@@ -1,57 +1,63 @@
 ---
-title: "Agenda Operaia — agenda para clínicas"
-client: "Clínicas de salud (SaaS)"
-role: "Product Designer — de la investigación al lanzamiento"
-timeline: "10 semanas (placeholder)"
-tools: ["Figma", "FlutterFlow", "Maze", "WhatsApp API"]
-summary: "Un sistema de turnos que ayuda a clínicas pequeñas a llenar su agenda y reducir ausencias, sin una recepción dedicada."
-outcome: "−35% de ausencias en las clínicas piloto"
-tags: ["SaaS", "Salud", "MVP funcional"]
-cover: "../../../assets/cases/agenda-operaia.jpg"
-coverAlt: "Portada del caso Agenda Operaia: degradado verde con las palabras Agenda Operaia, clinic scheduling."
-order: 3
+title: "Agenda OperaIA — una app de turnos que la clínica instala"
+client: "SaaS de salud · clínicas"
+role: "Diseño de producto y build full-stack"
+timeline: "2026"
+tools: ["Figma", "Vue 3", "TypeScript", "PWA / Workbox", "Express", "Prisma", "Google Calendar API"]
+summary: "Una app de turnos instalable para clínicas: agenda del equipo sincronizada con Google Calendar, historia clínica con link de triaje, recordatorios y llamada con un toque."
+outcome: "Instalable en computadora y teléfono, sincronizada con Google Calendar"
+tags: ["Salud", "PWA", "MVP funcional"]
+cover: "../../../assets/work/agenda-operaia/cover.jpg"
+coverAlt: "Mockup de Agenda OperaIA: la agenda de la clínica con el próximo turno y el calendario del mes, junto a un teléfono con la lista de pacientes."
+order: 5
+video:
+  mp4: "/media/agenda-operaia.mp4"
+  webm: "/media/agenda-operaia.webm"
+  poster: "/media/agenda-operaia-poster.jpg"
+  label: "Recorrido por Agenda OperaIA: inicio de sesión, próximo turno y agenda del equipo, elección de un día y la lista de pacientes en lista y en grilla."
+gallery:
+  - src: "../../../assets/work/agenda-operaia/screen-1.jpg"
+    alt: "Panel: el paciente que se atiende ahora, el resto del día y quién necesita atención (como cumpleaños)."
+  - src: "../../../assets/work/agenda-operaia/screen-2.jpg"
+    alt: "Pacientes: búsqueda, filtros, estado y acciones rápidas para contactar o abrir la historia."
+  - src: "../../../assets/work/agenda-operaia/screen-3.jpg"
+    alt: "En el teléfono: inicio de sesión y lista de pacientes con navegación inferior — instalable como app."
 ---
 
 ## Contexto
 
-[Placeholder] Las clínicas pequeñas todavía agendan pacientes por teléfono y papel. Las recepcionistas reparten su tiempo entre
-llamadas, confirmaciones y cancelaciones de último momento — y los turnos vacíos cuestan dinero.
+Las clínicas pequeñas funcionan con una mezcla de Google Calendar, WhatsApp y fichas en papel. Cada profesional tiene su propia agenda, la recepción no ve a todos a la vez y la información del paciente llega dispersa.
 
 ## Problema
 
-[Placeholder] Las clínicas perdían ingresos por ausencias y tiempo del equipo en confirmaciones manuales.
-
-- ~20% de los turnos terminaban en ausencia
-- Los pacientes solo podían agendar en horario laboral
-- Los dueños de las clínicas no tenían visibilidad de la ocupación
+- No hay una vista única del día del equipo, aunque todos ya usan Google Calendar
+- La información de triaje (motivos de consulta, fotos) llega por mensaje y se pierde
+- El equipo salta entre teléfono, laptop y papel — y ninguno es "el sistema"
 
 ## Mi rol
 
-[Placeholder] Lideré investigación, UX y UI, y construí el MVP funcional en FlutterFlow
-para que las clínicas piloto lo usaran en condiciones reales.
+Diseño de producto y build full-stack: flujos, UI e implementación — una PWA en Vue 3 y una API en Express + Prisma con integración a Google Calendar, notificaciones push y administración de varias clínicas.
 
 ## Proceso
 
-[Placeholder] **Investigación →** acompañé a recepcionistas en 3 clínicas.
-**Diseño →** diseñé la reserva del paciente (mobile-first) y el panel de la clínica.
-**Build →** MVP funcional en FlutterFlow con recordatorios automáticos por WhatsApp.
-**Medición →** comparé la tasa de ausencias antes y después en las clínicas piloto.
+**Investigación →** mapeé el día de la clínica: confirmar, recibir, atender, registrar, recordar.
+**Diseño →** un panel centrado en el *ahora*, una agenda del equipo que une la agenda de cada profesional y una historia clínica con triaje.
+**Build →** una PWA instalable (computadora, Android y iPhone) sobre las agendas que la clínica ya usa — sin migración.
+**Medición →** un reporte de "equipo hoy" muestra turnos confirmados y tiempo registrado por profesional frente a la semana anterior.
 
 ## Decisiones clave
 
-1. **WhatsApp en lugar de email.** Es donde los pacientes realmente responden.
-2. **Confirmar o reprogramar con un toque.** Reducir la fricción valió más que sumar funcionalidades.
-3. **Primero el panel de ocupación.** Los dueños compran lo que les muestra los ingresos perdidos.
+1. **Construir sobre Google Calendar, no reemplazarlo.** La clínica mantiene sus agendas; la app suma la vista del equipo, los pacientes y las historias clínicas.
+2. **Instalar, no descargar.** Una PWA se vuelve app en la pantalla de inicio de cualquier dispositivo sin tiendas — y llama al paciente con un toque.
+3. **Triaje antes de la consulta.** Un link privado permite que el paciente envíe motivos y fotos con anticipación, que llegan a la historia clínica.
 
 ## Resultado
 
-[Placeholder — reemplazar con números reales]
-
-- **−35%** de ausencias en las clínicas piloto
-- **60%** de las reservas hechas fuera del horario laboral
-- **5 horas/semana** ahorradas por recepcionista
+- Agenda del equipo con próximo turno, calendario del mes y lista del día
+- Historia clínica con link de triaje, visitas, tratamientos e importación de pacientes
+- Recordatorio 15 minutos antes de cada turno, página pública de reservas y marca por clínica
+- Un panel de plataforma para crear clínicas, planes y funcionalidades
 
 ## Aprendizajes
 
-[Placeholder] Lanzar un MVP funcional temprano reveló casos borde (reservas familiares, sesiones
-recurrentes) que ningún test de prototipo habría mostrado.
+La forma más rápida de que una clínica adopte un software nuevo es **no pedirle que deje las herramientas en las que confía**. Integrar con Google Calendar eliminó la mayor objeción.

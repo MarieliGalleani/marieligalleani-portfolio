@@ -1,0 +1,117 @@
+---
+/**
+ * Looping, muted product walkthrough in a device frame (the frame is baked into the video).
+ * WCAG 2.2.2: moving content has a visible pause button, and it never autoplays
+ * for people who prefer reduced motion. The script is tiny and progressive:
+ * without JS the video still shows its native controls.
+ */
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  mp4: string;
+  webm?: string;
+  poster: string;
+  label: string;
+  lang?: Lang;
+}
+
+const { mp4, webm, poster, label, lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<figure class="showcase" data-showcase>
+  <video
+    class="showcase__video"
+    muted
+    loop
+    playsinline
+    controls
+    preload="metadata"
+    poster={poster}
+    width="1600"
+    height="1000"
+    aria-label={label}
+  >
+    {webm && <source src={webm} type="video/webm" />}
+    <source src={mp4} type="video/mp4" />
+  </video>
+  <button
+    class="showcase__toggle"
+    type="button"
+    hidden
+    data-pause-label={t('video.pause')}
+    data-play-label={t('video.play')}
+  >
+    {t('video.play')}
+  </button>
+  <figcaption class="visually-hidden">{label}</figcaption>
+</figure>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLElement>('[data-showcase]').forEach((fig) => {
+    const video = fig.querySelector('video')!;
+    const btn = fig.querySelector('button')!;
+    video.controls = false;
+    btn.hidden = false;
+    const sync = () => {
+      const playing = !video.paused;
+      btn.textContent = playing ? btn.dataset.pauseLabel! : btn.dataset.playLabel!;
+      btn.setAttribute('aria-pressed', String(!playing));
+    };
+    btn.addEventListener('click', () => (video.paused ? video.play() : video.pause()));
+    video.addEventListener('play', sync);
+    video.addEventListener('pause', sync);
+    sync();
+    if (!reduce) {
+      // Start only when visible, to save data and CPU.
+      new IntersectionObserver(
+        ([e], obs) => {
+          if (e.isIntersecting) {
+            video.play().catch(() => {});
+            obs.disconnect();
+          }
+        },
+        { threshold: 0.25 },
+      ).observe(video);
+    }
+  });
+</script>
+
+<style>
+  .showcase {
+    position: relative;
+    margin: 0;
+  }
+
+  .showcase__video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--ratio-cover);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+  }
+
+  .showcase__toggle {
+    position: absolute;
+    right: var(--space-4);
+    bottom: var(--space-4);
+    min-height: var(--size-touch);
+    padding: var(--space-2) var(--space-4);
+    border: var(--border-width) solid var(--color-border-strong);
+    border-radius: var(--radius-pill);
+    background: var(--color-bg-translucent);
+    color: var(--color-text);
+    font: inherit;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    cursor: pointer;
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+  }
+
+  .showcase__toggle:hover {
+    border-color: var(--color-text);
+  }
+</style>

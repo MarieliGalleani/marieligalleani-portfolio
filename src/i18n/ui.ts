@@ -99,6 +99,12 @@ const en = {
   'case.next': 'Next case',
   'case.back': 'All work',
   'case.ctaTitle': 'Want results like this for your product?',
+  'case.gallery': 'Screens',
+  'case.repo': 'View the code on GitHub',
+  'video.play': 'Play',
+  'video.pause': 'Pause',
+  'reel.label': 'Real screens from products I designed and built',
+  'reel.pause': 'Pause the animation',
 };
 
 export type UIKey = keyof typeof en;
@@ -181,6 +187,12 @@ export const ui: Record<Lang, Record<UIKey, string>> = {
     'case.next': 'Próximo case',
     'case.back': 'Todos os projetos',
     'case.ctaTitle': 'Quer resultados assim no seu produto?',
+    'case.gallery': 'Telas',
+    'case.repo': 'Ver o código no GitHub',
+    'video.play': 'Reproduzir',
+    'video.pause': 'Pausar',
+    'reel.label': 'Telas reais de produtos que desenhei e construí',
+    'reel.pause': 'Pausar a animação',
   },
 
   es: {
@@ -258,6 +270,12 @@ export const ui: Record<Lang, Record<UIKey, string>> = {
     'case.next': 'Siguiente caso',
     'case.back': 'Todos los proyectos',
     'case.ctaTitle': '¿Quieres resultados así para tu producto?',
+    'case.gallery': 'Pantallas',
+    'case.repo': 'Ver el código en GitHub',
+    'video.play': 'Reproducir',
+    'video.pause': 'Pausar',
+    'reel.label': 'Pantallas reales de productos que diseñé y construí',
+    'reel.pause': 'Pausar la animación',
   },
 };
 

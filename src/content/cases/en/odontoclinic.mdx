@@ -1,0 +1,64 @@
+---
+title: "OdontoClinic — the dental clinic’s day, charts and cash in one place"
+client: "Healthcare SaaS · dental clinics"
+role: "Product design & front-end"
+timeline: "2026"
+tools: ["Figma", "Vue 3", "Vuetify", "Pinia", "Three.js"]
+summary: "A clinic platform designed around the dentist’s day: a live agenda by professional and room, an anatomical odontogram charted by tooth face, finance and documents."
+outcome: "Charting by tooth face on a 32-tooth anatomical odontogram"
+tags: ["Healthcare", "B2B SaaS", "Complex UI"]
+cover: "../../../assets/work/odontoclinic/cover.jpg"
+coverAlt: "OdontoClinic mockup: a patient chart with the anatomical odontogram in front of the clinic agenda split by professional."
+order: 3
+video:
+  mp4: "/media/odontoclinic.mp4"
+  webm: "/media/odontoclinic.webm"
+  poster: "/media/odontoclinic-poster.jpg"
+  label: "OdontoClinic walkthrough: from \"My day\" to the agenda, the patient list and a patient chart, where a tooth is selected and its faces are marked."
+gallery:
+  - src: "../../../assets/work/odontoclinic/screen-1.jpg"
+    alt: "\"My day\": who is being seen now, who is next, and what needs attention — awareness, not BI."
+  - src: "../../../assets/work/odontoclinic/screen-2.jpg"
+    alt: "Clinic agenda: one column per professional, with status for each appointment."
+  - src: "../../../assets/work/odontoclinic/screen-3.jpg"
+    alt: "Anatomical odontogram: select a tooth, mark its faces and apply a clinical status."
+  - src: "../../../assets/work/odontoclinic/screen-4.jpg"
+    alt: "Finance: revenue, expenses, overdue payments and average ticket for the month."
+---
+
+## Context
+
+Dental clinics juggle three things at once: the chair (who's next), the chart (what was done to each tooth) and the cash (who paid). Most systems split these into modules that never talk to each other, and the dentist ends up memorizing the day.
+
+## Problem
+
+- The home screen of most clinic software is a report, not a tool for *today*
+- Odontograms are either tiny icons or free-text notes — hard to read, easy to get wrong
+- Alerts that matter (allergies, pending treatments, returns) get buried
+
+## My role
+
+Product design and front-end: information architecture, the design of every screen and a high-fidelity, fully navigable front end built with Vue 3 and Vuetify, ready to connect to a backend.
+
+## Process
+
+**Research →** mapped a clinic day from reception to billing and listed what the dentist must know *before* calling the next patient.
+**Design →** a "My day" home, an agenda by professional and room, and a patient chart centered on the odontogram.
+**Build →** interactive front end with realistic demo data, a command palette (⌘K) and multi-unit support.
+**Validate →** the core path — see the day → open the chart → record the procedure — works end to end with realistic data.
+
+## Key decisions
+
+1. **Operational awareness, not BI.** "My day" shows *now*, *next* and *attention* — the subtitle says it literally.
+2. **An anatomical odontogram.** Real tooth shapes in FDI numbering; select a tooth, mark faces (occlusal, mesial, distal, buccal, lingual) and apply a status (healthy, in treatment, done, extracted, implant, root canal, caries, restoration).
+3. **Alerts travel with the patient.** Allergies and clinical flags appear on the chart header and in the patient list, not in a separate tab.
+
+## Outcome
+
+- One front end covering agenda, patients, charts, finance and documents
+- Face-level charting on a 32-tooth anatomical odontogram with a clear status legend
+- A home that answers "what do I need to know right now?" in seconds
+
+## Learnings
+
+In healthcare UI, density is fine — **ambiguity is not**. Real tooth shapes and explicit statuses made the chart faster to read than any icon set.

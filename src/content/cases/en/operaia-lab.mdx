@@ -1,58 +1,66 @@
 ---
-title: "Operaia Lab — a virtual office for AI agents"
-client: "Own product (AI startup)"
-role: "Founder, Product Designer & Builder"
-timeline: "3 months to MVP (placeholder)"
-tools: ["Figma", "Claude", "TypeScript", "Supabase"]
-summary: "Designing and building a virtual office where AI agents work side by side — visible, controllable and useful for small teams."
-outcome: "From idea to live MVP in 12 weeks"
-tags: ["AI Product", "Agent UX", "MVP", "Design + Build"]
-cover: "../../../assets/cases/operaia-lab.jpg"
-coverAlt: "Cover for the Operaia Lab case: purple gradient with the words Operaia Lab, AI agents virtual office."
-order: 2
+title: "OperaIA.lab — a virtual office run by AI agents"
+client: "Own product · AI startup"
+role: "Founder · product design & build"
+timeline: "2026 · ongoing"
+tools: ["Figma", "Vue 3", "TypeScript", "Pixi.js", "Fastify", "PostgreSQL"]
+summary: "An autonomous digital office where specialized AI agents take on demands, coordinate missions and report back — made visible as a living, explorable workplace."
+outcome: "9 AI specialists working in a live, explorable office"
+tags: ["AI Product", "Agent UX", "Design + Build"]
+cover: "../../../assets/work/operaia-lab/cover.jpg"
+coverAlt: "OperaIA.lab mockup: the Command Center behind an isometric pixel-art office where AI agents sit at their desks."
+order: 1
+video:
+  mp4: "/media/operaia-lab.mp4"
+  webm: "/media/operaia-lab.webm"
+  poster: "/media/operaia-lab-poster.jpg"
+  label: "Walkthrough of the OperaIA.lab virtual office: the camera pans across the isometric office while AI agents work at their desks."
+gallery:
+  - src: "../../../assets/work/operaia-lab/screen-1.jpg"
+    alt: "The isometric office: each AI specialist has a desk, a role and a visible status."
+  - src: "../../../assets/work/operaia-lab/screen-2.jpg"
+    alt: "Digital team: every specialist with its mission, projects and last action."
+  - src: "../../../assets/work/operaia-lab/screen-3.jpg"
+    alt: "Campus: the reception area where new demands arrive."
+repo: "https://github.com/MarieliGalleani/operaia-lab"
 ---
 
 ## Context
 
-[Placeholder] AI agents can already research, write and automate tasks — but for most small teams they
-are invisible, hard to trust and hard to coordinate. Operaia Lab is my answer: a virtual office where
-each agent has a desk, a role and a visible status.
+AI agents can already research, write and automate — but for small teams they are invisible: nobody knows what they are doing, who asked for it, or whether it worked. OperaIA.lab is my answer: a **digital organization** of specialized agents with a persistent operational layer, shown as an office you can walk through.
 
 ## Problem
 
-[Placeholder] How do you make autonomous agents understandable to non-technical people?
+How do you make autonomous work **understandable and trustworthy** for people who don't read logs?
 
-- Users didn't know what an agent was doing or why
-- Handoffs between agents (and humans) were opaque
-- Errors were silent until something broke
+- Agent state lived in queues and traces, not in any interface
+- Hand-offs between agents (and humans) were opaque
+- There was no single place to see "what needs me right now"
 
 ## My role
 
-[Placeholder] I designed and built the product end to end: research, UX of agent flows, UI,
-and the front-end implementation of the MVP.
+I designed and built it end to end as founder: product vision, information architecture, the Command Center UI, the isometric office and the TypeScript front end on top of a modular-monolith backend (mission queue, workers, supervisor, operational memory).
 
 ## Process
 
-[Placeholder] **Research →** interviews with 8 small-business owners already experimenting with AI.
-**Design →** mapped the agent lifecycle (idle, working, waiting for human, done, failed).
-**Build →** shipped a coded MVP instead of a clickable prototype to test real behavior.
-**Measure →** tracked task completion and how often users had to intervene.
+**Research →** mapped what a small team actually needs from agents: delegate, follow, approve.
+**Design →** defined the agent lifecycle (idle, working, waiting for a human, done, failed) and a "state of your office" home.
+**Build →** shipped the office with Pixi.js behind a ports-and-adapters layer, so the UI could be designed against mock data before the backend existed.
+**Measure →** heartbeat and health checks show whether the office is really operating — not just rendering.
 
 ## Key decisions
 
-1. **Make agent state spatial.** Agents sit at desks in an office; status is visible at a glance.
-2. **Human-in-the-loop by default.** Every sensitive action asks for approval with a clear preview.
-3. **Show the reasoning, not the logs.** A short "why I did this" summary beats raw traces.
+1. **Make agent state spatial.** Each specialist — CEO Opera, CTO Mag, Product Designer Luna, PM Nexus and others — has a desk. Status is readable at a glance, like walking into a room.
+2. **Humans approve, agents execute.** Sensitive actions land in *Approvals*; the home only asks for what truly needs you ("1 item needs you").
+3. **Brain first, interfaces later.** The core operational layer is stabilized before new surfaces are added — a rule written into the project itself.
 
 ## Outcome
 
-[Placeholder — replace with real numbers]
-
-- **12 weeks** from first sketch to live MVP
-- **3×** more tasks delegated per user vs. chat-only interface in tests
-- First paying pilots onboarded
+- A Command Center that answers "what is the state of my office?" in one screen
+- A digital team of **9 specialists**, each with role, projects and last action
+- An isometric office with keyboard navigation and live agent presence
+- A modular backend with persistent missions, continuous supervision and memory, running in production
 
 ## Learnings
 
-[Placeholder] In AI products, trust is the core UX problem. Visibility and reversible actions
-matter more than raw model capability.
+In AI products, **trust is the core UX problem**. Visibility, reversible actions and a clear "what needs me" beat raw model capability every time.
