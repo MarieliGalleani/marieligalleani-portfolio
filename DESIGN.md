@@ -1,4 +1,4 @@
-# DESIGN.md — Marieli Galleani Portfolio
+# DESIGN.md — Galleani (Brazil & LatAm market-entry agency)
 
 Single source of truth for the visual language. Every value used in CSS lives here
 and is exposed as a CSS custom property in [`src/styles/tokens.css`](src/styles/tokens.css).
@@ -9,153 +9,154 @@ Components **only** reference tokens (`var(--…)`) — never raw hex, px or fon
 
 ---
 
-## 1. Direction — premium editorial
+## 1. Direction — modern SaaS agency
 
-- **Editorial, not "template".** A high-contrast display serif for headlines, a tight geometric sans
-  for reading, generous whitespace and hairline rules instead of boxes and drop shadows.
-- **Italic = emphasis.** One word per headline can go italic in the accent color
-  (`<em>ships.</em>`). Never more than one per heading.
-- **Numbered sections.** Every home section opens with an index (`01 — Services`) on a hairline.
-- **Work is the hero.** Case studies are shown large, alternating image and text, with real
-  product mockups and looping walkthrough videos.
-- **Quiet texture.** A subtle film grain over the page makes flat color feel printed.
-- **Two moods, same system.** *Paper* (light, bronze accent) and *Ink* (dark, champagne accent),
-  following `prefers-color-scheme`. Only color tokens change.
-- **Accessible by default.** All text pairs meet WCAG AA. Focus is always visible. Motion is
-  CSS-only and turned off under `prefers-reduced-motion`.
+The audience is foreign founders and marketing leads deciding whether to trust a partner
+with their Brazil / Latin America launch. The page has to read as **established, clear and safe**.
+
+- **Light canvas, dark "inverse" bands.** Hero, featured pricing card, final CTA and footer sit on
+  a near-black band with a soft emerald/blue glow and a faint grid. Everything else is light.
+- **Rounded cards and bento grids.** Services, challenges, process and pricing are cards with
+  `--radius-xl`, a hairline border and a light shadow.
+- **Centered section headers.** A pill badge (with an accent dot) → title → lead.
+- **One serif italic accent per headline.** `<em>` inside h1–h3 renders in Instrument Serif
+  italic, accent color (`with <em>confidence.</em>`). Never more than one per heading.
+- **Proof early.** Markets marquee and sourced stats right after the hero; real product work
+  mid-page; pricing and FAQ before the final CTA.
 
 ---
 
 ## 2. Color
 
-### Paper (light)
+### Light canvas
 
-| Token | Value | Usage | Contrast on `--color-bg` |
-|---|---|---|---|
-| `--color-bg` | `#F3EFE8` | Page background (warm paper) | — |
-| `--color-surface` | `#EAE4D9` | Alternating sections | — |
-| `--color-surface-raised` | `#FBF9F5` | Raised elements | — |
-| `--color-text` | `#151412` | Text, headings, primary button | 16.1 : 1 |
-| `--color-text-muted` | `#5F5A52` | Secondary text, meta | 6.0 : 1 |
-| `--color-border` | `#DCD5C8` | Hairlines (decorative) | — |
-| `--color-border-strong` | `#BFB6A6` | Section rules, outlines | — |
-| `--color-accent` | `#7A5426` | Bronze: italics, indexes, outcomes | 5.9 : 1 |
-| `--color-accent-hover` | `#5F3F18` | Hover of accent | — |
-| `--color-on-accent` | `#FBF9F5` | Text on accent | 6.4 : 1 |
-| `--color-accent-soft` | `#EADFCB` | Badges | accent on it: 5.1 : 1 |
-| `--color-success` | `#2F6B3F` | Availability dot | — |
-| `--color-focus` | `#7A5426` | Focus ring | — |
-| `--color-bg-translucent` | `rgb(243 239 232 / 0.82)` | Sticky header | — |
-| `--grain-opacity` | `0.05` | Film grain strength | — |
-
-### Ink (dark)
-
-| Token | Value | Contrast on `--color-bg` |
+| Token | Value | Use |
 |---|---|---|
-| `--color-bg` | `#0C0C0D` | — |
-| `--color-surface` | `#141416` | — |
-| `--color-surface-raised` | `#1A1A1D` | — |
-| `--color-text` | `#EEEAE3` | 16.3 : 1 |
-| `--color-text-muted` | `#9C978E` | 6.7 : 1 |
-| `--color-border` | `#232326` | — |
-| `--color-border-strong` | `#34343A` | — |
-| `--color-accent` | `#D9B783` (champagne) | 10.3 : 1 |
-| `--color-accent-hover` | `#E8CBA0` | — |
-| `--color-on-accent` | `#141210` | 9.8 : 1 |
-| `--color-accent-soft` | `#221D16` | — |
-| `--color-success` | `#8FCF9F` | — |
-| `--color-focus` | `#E8CBA0` | — |
-| `--color-bg-translucent` | `rgb(12 12 13 / 0.78)` | — |
-| `--grain-opacity` | `0.07` | — |
+| `--color-bg` | `#f6f7f9` | Page background |
+| `--color-surface` | `#eef1f5` | Alternate sections, tags |
+| `--color-surface-raised` | `#ffffff` | Cards |
+| `--color-text` | `#0b0f17` | Body and headings |
+| `--color-text-muted` | `#586273` | Secondary text (AA on bg and surface) |
+| `--color-border` | `#e3e7ee` | Card borders, hairlines |
+| `--color-border-strong` | `#cfd6e0` | Secondary button, underlines |
+| `--color-accent` | `#08734f` | Emerald — links, primary button, `<em>` |
+| `--color-accent-hover` | `#065c3f` | Hover |
+| `--color-on-accent` | `#ffffff` | Text on accent |
+| `--color-accent-soft` | `#e3f4ec` | Icon tiles, badge dot halo |
+| `--color-success` | `#08734f` | Check marks |
+| `--color-focus` | `#08734f` | Focus ring |
+| `--color-bg-translucent` | `rgb(246 247 249 / 0.8)` | Blurred overlays |
 
-Contrast can be re-checked with `node scripts/contrast.mjs '#fg' '#bg'`.
+### Dark mode (`prefers-color-scheme: dark`)
+
+| Token | Value |
+|---|---|
+| `--color-bg` | `#0a0d13` |
+| `--color-surface` | `#10151d` |
+| `--color-surface-raised` | `#141a24` |
+| `--color-text` | `#f3f5f8` |
+| `--color-text-muted` | `#9aa4b2` |
+| `--color-border` / `--color-border-strong` | `#1f2733` / `#2c3644` |
+| `--color-accent` / `--color-accent-hover` | `#3ddc97` / `#6ee7b7` |
+| `--color-on-accent` | `#06120c` |
+| `--color-accent-soft` | `#0f2a1f` |
+| `--color-success` / `--color-focus` | `#3ddc97` / `#6ee7b7` |
+| `--color-bg-translucent` | `rgb(10 13 19 / 0.78)` |
+
+### Inverse bands (same in both modes)
+
+The `.inverse` class remaps the `--color-*` tokens to these, so any component renders on dark.
+
+| Token | Value |
+|---|---|
+| `--inverse-bg` | `#070a0f` |
+| `--inverse-surface` | `#0f141c` |
+| `--inverse-surface-2` | `#151c27` |
+| `--inverse-text` | `#f3f5f8` |
+| `--inverse-muted` | `#9aa4b2` |
+| `--inverse-border` | `#1c2430` |
+| `--inverse-accent` | `#3ddc97` |
+| `--inverse-on-accent` | `#06120c` |
+| `--inverse-accent-soft` | `rgb(61 220 151 / 0.12)` |
+| `--glow-1` | `rgb(61 220 151 / 0.28)` — emerald glow, top left |
+| `--glow-2` | `rgb(56 128 255 / 0.22)` — blue glow, top right |
+| `--grid-line` | `rgb(255 255 255 / 0.05)` — background grid |
+
+Check any new pair with `node scripts/contrast.mjs <fg> <bg>` (AA: 4.5:1 text, 3:1 large text/UI).
 
 ---
 
 ## 3. Typography
 
-Self-hosted in `public/fonts/` (Latin subset, `font-display: swap`), both under the SIL Open Font License.
-
-| Token | Value | Use |
-|---|---|---|
-| `--font-serif` / `--font-display` | `"Instrument Serif"` (400, 400 italic) | Headlines, wordmark, outcomes, prices, quotes |
-| `--font-sans` | `"Inter Tight"` (variable 100–900) | Body, UI, labels |
-| `--font-mono` | system mono | Section indexes (`01`) |
+| Token | Value |
+|---|---|
+| `--font-sans` | Inter Tight (variable, self-hosted), system fallbacks |
+| `--font-serif` | Instrument Serif italic (self-hosted) — only for `<em>` accents |
+| `--font-display` | `var(--font-sans)` |
+| `--font-mono` | `ui-monospace, "SF Mono", …` |
 
 ### Scale (fluid, mobile → desktop)
 
-| Token | Value | ≈ px | Use |
-|---|---|---|---|
-| `--text-xs` | `0.75rem` | 12 | Labels, indexes (uppercase, wide tracking) |
-| `--text-sm` | `0.875rem` | 14 | Meta, small print |
-| `--text-base` | `1.0625rem` | 17 | Body |
-| `--text-lg` | `clamp(1.125rem, …, 1.3125rem)` | 18 → 21 | Leads, case prose |
-| `--text-xl` | `clamp(1.375rem, …, 1.875rem)` | 22 → 30 | Outcomes on cards, quotes |
-| `--text-2xl` | `clamp(1.75rem, …, 2.625rem)` | 28 → 42 | Case titles on the home, service names |
-| `--text-3xl` | `clamp(2.5rem, …, 4.5rem)` | 40 → 72 | Section titles, about statement |
-| `--text-4xl` | `clamp(3rem, …, 6.5rem)` | 48 → 104 | Case page title, final CTA |
-| `--text-display` | `clamp(3.5rem, …, 9.5rem)` | 56 → 152 | Hero headline, footer wordmark |
+| Token | Value |
+|---|---|
+| `--text-xs` | `0.75rem` |
+| `--text-sm` | `0.875rem` |
+| `--text-base` | `1rem` |
+| `--text-lg` | `clamp(1.0625rem, 1rem + 0.3vw, 1.25rem)` |
+| `--text-xl` | `clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem)` |
+| `--text-2xl` | `clamp(1.5rem, 1.25rem + 1.1vw, 2.125rem)` |
+| `--text-3xl` | `clamp(2rem, 1.5rem + 2.4vw, 3.5rem)` — section titles |
+| `--text-4xl` | `clamp(2.5rem, 1.6rem + 4vw, 4.75rem)` |
+| `--text-display` | `clamp(2.75rem, 1.4rem + 5.6vw, 6rem)` — hero |
 
 | Token | Value |
 |---|---|
-| `--leading-display` | `0.92` |
-| `--leading-tight` | `1.02` |
-| `--leading-snug` | `1.2` |
-| `--leading-normal` | `1.6` |
-| `--weight-regular` / `medium` / `semibold` / `bold` | `400` / `500` / `600` / `700` |
-| `--tracking-display` | `-0.025em` |
-| `--tracking-tight` | `-0.015em` |
-| `--tracking-normal` | `0` |
-| `--tracking-wide` | `0.14em` (uppercase labels) |
-| `--measure` | `62ch` (prose) |
-| `--measure-short` | `32ch` (outcomes, step text) |
-| `--measure-headline` | `12ch` (display headlines) |
-| `--measure-title` | `18ch` (section titles) |
-| `--reel-item` | `clamp(18rem, 70vw, 34rem)` (showreel cover width) |
+| `--leading-display` / `--leading-tight` / `--leading-snug` / `--leading-normal` | `1` / `1.08` / `1.3` / `1.6` |
+| `--weight-regular` / `--weight-medium` / `--weight-semibold` / `--weight-bold` | `400` / `500` / `600` / `700` |
+| `--tracking-display` / `--tracking-tight` / `--tracking-normal` / `--tracking-wide` | `-0.045em` / `-0.03em` / `0` / `0.12em` |
+| `--measure` / `--measure-short` / `--measure-title` / `--measure-headline` | `62ch` / `34ch` / `20ch` / `16ch` |
+| `--ratio-cover` | `16 / 10` |
 
 ---
 
 ## 4. Spacing & layout
 
-4 px base grid.
-
 | Token | Value |
 |---|---|
-| `--space-1` … `--space-9` | `0.25` · `0.5` · `0.75` · `1` · `1.5` · `2` · `3` · `4` · `6` rem |
-| `--space-10` | `9rem` |
-| `--space-section` | `clamp(5rem, 3rem + 8vw, 11rem)` — vertical rhythm between sections |
-| `--gutter` | `clamp(1.25rem, 0.5rem + 3vw, 3.5rem)` — page side padding |
-| `--container-max` | `84rem` |
-| `--container-narrow` | `46rem` (case prose) |
-| `--size-touch` | `2.75rem` (44 px minimum touch target) |
-| `--ratio-cover` | `16 / 10` (covers, videos, gallery) |
+| `--space-1` … `--space-10` | `0.25` · `0.5` · `0.75` · `1` · `1.5` · `2` · `3` · `4` · `6` · `9` rem |
+| `--space-section` | `clamp(4.5rem, 3rem + 6vw, 8.5rem)` |
+| `--gutter` | `clamp(1.25rem, 0.5rem + 3vw, 3rem)` |
+| `--container-max` / `--container-narrow` | `76rem` / `46rem` |
+| `--size-touch` | `2.75rem` (44px minimum touch target) |
 
 ---
 
 ## 5. Radius
 
-Restrained: hairlines and pills, few rounded boxes.
-
 | Token | Value | Use |
 |---|---|---|
-| `--radius-sm` | `0.25rem` | Focus ring corners |
-| `--radius-md` | `0.5rem` | Small controls |
-| `--radius-lg` | `0.875rem` | Media frames (covers, videos, screens) |
-| `--radius-pill` | `999px` | Buttons, tags, badges |
+| `--radius-sm` | `0.5rem` | Focus ring, small chips |
+| `--radius-md` | `0.75rem` | Icon tiles |
+| `--radius-lg` | `1.25rem` | Media frames |
+| `--radius-xl` | `1.75rem` | Cards, CTA box |
+| `--radius-pill` | `999px` | Buttons, badges, tags |
 
 ---
 
-## 6. Shadows, borders, texture
+## 6. Shadows & borders
 
-| Token | Paper | Ink |
-|---|---|---|
-| `--shadow-sm` | `0 1px 2px rgb(21 20 18 / 0.06)` | `0 1px 2px rgb(0 0 0 / 0.5)` |
-| `--shadow-md` | `0 12px 32px -12px rgb(21 20 18 / 0.18)` | `… rgb(0 0 0 / 0.6)` |
-| `--shadow-lg` | `0 40px 80px -30px rgb(21 20 18 / 0.35)` | `… rgb(0 0 0 / 0.8)` (media only) |
-| `--border-width` | `1px` | `1px` |
-| `--underline-offset` | `0.22em` | `0.22em` |
-| `--blur-md` | `14px` (header backdrop) | same |
-| `--focus-ring` | `0 0 0 3px var(--color-bg), 0 0 0 5px var(--color-focus)` | same |
+| Token | Value |
+|---|---|
+| `--shadow-sm` | `0 1px 2px rgb(11 15 23 / 0.06)` |
+| `--shadow-md` | `0 10px 30px -12px rgb(11 15 23 / 0.16)` |
+| `--shadow-lg` | `0 30px 70px -25px rgb(11 15 23 / 0.35)` |
+| `--shadow-accent` | `0 8px 24px -10px var(--color-accent)` — primary button glow |
+| `--border-width` | `1px` |
+| `--underline-offset` | `0.2em` |
+| `--blur-md` | `16px` |
+| `--focus-ring` | `0 0 0 3px var(--color-bg), 0 0 0 5px var(--color-focus)` |
+
+Dark mode deepens the three neutral shadows (`rgb(0 0 0 / 0.5–0.8)`).
 
 ---
 
@@ -163,15 +164,14 @@ Restrained: hairlines and pills, few rounded boxes.
 
 | Token | Value |
 |---|---|
-| `--duration-fast` | `180ms` |
-| `--duration-base` | `320ms` |
-| `--duration-slow` | `900ms` (hero entrance, image zoom) |
+| `--duration-fast` / `--duration-base` / `--duration-slow` | `160ms` / `280ms` / `800ms` |
 | `--ease-out` | `cubic-bezier(0.16, 1, 0.3, 1)` |
-| `--scale-hover` | `1.03` (cover zoom on hover) |
+| `--scale-hover` | `1.02` (cover zoom on hover) |
+| `--marquee-duration` | `40s` (markets strip) |
 
-- `.reveal`: elements rise in as they enter the viewport using CSS scroll-driven animations
-  (`animation-timeline: view()`), only where supported.
-- All motion is disabled under `prefers-reduced-motion: reduce`.
+- `.reveal`: CSS scroll-driven rise-in (`animation-timeline: view()`), only where supported.
+- The markets marquee pauses on hover and is static under reduced motion.
+- All durations drop to `0ms` under `prefers-reduced-motion: reduce`; videos don't autoplay.
 
 ---
 
@@ -192,15 +192,18 @@ and the `1px` of the `.visually-hidden` utility). Mobile-first.
 
 ## 9. Components (reference)
 
-- **Section header** — `.section__index` (mono number in accent + uppercase label on a strong hairline)
-  followed by `.section__title` (serif `--text-3xl`). `--split` puts the lead beside the title on `lg`.
-- **Button** — pill. `primary` = text-colored fill that turns accent on hover; `secondary` = outline.
-  The arrow nudges right on hover.
-- **Service row** — index · name (serif, italic when featured) · for/deliverables · timeline and
-  serif price. Hairlines between rows, surface tint on hover.
-- **Case row** — large media frame (7/12) + text (5/12), alternating sides. Serif title,
-  italic accent outcome, outlined tags, "Read case study →".
-- **Outcome (case page)** — serif italic `--text-3xl` in accent, between two strong hairlines.
-- **Tag** — outlined pill, `--text-xs`, muted text.
-- **Media frame** — `--radius-lg` + `--shadow-lg`, used by covers, videos and gallery images.
-- **Wordmark** — "Marieli *Galleani*": serif, surname italic in accent (header and footer).
+- **Inverse band** — `.inverse`: dark background, glow (`::before`) and masked grid (`::after`).
+- **Section header** — `.section__header` (centered; `--left` variant) with `.badge`,
+  `.section__title` (`--text-3xl`, `--tracking-display`) and `.section__lead`.
+- **Badge** — pill, uppercase `--text-xs`, accent dot with a soft halo.
+- **Button** — pill. `primary` = accent fill + `--shadow-accent`; `secondary` = raised surface with
+  a strong border. The arrow nudges right on hover. `--small` for the header.
+- **Card** — `.card` (raised surface, border, `--radius-xl`); `.card--hover` lifts on hover.
+- **Icon tile** — `.icon-tile`: 44px square, accent-soft background, accent stroke icon
+  (`src/components/Icon.astro`).
+- **Services bento** — 3 columns on `lg`; "wide" services span 2.
+- **Pricing** — three cards; the featured plan uses `.inverse`.
+- **FAQ** — native `<details>/<summary>` with a plus icon; FAQPage JSON-LD.
+- **Case card** — cover in a gradient frame, eyebrow, title (link overlay), accent outcome, tags.
+- **Media frame** — `.frame`: `--radius-lg` + `--shadow-lg` for covers, videos and galleries.
+- **Wordmark** — emerald rounded "G" mark + agency name.

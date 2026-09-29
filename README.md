@@ -1,6 +1,9 @@
 # marieligalleani.com.br
 
-Portfólio de captação de clientes da **Marieli Galleani — Product Designer**.
+Site da **Galleani** (nome provisório — confirme em `src/config/site.ts`), agência fundada por
+Marieli Galleani que ajuda **empresas estrangeiras a entrar no Brasil e na América Latina**:
+estratégia de entrada, localização, infraestrutura comercial (CRM, funis, WhatsApp), performance,
+design, conteúdo e audiovisual.
 Site estático em **Astro + TypeScript**, CSS próprio baseado em design tokens ([DESIGN.md](DESIGN.md)),
 cases em **MDX** via Content Collections.
 
@@ -32,15 +35,17 @@ no header, `hreflang` em todas as páginas e sitemap com as versões alternativa
     ├── assets/cases/          # Capa placeholder do case scientific-software
     ├── components/            # Seções da home e peças reutilizáveis
     │   ├── Header / Footer / BookButton
-    │   ├── Hero / Services / SelectedWork / CaseCard
-    │   └── HowIWork / About / Testimonials / FinalCTA
-    ├── config/site.ts         # Nome, link do Cal.com, e-mail, redes sociais  ← edite aqui
+    │   ├── Hero / Markets / Stats / Challenges / Services / Process
+    │   ├── SelectedWork / CaseCard / About / Pricing / Testimonials / Faq / FinalCTA
+    │   └── Icon (ícones SVG inline)
+    ├── config/site.ts         # Nome da agência, Cal.com, e-mail, WhatsApp, redes  ← edite aqui
     ├── content/cases/
     │   ├── en/*.mdx           # Cases em inglês (o nome do arquivo vira a URL)
     │   ├── pt/*.mdx           # Mesmos arquivos traduzidos para português
     │   └── es/*.mdx           # … e para espanhol
     ├── content.config.ts      # Schema do frontmatter dos cases
-    ├── data/                  # Conteúdo por idioma: services.ts, process.ts, testimonials.ts
+    ├── data/agency.ts         # TODO o conteúdo da home nos 3 idiomas  ← edite aqui
+    ├── data/testimonials.ts   # Depoimentos por idioma
     ├── i18n/ui.ts             # Textos de interface em EN/PT/ES + helpers de rota
     ├── lib/cases.ts           # Busca cases por idioma (com fallback para EN)
     ├── layouts/BaseLayout.astro  # <head>, SEO, OG, hreflang, placeholder de analytics
@@ -61,12 +66,11 @@ no header, `hreflang` em todas as páginas e sitemap com as versões alternativa
 
 | Quero mudar… | Arquivo |
 |---|---|
-| Link do Cal.com, e-mail, LinkedIn | `src/config/site.ts` |
-| Textos do hero, About, títulos das seções, CTAs (nos 3 idiomas) | `src/i18n/ui.ts` |
-| Serviços, prazos e preços ("from $X") | `src/data/services.ts` (um bloco por idioma) |
-| Etapas do "How I work" | `src/data/process.ts` |
+| Nome da agência, Cal.com, e-mail, WhatsApp, LinkedIn | `src/config/site.ts` |
+| Hero, mercados, números, desafios, serviços, processo, sobre, planos e preços, FAQ, CTA, rodapé (nos 3 idiomas) | `src/data/agency.ts` |
+| Menu, botões e textos de interface | `src/i18n/ui.ts` |
 | Depoimentos | `src/data/testimonials.ts` |
-| Estrutura do About | `src/components/About.astro` |
+| Ordem das seções da home | `src/views/HomePage.astro` |
 | Cores, fontes, espaçamentos | `DESIGN.md` + `src/styles/tokens.css` |
 | Analytics | `src/layouts/BaseLayout.astro` (bloco comentado no `<head>`) |
 
@@ -199,8 +203,9 @@ A propagação costuma levar de minutos a algumas horas. Depois, emita o certifi
 
 ## Antes de publicar (checklist)
 
-- [ ] `src/config/site.ts`: link real do Cal.com, e-mail e LinkedIn
-- [ ] `src/data/services.ts`: preços reais no lugar de `$X,XXX` / `US$ X.XXX` (nos 3 idiomas)
+- [ ] `src/config/site.ts`: nome final da agência, link real do Cal.com, e-mail, WhatsApp e LinkedIn
+- [ ] `src/data/agency.ts`: preços reais dos planos no lugar de `$X,XXX` (nos 3 idiomas)
+- [ ] `src/data/agency.ts`: confirmar mercados atendidos, prazos e promessas (ex.: atendimento em espanhol)
 - [ ] Revisar as traduções PT/ES (feitas a partir do texto em inglês)
 - [ ] Cases: trocar textos `[Placeholder]`, números e capas pelas reais
 - [ ] `src/data/testimonials.ts`: depoimentos reais (ou remover `<Testimonials />` da home)
@@ -220,5 +225,5 @@ A propagação costuma levar de minutos a algumas horas. Depois, emita o certifi
 - O TypeScript acusa erro se faltar alguma chave de texto em PT ou ES.
 
 **Adicionar outro idioma:** inclua-o em `languages` e `locales` em `src/i18n/ui.ts` (com um objeto
-de textos completo), em `services.ts`, `process.ts` e `testimonials.ts`, em `i18n.locales` e no
+de textos completo), em `agency.ts` e `testimonials.ts`, em `i18n.locales` e no
 `sitemap` do `astro.config.mjs`, e crie `src/content/cases/<idioma>/`.

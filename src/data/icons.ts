@@ -1,0 +1,18 @@
+export type IconName =
+  | 'compass'
+  | 'language'
+  | 'funnel'
+  | 'chart'
+  | 'palette'
+  | 'grid'
+  | 'camera'
+  | 'spark'
+  | 'building'
+  | 'card'
+  | 'chat'
+  | 'shield'
+  | 'clock'
+  | 'check'
+  | 'arrow'
+  | 'globe'
+  | 'plus';

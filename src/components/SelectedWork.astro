@@ -1,7 +1,7 @@
 ---
 import CaseCard from './CaseCard.astro';
-import BookButton from './BookButton.astro';
-import { useTranslations, type Lang } from '@/i18n/ui';
+import { agency } from '@/data/agency';
+import type { Lang } from '@/i18n/ui';
 import { getCases } from '@/lib/cases';
 
 interface Props {
@@ -9,35 +9,49 @@ interface Props {
 }
 
 const { lang = 'en' } = Astro.props;
-const t = useTranslations(lang);
-const cases = await getCases(lang);
+const w = agency[lang].work;
+// Real products with mockups first; the placeholder case is left out of the home page.
+const cases = (await getCases(lang)).filter((c) => c.data.video || c.data.gallery.length > 0);
 ---
 
-<section id="work" class="section section--surface" aria-labelledby="work-title">
+<section id="work" class="section" aria-labelledby="work-title">
   <div class="container">
-    <header class="section__header section__header--split">
-      <p class="section__index"><span>02</span> {t('work.eyebrow')}</p>
-      <h2 id="work-title" class="section__title">{t('work.title')}</h2>
-      <p class="section__lead">{t('work.lead')}</p>
+    <header class="section__header">
+      <p class="badge">{w.badge}</p>
+      <h2 id="work-title" class="section__title" set:html={w.title} />
+      <p class="section__lead">{w.lead}</p>
     </header>
-
-    <ul role="list" class="work-list">
+    <ul role="list" class="work-grid">
       {cases.map((entry, i) => (
-        <li>
-          <CaseCard entry={entry} lang={lang} index={i} eager={i === 0} />
+        <li class:list={{ 'work-grid__wide': i === 0 }}>
+          <CaseCard entry={entry} lang={lang} eager={i === 0} />
         </li>
       ))}
     </ul>
-
-    <div class="section__cta">
-      <BookButton lang={lang} />
-    </div>
   </div>
 </section>
 
 <style>
-  .work-list {
+  .work-grid {
     display: grid;
-    gap: var(--space-9);
+    gap: var(--space-4);
+  }
+
+  .work-grid > li {
+    display: flex;
+  }
+
+  .work-grid > li > :global(*) {
+    flex: 1;
+  }
+
+  @media (min-width: 48rem) {
+    .work-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .work-grid__wide {
+      grid-column: 1 / -1;
+    }
   }
 </style>

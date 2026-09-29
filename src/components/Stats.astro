@@ -1,0 +1,68 @@
+---
+import { agency } from '@/data/agency';
+import type { Lang } from '@/i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const s = agency[lang].stats;
+---
+
+<section class="section" aria-labelledby="stats-title">
+  <div class="container">
+    <header class="section__header">
+      <p class="badge">{s.badge}</p>
+      <h2 id="stats-title" class="section__title" set:html={s.title} />
+      <p class="section__lead">{s.lead}</p>
+    </header>
+    <ul role="list" class="stats">
+      {s.items.map((item) => (
+        <li class="card stat reveal">
+          <p class="stat__value">{item.value}</p>
+          <p class="stat__label">{item.label}</p>
+          <p class="stat__source">{item.source}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .stats {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .stat {
+    display: grid;
+    gap: var(--space-3);
+    align-content: start;
+    padding: var(--space-6);
+  }
+
+  .stat__value {
+    font-size: var(--text-4xl);
+    font-weight: var(--weight-semibold);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+    color: var(--color-accent);
+  }
+
+  .stat__label {
+    font-size: var(--text-lg);
+  }
+
+  .stat__source {
+    margin-top: auto;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 48rem) {
+    .stats {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

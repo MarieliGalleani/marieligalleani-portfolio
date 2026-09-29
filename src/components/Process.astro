@@ -1,0 +1,97 @@
+---
+import { agency } from '@/data/agency';
+import type { Lang } from '@/i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const p = agency[lang].process;
+---
+
+<section id="process" class="section section--surface" aria-labelledby="process-title">
+  <div class="container">
+    <header class="section__header">
+      <p class="badge">{p.badge}</p>
+      <h2 id="process-title" class="section__title" set:html={p.title} />
+      <p class="section__lead">{p.lead}</p>
+    </header>
+    <ol role="list" class="steps">
+      {p.steps.map((step, i) => (
+        <li class="card step reveal">
+          <div class="step__top">
+            <span class="step__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <span class="step__when">{step.when}</span>
+          </div>
+          <h3 class="step__name">{step.name}</h3>
+          <p class="step__desc">{step.description}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .steps {
+    display: grid;
+    gap: var(--space-4);
+    counter-reset: none;
+  }
+
+  .step {
+    position: relative;
+    display: grid;
+    gap: var(--space-3);
+    align-content: start;
+    padding: var(--space-6);
+  }
+
+  .step__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .step__num {
+    display: grid;
+    place-items: center;
+    width: var(--size-touch);
+    height: var(--size-touch);
+    border-radius: var(--radius-pill);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    font-weight: var(--weight-bold);
+  }
+
+  .step__when {
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+  }
+
+  .step__name {
+    margin-top: var(--space-2);
+    font-size: var(--text-xl);
+  }
+
+  .step__desc {
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 48rem) {
+    .steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .steps {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>
