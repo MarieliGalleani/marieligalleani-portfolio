@@ -2,6 +2,7 @@
 import BookButton from './BookButton.astro';
 import Icon from './Icon.astro';
 import Markets from './Markets.astro';
+import WorldMap from './WorldMap.astro';
 import { agency } from '@/data/agency';
 import type { Lang } from '@/i18n/ui';
 
@@ -28,35 +29,37 @@ const h = agency[lang].hero;
       ))}
     </ul>
 
-    <figure class="panel" aria-label={`${h.panel.title} — ${h.panel.note}`}>
-      <div class="panel__bar" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div class="panel__body">
-        <div class="panel__col">
-          <p class="panel__title">{h.panel.title}</p>
-          <p class="panel__subtitle">{h.panel.subtitle}</p>
-          <ul role="list" class="panel__markets">
-            {h.panel.markets.map((m) => (
-              <li class={`panel__market panel__market--${m.state}`}>
-                <span class="panel__flag"><Icon name="globe" /></span>
-                <span class="panel__market-name">{m.name}</span>
-                <span class="panel__status">{m.status}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div class="panel__col">
-          <p class="panel__title">{h.panel.checklistTitle}</p>
-          <ul role="list" class="panel__checklist">
-            {h.panel.checklist.map((c) => (
-              <li class:list={['panel__task', { 'panel__task--done': c.done }]}>
-                <span class="panel__check"><Icon name={c.done ? 'check' : 'clock'} /></span>
-                {c.label}
-              </li>
-            ))}
-          </ul>
-        </div>
+    <figure class="stage">
+      <div class="stage__map">
+        <WorldMap lang={lang} />
       </div>
-      <figcaption class="panel__note">{h.panel.note}</figcaption>
+
+      <div class="panel panel--plan">
+        <p class="panel__title">{h.panel.title}</p>
+        <p class="panel__subtitle">{h.panel.subtitle}</p>
+        <ul role="list" class="panel__markets">
+          {h.panel.markets.map((m) => (
+            <li class={`panel__market panel__market--${m.state}`}>
+              <span class="panel__flag"><Icon name="globe" /></span>
+              <span class="panel__market-name">{m.name}</span>
+              <span class="panel__status">{m.status}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="panel panel--tasks">
+        <p class="panel__title">{h.panel.checklistTitle}</p>
+        <ul role="list" class="panel__checklist">
+          {h.panel.checklist.map((c) => (
+            <li class:list={['panel__task', { 'panel__task--done': c.done }]}>
+              <span class="panel__check"><Icon name={c.done ? 'check' : 'clock'} /></span>
+              {c.label}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <figcaption class="stage__note">{h.panel.note}</figcaption>
     </figure>
   </div>
   <Markets lang={lang} />
@@ -117,42 +120,85 @@ const h = agency[lang].hero;
     color: var(--color-accent);
   }
 
-  /* Illustrative product panel */
-  .panel {
-    width: 100%;
-    max-width: var(--container-narrow);
-    margin-top: var(--space-7);
-    border: var(--border-width) solid var(--color-border);
-    border-radius: var(--radius-xl);
-    background: var(--color-surface);
-    box-shadow: var(--shadow-lg), 0 0 0 var(--space-2) var(--color-accent-soft);
-    text-align: left;
-  }
-
-  .panel__bar {
-    display: flex;
-    gap: var(--space-2);
-    padding: var(--space-3) var(--space-4);
-    border-bottom: var(--border-width) solid var(--color-border);
-  }
-
-  .panel__bar span {
-    width: var(--space-3);
-    height: var(--space-3);
-    border-radius: var(--radius-pill);
-    background: var(--color-border);
-  }
-
-  .panel__body {
+  /* Map stage with floating launch-plan cards (illustrative) */
+  .stage {
+    position: relative;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
-    padding: var(--space-5);
+    width: 100%;
+    margin-top: var(--space-7);
   }
 
-  .panel__col {
+  .stage__map {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    overflow: hidden;
+  }
+
+  /* Small screens: zoom into the Americas and Europe, where the routes are. */
+  @media (max-width: 47.99rem) {
+    .stage__map :global(.world) {
+      width: 170%;
+      margin-left: -12%;
+    }
+  }
+
+  .stage__note {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  .panel {
     display: grid;
     align-content: start;
     gap: var(--space-3);
+    padding: var(--space-4);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-translucent);
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    box-shadow: var(--shadow-lg);
+    text-align: left;
+  }
+
+  @media (min-width: 48rem) {
+    .stage {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .stage__map,
+    .stage__note {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* Large screens: cards float over the empty oceans of the map. */
+  @media (min-width: 64rem) {
+    .stage {
+      display: block;
+    }
+
+    .panel {
+      position: absolute;
+      width: 22%;
+    }
+
+    .panel--plan {
+      left: 0;
+      bottom: var(--space-8);
+    }
+
+    .panel--tasks {
+      right: 0;
+      bottom: var(--space-8);
+    }
+
+    .stage__note {
+      margin-top: var(--space-3);
+    }
   }
 
   .panel__title {
@@ -160,7 +206,7 @@ const h = agency[lang].hero;
   }
 
   .panel__subtitle {
-    margin-top: calc(var(--space-3) * -1);
+    margin-top: calc(var(--space-2) * -1);
     font-size: var(--text-sm);
     color: var(--color-text-muted);
   }
@@ -245,24 +291,12 @@ const h = agency[lang].hero;
     height: var(--space-3);
   }
 
-  .panel__note {
-    padding: 0 var(--space-5) var(--space-4);
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-  }
-
-  @media (min-width: 48rem) {
-    .panel__body {
-      grid-template-columns: 1fr 1.2fr;
-    }
-  }
-
   @media (prefers-reduced-motion: no-preference) {
     .hero__inner > * {
       animation: rise var(--duration-slow) var(--ease-out) both;
     }
 
-    .panel {
+    .stage {
       animation-delay: var(--duration-base);
     }
 

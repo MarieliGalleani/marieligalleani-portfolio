@@ -50,9 +50,11 @@
   --inverse-accent: #3ddc97;
   --inverse-on-accent: #06120c;
   --inverse-accent-soft: rgb(61 220 151 / 0.12);
+  --inverse-bg-translucent: rgb(15 20 28 / 0.72);
   --glow-1: rgb(61 220 151 / 0.28);
   --glow-2: rgb(56 128 255 / 0.22);
   --grid-line: rgb(255 255 255 / 0.05);
+  --map-dot: rgb(255 255 255 / 0.2);
 
   /* Typography */
   --font-sans: "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
@@ -135,6 +137,10 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --scale-hover: 1.02;
   --marquee-duration: 40s;
+  --route-duration: 3.6s; /* one light pulse travelling along a map route */
+  --route-stagger: 0.45s; /* delay between consecutive routes */
+  --route-dash: 0.2; /* pulse length as a fraction of the route (pathLength = 1) */
+  --pulse-duration: 2.4s; /* city pin ping */
 }
 
 @media (prefers-color-scheme: dark) {

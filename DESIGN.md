@@ -80,7 +80,9 @@ The `.inverse` class remaps the `--color-*` tokens to these, so any component re
 | `--inverse-accent-soft` | `rgb(61 220 151 / 0.12)` |
 | `--glow-1` | `rgb(61 220 151 / 0.28)` — emerald glow, top left |
 | `--glow-2` | `rgb(56 128 255 / 0.22)` — blue glow, top right |
+| `--inverse-bg-translucent` | `rgb(15 20 28 / 0.72)` — frosted cards over the map |
 | `--grid-line` | `rgb(255 255 255 / 0.05)` — background grid |
+| `--map-dot` | `rgb(255 255 255 / 0.2)` — land dots of the world map |
 
 Check any new pair with `node scripts/contrast.mjs <fg> <bg>` (AA: 4.5:1 text, 3:1 large text/UI).
 
@@ -168,9 +170,15 @@ Dark mode deepens the three neutral shadows (`rgb(0 0 0 / 0.5–0.8)`).
 | `--ease-out` | `cubic-bezier(0.16, 1, 0.3, 1)` |
 | `--scale-hover` | `1.02` (cover zoom on hover) |
 | `--marquee-duration` | `40s` (markets strip) |
+| `--route-duration` | `3.6s` (one light pulse along a map route) |
+| `--route-stagger` | `0.45s` (delay between routes) |
+| `--route-dash` | `0.2` (pulse length, fraction of the route) |
+| `--pulse-duration` | `2.4s` (city pin ping) |
 
 - `.reveal`: CSS scroll-driven rise-in (`animation-timeline: view()`), only where supported.
 - The markets marquee pauses on hover and is static under reduced motion.
+- World map: light pulses travel from client HQs to São Paulo and out to LatAm; pins ping.
+  Under reduced motion the routes are shown as static lines.
 - All durations drop to `0ms` under `prefers-reduced-motion: reduce`; videos don't autoplay.
 
 ---
@@ -193,6 +201,10 @@ and the `1px` of the `.visually-hidden` utility). Mobile-first.
 ## 9. Components (reference)
 
 - **Inverse band** — `.inverse`: dark background, glow (`::before`) and masked grid (`::after`).
+- **World map (hero)** — `WorldMap.astro`: dotted land (`public/media/world-dots.svg` used as a
+  CSS mask, so dots take `--map-dot` and glow `--color-accent` around Latin America), SVG routes
+  and pins, city labels. Regenerate with `node scripts/generate-world-map.mjs`. On `lg` the
+  launch-plan cards float over the oceans; on small screens the map zooms into the Americas.
 - **Section header** — `.section__header` (centered; `--left` variant) with `.badge`,
   `.section__title` (`--text-3xl`, `--tracking-display`) and `.section__lead`.
 - **Badge** — pill, uppercase `--text-xs`, accent dot with a soft halo.

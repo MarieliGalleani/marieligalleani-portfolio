@@ -50,6 +50,11 @@ export interface AgencyContent {
     primary: string;
     secondary: string;
     trust: string[];
+    map: {
+      label: string;
+      legend: { origin: string; hub: string; market: string };
+      cities: Record<string, string>;
+    };
     panel: {
       title: string;
       subtitle: string;
@@ -95,6 +100,11 @@ export const agency: Record<Lang, AgencyContent> = {
       primary: 'Book a strategy call',
       secondary: 'See how it works',
       trust: ['English-speaking team', 'US & EU hours overlap', '3-month launch cycles', 'LGPD-ready setup'],
+      map: {
+        label: 'A world map with routes from North America, Europe and Israel to our hub in São Paulo, and from São Paulo out to Mexico, Colombia, Ecuador, Peru, Chile, Argentina and Uruguay.',
+        legend: { origin: 'Your HQ', hub: 'Our hub', market: 'Expansion' },
+        cities: { sf: 'San Francisco', ny: 'New York', london: 'London', berlin: 'Berlin', saopaulo: 'São Paulo', mexico: 'Mexico City', bogota: 'Bogotá', lima: 'Lima', santiago: 'Santiago', buenosaires: 'Buenos Aires' },
+      },
       panel: {
         title: 'Launch plan',
         subtitle: 'Week 6 · Brazil',
@@ -306,6 +316,11 @@ export const agency: Record<Lang, AgencyContent> = {
       primary: 'Agendar uma call estratégica',
       secondary: 'Ver como funciona',
       trust: ['Time que fala inglês', 'Horário alinhado com EUA e Europa', 'Ciclos de lançamento de 3 meses', 'Estrutura pronta para a LGPD'],
+      map: {
+        label: 'Mapa-múndi com rotas da América do Norte, Europa e Israel até a nossa base em São Paulo, e de São Paulo para México, Colômbia, Equador, Peru, Chile, Argentina e Uruguai.',
+        legend: { origin: 'Sua sede', hub: 'Nossa base', market: 'Expansão' },
+        cities: { sf: 'São Francisco', ny: 'Nova York', london: 'Londres', berlin: 'Berlim', saopaulo: 'São Paulo', mexico: 'Cidade do México', bogota: 'Bogotá', lima: 'Lima', santiago: 'Santiago', buenosaires: 'Buenos Aires' },
+      },
       panel: {
         title: 'Plano de lançamento',
         subtitle: 'Semana 6 · Brasil',
@@ -451,6 +466,11 @@ export const agency: Record<Lang, AgencyContent> = {
       primary: 'Agendar una llamada estratégica',
       secondary: 'Ver cómo funciona',
       trust: ['Equipo que habla inglés', 'Horario alineado con EE. UU. y Europa', 'Ciclos de lanzamiento de 3 meses', 'Estructura lista para la LGPD'],
+      map: {
+        label: 'Mapamundi con rutas desde Norteamérica, Europa e Israel hasta nuestra base en São Paulo, y desde São Paulo hacia México, Colombia, Ecuador, Perú, Chile, Argentina y Uruguay.',
+        legend: { origin: 'Tu sede', hub: 'Nuestra base', market: 'Expansión' },
+        cities: { sf: 'San Francisco', ny: 'Nueva York', london: 'Londres', berlin: 'Berlín', saopaulo: 'São Paulo', mexico: 'Ciudad de México', bogota: 'Bogotá', lima: 'Lima', santiago: 'Santiago', buenosaires: 'Buenos Aires' },
+      },
       panel: {
         title: 'Plan de lanzamiento',
         subtitle: 'Semana 6 · Brasil',

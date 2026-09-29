@@ -28,6 +28,7 @@ no header, `hreflang` em todas as páginas e sitemap com as versões alternativa
 │   └── media/                 # Vídeos dos cases (MP4 + WebM + poster)
 ├── scripts/
 │   ├── mockups/               # Estúdio de mockups: capas, telas e vídeos em moldura
+│   ├── generate-world-map.mjs # Gera o mapa-múndi pontilhado do hero e as coordenadas das cidades
 │   ├── generate-covers.mjs    # Gera capas placeholder e a OG padrão (npm run covers)
 │   └── contrast.mjs           # Checa contraste WCAG entre duas cores
 └── src/
@@ -71,6 +72,7 @@ no header, `hreflang` em todas as páginas e sitemap com as versões alternativa
 | Menu, botões e textos de interface | `src/i18n/ui.ts` |
 | Depoimentos | `src/data/testimonials.ts` |
 | Ordem das seções da home | `src/views/HomePage.astro` |
+| Cidades e rotas do mapa-múndi do hero | `scripts/generate-world-map.mjs` (depois rode `node scripts/generate-world-map.mjs`); nomes das cidades em `src/data/agency.ts` → `hero.map` |
 | Cores, fontes, espaçamentos | `DESIGN.md` + `src/styles/tokens.css` |
 | Analytics | `src/layouts/BaseLayout.astro` (bloco comentado no `<head>`) |
 
