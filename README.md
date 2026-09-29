@@ -154,30 +154,35 @@ A saída fica em **`dist/`** — HTML, CSS e imagens estáticas, sem dependênci
 
 ---
 
-## Publicar o `dist/` como site STATIC (operaia-host)
+## Publicar no operaia-host (site STATIC)
 
-1. `npm run build`
-2. No operaia-host, crie/abra o site do tipo **STATIC** para `marieligalleani.com.br`.
-3. Envie o **conteúdo** da pasta `dist/` (não a pasta em si) para a raiz do site —
-   `index.html` deve ficar na raiz. Ex. via rsync para a VM:
-   ```bash
-   rsync -avz --delete dist/ usuario@IP_DA_VM:/caminho/do/site/
-   ```
-4. Configure a página de erro 404 para `/404.html`, se o host permitir.
-5. Ative HTTPS (Let's Encrypt) para `marieligalleani.com.br` e `www.marieligalleani.com.br`.
+O operaia-host serve sites STATIC com nginx, a partir de um `.zip` enviado no painel ou de uma
+branch do GitHub (deploy automático por webhook). Como ele **não roda build**, o site é publicado
+já compilado.
 
-Se a VM servir com **nginx**, um bloco mínimo:
+### Opção A — deploy automático (recomendado)
 
-```nginx
-server {
-  server_name marieligalleani.com.br www.marieligalleani.com.br;
-  root /var/www/marieligalleani;
-  index index.html;
-  error_page 404 /404.html;
-  location / { try_files $uri $uri/ =404; }
-  location /_astro/ { expires 1y; add_header Cache-Control "public, immutable"; }
-}
+1. Faça merge na `main`. O workflow **Deploy** (`.github/workflows/deploy.yml`) roda
+   `npm run build` e publica o conteúdo de `dist/` na branch **`site-dist`**.
+2. No painel do operaia-host, crie o site **STATIC** para `marieligalleani.com.br` e, em
+   *GitHub*, ligue o repositório `MarieliGalleani/marieligalleani-portfolio` na branch `site-dist`.
+3. Cole a URL do webhook que o painel mostra em *GitHub → Settings → Webhooks* (evento *push*).
+
+Pronto: cada push na `main` gera um build novo, atualiza a `site-dist` e o painel publica sozinho.
+
+### Opção B — upload manual
+
+```bash
+npm run build
+npm run package    # gera marieligalleani-site.zip com os arquivos na raiz
 ```
+
+No painel, crie o site **STATIC** e envie o `marieligalleani-site.zip`.
+
+### CI
+
+O workflow **CI** (`.github/workflows/ci.yml`) roda `astro check` + build em todo PR e em todo
+push na `main`, então nada quebrado chega ao ar.
 
 ### DNS no Registro.br
 

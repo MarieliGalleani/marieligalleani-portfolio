@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "covers": "node scripts/generate-covers.mjs",
-    "astro": "astro"
+    "astro": "astro",
+    "package": "node scripts/package-dist.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.0.2",
