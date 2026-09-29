@@ -10,30 +10,24 @@ const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="testimonials" class="section section--surface" aria-labelledby="testimonials-title">
+<section id="testimonials" class="section" aria-labelledby="testimonials-title">
   <div class="container">
     <header class="section__header">
-      <p class="eyebrow">{t('testimonials.eyebrow')}</p>
+      <p class="section__index"><span>05</span> {t('testimonials.eyebrow')}</p>
       <h2 id="testimonials-title" class="section__title">{t('testimonials.title')}</h2>
     </header>
 
-    <ul role="list" class="testimonials">
+    <ul role="list" class="quotes">
       {testimonials[lang].map((item) => (
-        <li class="card testimonial">
+        <li class="quote reveal">
           <figure>
-            <blockquote class="testimonial__quote">
+            <span class="quote__mark" aria-hidden="true">“</span>
+            <blockquote class="quote__text">
               <p>{item.quote}</p>
             </blockquote>
-            <figcaption class="testimonial__author">
-              <span class="testimonial__avatar" aria-hidden="true">
-                {item.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
-              </span>
-              <span>
-                <strong>{item.name}</strong>
-                <span class="testimonial__role">
-                  {item.role}, {item.company}
-                </span>
-              </span>
+            <figcaption class="quote__author">
+              <strong>{item.name}</strong>
+              <span>{item.role}, {item.company}</span>
             </figcaption>
           </figure>
         </li>
@@ -43,55 +37,64 @@ const t = useTranslations(lang);
 </section>
 
 <style>
-  .testimonials {
+  .quotes {
     display: grid;
-    gap: var(--space-5);
+    border-top: var(--border-width) solid var(--color-border-strong);
   }
 
-  .testimonial {
-    padding: var(--space-6);
+  .quote {
+    padding-block: var(--space-6) var(--space-7);
+    border-bottom: var(--border-width) solid var(--color-border);
   }
 
-  .testimonial figure {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
+  .quote figure {
+    display: grid;
+    gap: var(--space-4);
     height: 100%;
   }
 
-  .testimonial__quote {
-    font-size: var(--text-lg);
-    line-height: var(--leading-normal);
+  .quote__mark {
+    font-family: var(--font-serif);
+    font-size: var(--text-4xl);
+    line-height: var(--leading-display);
+    color: var(--color-accent);
+    height: var(--space-8);
   }
 
-  .testimonial__author {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
+  .quote__text {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    line-height: var(--leading-snug);
+  }
+
+  .quote__author {
+    display: grid;
+    gap: var(--space-1);
     margin-top: auto;
     font-size: var(--text-sm);
   }
 
-  .testimonial__avatar {
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-    width: var(--size-touch);
-    height: var(--size-touch);
-    background: var(--color-accent-soft);
-    color: var(--color-accent);
-    border-radius: var(--radius-pill);
-    font-weight: var(--weight-bold);
+  .quote__author strong {
+    font-weight: var(--weight-medium);
   }
 
-  .testimonial__role {
-    display: block;
+  .quote__author span {
     color: var(--color-text-muted);
   }
 
   @media (min-width: 64rem) {
-    .testimonials {
+    .quotes {
       grid-template-columns: repeat(3, 1fr);
+    }
+
+    .quote {
+      padding-right: var(--space-6);
+      border-bottom: 0;
+    }
+
+    .quote + .quote {
+      padding-left: var(--space-6);
+      border-left: var(--border-width) solid var(--color-border);
     }
   }
 </style>

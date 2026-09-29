@@ -1,5 +1,4 @@
 ---
-import BookButton from './BookButton.astro';
 import { processSteps } from '@/data/process';
 import { useTranslations, type Lang } from '@/i18n/ui';
 
@@ -11,40 +10,37 @@ const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="process" class="section section--surface" aria-labelledby="process-title">
+<section id="process" class="section" aria-labelledby="process-title">
   <div class="container">
     <header class="section__header">
-      <p class="eyebrow">{t('process.eyebrow')}</p>
+      <p class="section__index"><span>03</span> {t('process.eyebrow')}</p>
       <h2 id="process-title" class="section__title">{t('process.title')}</h2>
     </header>
 
     <ol role="list" class="steps">
       {processSteps[lang].map((step, i) => (
-        <li class="step">
+        <li class="step reveal">
           <span class="step__number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
           <h3 class="step__name">{step.name}</h3>
           <p class="step__desc">{step.description}</p>
         </li>
       ))}
     </ol>
-
-    <div class="section__cta">
-      <BookButton lang={lang} />
-    </div>
   </div>
 </section>
 
 <style>
   .steps {
     display: grid;
-    gap: var(--space-6);
+    border-top: var(--border-width) solid var(--color-border-strong);
   }
 
   .step {
     display: grid;
-    gap: var(--space-2);
-    padding-top: var(--space-4);
-    border-top: var(--border-width) solid var(--color-border-strong);
+    gap: var(--space-3);
+    align-content: start;
+    padding: var(--space-6) 0;
+    border-bottom: var(--border-width) solid var(--color-border);
   }
 
   .step__number {
@@ -54,22 +50,32 @@ const t = useTranslations(lang);
   }
 
   .step__name {
-    font-size: var(--text-xl);
+    font-size: var(--text-3xl);
+    line-height: var(--leading-display);
+  }
+
+  .step:nth-child(even) .step__name {
+    font-style: italic;
   }
 
   .step__desc {
+    max-width: var(--measure-short);
     color: var(--color-text-muted);
-  }
-
-  @media (min-width: 48rem) {
-    .steps {
-      grid-template-columns: repeat(2, 1fr);
-    }
   }
 
   @media (min-width: 64rem) {
     .steps {
       grid-template-columns: repeat(4, 1fr);
+    }
+
+    .step {
+      padding: var(--space-6) var(--space-6) var(--space-7) 0;
+      border-bottom: 0;
+    }
+
+    .step + .step {
+      padding-left: var(--space-6);
+      border-left: var(--border-width) solid var(--color-border);
     }
   }
 </style>

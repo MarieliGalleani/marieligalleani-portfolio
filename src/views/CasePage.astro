@@ -145,8 +145,9 @@ const showNext = next.id !== entry.id;
   }
 
   .case__title {
-    font-size: var(--text-3xl);
-    line-height: var(--leading-tight);
+    font-size: var(--text-4xl);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
   }
 
   .case__summary {
@@ -159,6 +160,7 @@ const showNext = next.id !== entry.id;
     aspect-ratio: var(--ratio-cover);
     object-fit: cover;
     border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
   }
 
   .case__meta {
@@ -185,17 +187,17 @@ const showNext = next.id !== entry.id;
 
   .case__outcome {
     display: grid;
-    gap: var(--space-2);
-    margin-top: var(--space-6);
-    padding: var(--space-5) var(--space-6);
-    background: var(--color-accent-soft);
-    border-radius: var(--radius-lg);
+    gap: var(--space-3);
+    margin-top: var(--space-7);
+    padding-block: var(--space-6);
+    border-block: var(--border-width) solid var(--color-border-strong);
   }
 
   .case__outcome-value {
-    font-size: var(--text-2xl);
-    font-weight: var(--weight-bold);
-    line-height: var(--leading-snug);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
     letter-spacing: var(--tracking-tight);
     color: var(--color-accent);
   }
@@ -211,8 +213,10 @@ const showNext = next.id !== entry.id;
   }
 
   .gallery__title {
-    margin-bottom: var(--space-5);
-    font-size: var(--text-2xl);
+    margin-bottom: var(--space-6);
+    padding-top: var(--space-4);
+    border-top: var(--border-width) solid var(--color-border-strong);
+    font-size: var(--text-3xl);
   }
 
   .gallery__grid {
@@ -226,6 +230,7 @@ const showNext = next.id !== entry.id;
     aspect-ratio: var(--ratio-cover);
     object-fit: cover;
     border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
   }
 
   @media (min-width: 48rem) {
@@ -243,10 +248,26 @@ const showNext = next.id !== entry.id;
     padding-block: var(--space-7) var(--space-8);
   }
 
+  .prose {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+  }
+
+  .prose :global(strong) {
+    color: var(--color-text);
+  }
+
   .prose :global(h2) {
-    margin-top: var(--space-7);
-    margin-bottom: var(--space-3);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: var(--border-width) solid var(--color-border);
     font-size: var(--text-2xl);
+    color: var(--color-text);
+  }
+
+  .prose :global(li::marker) {
+    color: var(--color-accent);
   }
 
   .prose :global(h2:first-child) {

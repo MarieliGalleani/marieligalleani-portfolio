@@ -73,7 +73,7 @@ const cases = (await getCases(lang)).filter((c) => c.data.video || c.data.galler
 
   .reel__item img {
     display: block;
-    width: clamp(16rem, 60vw, 30rem);
+    width: var(--reel-item);
     height: auto;
     aspect-ratio: var(--ratio-cover);
     object-fit: cover;

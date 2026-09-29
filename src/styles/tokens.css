@@ -1,44 +1,73 @@
 /*
  * Design tokens — mirror of DESIGN.md. Edit both together.
  * Components must only use these custom properties.
+ * Direction: premium editorial. "Paper" in light mode, "Ink" in dark mode.
  */
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/instrument-serif-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/instrument-serif-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Tight";
+  src: url("/fonts/inter-tight-variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   color-scheme: light dark;
 
-  /* Color — light */
-  --color-bg: #faf8f5;
-  --color-surface: #f1eee9;
-  --color-surface-raised: #ffffff;
-  --color-text: #16151a;
-  --color-text-muted: #5b5862;
-  --color-border: #e2ded7;
-  --color-border-strong: #c9c4bb;
-  --color-accent: #4527d9;
-  --color-accent-hover: #3519b8;
-  --color-on-accent: #ffffff;
-  --color-accent-soft: #ece8ff;
-  --color-success: #0e7a4f;
-  --color-focus: #4527d9;
-  --color-bg-translucent: rgb(250 248 245 / 0.88); /* sticky header */
+  /* Color — Paper (light) */
+  --color-bg: #f3efe8;
+  --color-surface: #eae4d9;
+  --color-surface-raised: #fbf9f5;
+  --color-text: #151412;
+  --color-text-muted: #5f5a52;
+  --color-border: #dcd5c8;
+  --color-border-strong: #bfb6a6;
+  --color-accent: #7a5426;
+  --color-accent-hover: #5f3f18;
+  --color-on-accent: #fbf9f5;
+  --color-accent-soft: #eadfcb;
+  --color-success: #2f6b3f;
+  --color-focus: #7a5426;
+  --color-bg-translucent: rgb(243 239 232 / 0.82); /* sticky header */
+  --grain-opacity: 0.05;
 
   /* Typography */
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
-  --font-display: var(--font-sans);
+  --font-serif: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-display: var(--font-serif);
   --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
 
-  --text-xs: 0.8125rem;
-  --text-sm: 0.9375rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
   --text-base: 1.0625rem;
   --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
-  --text-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
-  --text-2xl: clamp(1.5rem, 1.25rem + 1vw, 2rem);
-  --text-3xl: clamp(1.875rem, 1.4rem + 2vw, 2.75rem);
-  --text-4xl: clamp(2.5rem, 1.6rem + 4vw, 4.5rem);
+  --text-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem);
+  --text-2xl: clamp(1.75rem, 1.4rem + 1.5vw, 2.625rem);
+  --text-3xl: clamp(2.5rem, 1.7rem + 3.4vw, 4.5rem);
+  --text-4xl: clamp(3rem, 1.8rem + 5.5vw, 6.5rem);
+  --text-display: clamp(3.5rem, 1.6rem + 8.5vw, 9.5rem);
 
-  --leading-tight: 1.05;
-  --leading-snug: 1.25;
+  --leading-display: 0.92;
+  --leading-tight: 1.02;
+  --leading-snug: 1.2;
   --leading-normal: 1.6;
 
   --weight-regular: 400;
@@ -46,12 +75,17 @@
   --weight-semibold: 600;
   --weight-bold: 700;
 
-  --tracking-tight: -0.03em;
+  --tracking-display: -0.025em;
+  --tracking-tight: -0.015em;
   --tracking-normal: 0;
-  --tracking-wide: 0.08em;
+  --tracking-wide: 0.14em;
 
-  --measure: 65ch;
-  --measure-headline: 14ch;
+  --measure: 62ch;
+  --measure-headline: 12ch;
+  --measure-short: 32ch;
+  --measure-title: 18ch;
+  --reel-item: clamp(18rem, 70vw, 34rem);
+  --scale-hover: 1.03;
 
   /* Aspect ratios */
   --ratio-cover: 16 / 10;
@@ -66,53 +100,57 @@
   --space-7: 3rem;
   --space-8: 4rem;
   --space-9: 6rem;
-  --space-section: clamp(4rem, 3rem + 5vw, 8rem);
-  --gutter: clamp(1.25rem, 0.8rem + 2vw, 2.5rem);
-  --container-max: 72rem;
-  --container-narrow: 44rem;
+  --space-10: 9rem;
+  --space-section: clamp(5rem, 3rem + 8vw, 11rem);
+  --gutter: clamp(1.25rem, 0.5rem + 3vw, 3.5rem);
+  --container-max: 84rem;
+  --container-narrow: 46rem;
   --size-touch: 2.75rem; /* 44px minimum touch target */
 
-  /* Radius */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1.25rem;
+  /* Radius — restrained: hairlines and pills, few rounded boxes */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.875rem;
   --radius-pill: 999px;
 
   /* Shadows & borders */
-  --shadow-sm: 0 1px 2px rgb(22 21 26 / 0.06);
-  --shadow-md: 0 4px 16px -4px rgb(22 21 26 / 0.1);
-  --shadow-lg: 0 16px 40px -12px rgb(22 21 26 / 0.18);
+  --shadow-sm: 0 1px 2px rgb(21 20 18 / 0.06);
+  --shadow-md: 0 12px 32px -12px rgb(21 20 18 / 0.18);
+  --shadow-lg: 0 40px 80px -30px rgb(21 20 18 / 0.35);
   --border-width: 1px;
-  --underline-offset: 0.2em;
-  --blur-md: 12px;
+  --underline-offset: 0.22em;
+  --blur-md: 14px;
   --focus-ring: 0 0 0 3px var(--color-bg), 0 0 0 5px var(--color-focus);
 
   /* Motion */
-  --duration-fast: 150ms;
-  --duration-base: 250ms;
-  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+  --duration-slow: 900ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #111014;
-    --color-surface: #18171c;
-    --color-surface-raised: #1b1a20;
-    --color-text: #f3f1ec;
-    --color-text-muted: #a7a3ae;
-    --color-border: #2a2830;
-    --color-border-strong: #3d3a45;
-    --color-accent: #a99bff;
-    --color-accent-hover: #c3b9ff;
-    --color-on-accent: #111014;
-    --color-accent-soft: #231f3d;
-    --color-success: #56d39b;
-    --color-focus: #c3b9ff;
-    --color-bg-translucent: rgb(17 16 20 / 0.88);
+    /* Color — Ink (dark) */
+    --color-bg: #0c0c0d;
+    --color-surface: #141416;
+    --color-surface-raised: #1a1a1d;
+    --color-text: #eeeae3;
+    --color-text-muted: #9c978e;
+    --color-border: #232326;
+    --color-border-strong: #34343a;
+    --color-accent: #d9b783;
+    --color-accent-hover: #e8cba0;
+    --color-on-accent: #141210;
+    --color-accent-soft: #221d16;
+    --color-success: #8fcf9f;
+    --color-focus: #e8cba0;
+    --color-bg-translucent: rgb(12 12 13 / 0.78);
+    --grain-opacity: 0.07;
 
-    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
-    --shadow-md: 0 4px 16px -4px rgb(0 0 0 / 0.5);
-    --shadow-lg: 0 16px 40px -12px rgb(0 0 0 / 0.6);
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.5);
+    --shadow-md: 0 12px 32px -12px rgb(0 0 0 / 0.6);
+    --shadow-lg: 0 40px 80px -30px rgb(0 0 0 / 0.8);
   }
 }
 
@@ -120,5 +158,6 @@
   :root {
     --duration-fast: 0ms;
     --duration-base: 0ms;
+    --duration-slow: 0ms;
   }
 }

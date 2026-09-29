@@ -12,34 +12,63 @@ const t = useTranslations(lang);
 ---
 
 <section class="hero" aria-labelledby="hero-title">
-  <div class="container hero__inner">
-    <p class="eyebrow">{t('hero.eyebrow')}</p>
-    <h1 id="hero-title" class="hero__title">{t('hero.title')}</h1>
-    <p class="hero__subtitle">{t('hero.subtitle')}</p>
-    <div class="btn-group">
-      <BookButton lang={lang} />
-      <a class="btn btn--secondary" href="#work">{t('cta.seeWork')}</a>
+  <div class="container">
+    <p class="hero__meta">
+      <span>{t('hero.eyebrow')}</span>
+      <span aria-hidden="true" class="hero__line"></span>
+      <span>{t('about.basedValue')}</span>
+    </p>
+    <h1 id="hero-title" class="hero__title" set:html={t('hero.title')} />
+    <div class="hero__bottom">
+      <p class="hero__subtitle">{t('hero.subtitle')}</p>
+      <div class="hero__actions">
+        <div class="btn-group">
+          <BookButton lang={lang} />
+          <a class="btn btn--secondary" href="#work">{t('cta.seeWork')}</a>
+        </div>
+        <p class="hero__proof">{t('hero.proof')}</p>
+      </div>
     </div>
-    <p class="hero__proof">{t('hero.proof')}</p>
   </div>
   <ShowReel lang={lang} />
 </section>
 
 <style>
   .hero {
-    padding-block: var(--space-9) var(--space-section);
+    padding-block: var(--space-8) var(--space-section);
   }
 
-  .hero__inner {
-    display: grid;
-    gap: var(--space-5);
-    justify-items: start;
+  .hero__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-7);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .hero__line {
+    flex: 1;
+    height: var(--border-width);
+    background: var(--color-border-strong);
   }
 
   .hero__title {
     max-width: var(--measure-headline);
-    font-size: var(--text-4xl);
-    line-height: var(--leading-tight);
+    font-size: var(--text-display);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+  }
+
+  .hero__bottom {
+    display: grid;
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: var(--border-width) solid var(--color-border);
   }
 
   .hero__subtitle {
@@ -48,8 +77,44 @@ const t = useTranslations(lang);
     color: var(--color-text-muted);
   }
 
+  .hero__actions {
+    display: grid;
+    gap: var(--space-4);
+    align-content: start;
+  }
+
   .hero__proof {
     font-size: var(--text-sm);
     color: var(--color-text-muted);
+  }
+
+  @media (min-width: 64rem) {
+    .hero__bottom {
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--space-9);
+    }
+
+    .hero__actions {
+      justify-items: end;
+      text-align: right;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__title,
+    .hero__bottom {
+      animation: rise var(--duration-slow) var(--ease-out) both;
+    }
+
+    .hero__bottom {
+      animation-delay: var(--duration-fast);
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(var(--space-5));
+      }
+    }
   }
 </style>

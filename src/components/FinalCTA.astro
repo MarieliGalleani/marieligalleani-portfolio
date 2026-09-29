@@ -12,15 +12,17 @@ const { lang = 'en', title } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section class="section final-cta" aria-labelledby="final-cta-title">
-  <div class="container">
-    <div class="final-cta__box">
-      <h2 id="final-cta-title" class="final-cta__title">{title ?? t('final.title')}</h2>
+<section class="final-cta" aria-labelledby="final-cta-title">
+  <div class="container final-cta__inner">
+    <p class="section__index"><span>→</span> {t('cta.book')}</p>
+    <h2 id="final-cta-title" class="final-cta__title reveal" set:html={title ?? t('final.title')} />
+    <div class="final-cta__row">
       <p class="final-cta__lead">{t('final.lead')}</p>
       <div class="final-cta__actions">
         <BookButton lang={lang} />
         <p class="final-cta__sub">
-          {t('cta.bookSub')} · <a href={`mailto:${site.email}`}>{site.email}</a>
+          {t('cta.bookSub')}<br />
+          <a href={`mailto:${site.email}`}>{site.email}</a>
         </p>
       </div>
     </div>
@@ -28,18 +30,28 @@ const t = useTranslations(lang);
 </section>
 
 <style>
-  .final-cta__box {
+  .final-cta {
+    padding-block: var(--space-section);
+    background: var(--color-surface);
+  }
+
+  .final-cta__inner {
     display: grid;
-    gap: var(--space-5);
-    justify-items: start;
-    padding: var(--space-7) var(--space-5);
-    background: var(--color-accent-soft);
-    border-radius: var(--radius-lg);
+    gap: var(--space-7);
   }
 
   .final-cta__title {
-    max-width: var(--container-narrow);
-    font-size: var(--text-3xl);
+    max-width: var(--measure-headline);
+    font-size: var(--text-4xl);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+  }
+
+  .final-cta__row {
+    display: grid;
+    gap: var(--space-6);
+    padding-top: var(--space-6);
+    border-top: var(--border-width) solid var(--color-border);
   }
 
   .final-cta__lead {
@@ -50,7 +62,7 @@ const t = useTranslations(lang);
 
   .final-cta__actions {
     display: grid;
-    gap: var(--space-3);
+    gap: var(--space-4);
     justify-items: start;
   }
 
@@ -59,9 +71,15 @@ const t = useTranslations(lang);
     color: var(--color-text-muted);
   }
 
-  @media (min-width: 48rem) {
-    .final-cta__box {
-      padding: var(--space-8);
+  @media (min-width: 64rem) {
+    .final-cta__row {
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--space-9);
+    }
+
+    .final-cta__actions {
+      justify-items: end;
+      text-align: right;
     }
   }
 </style>

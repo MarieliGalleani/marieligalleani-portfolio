@@ -31,6 +31,7 @@ const en = {
   'nav.about': 'About',
   'nav.skip': 'Skip to content',
   'nav.main': 'Main',
+  'nav.available': 'Available for new projects',
   'nav.language': 'Language',
   'a11y.newTab': '(opens in a new tab)',
   'a11y.tags': 'Tags',
@@ -46,7 +47,7 @@ const en = {
     'Product Designer for AI startups, growing SaaS and non-technical founders. AI product design, design system sprints and functional MVPs — from research to a working product.',
 
   'hero.eyebrow': 'Marieli Galleani — Product Designer',
-  'hero.title': 'Product Designer who ships.',
+  'hero.title': 'Product Designer who <em>ships.</em>',
   'hero.subtitle':
     'I design AI-powered products, scalable design systems and functional MVPs — from research to a working product.',
   'hero.proof': 'For AI startups, growing SaaS teams and non-technical founders.',
@@ -58,11 +59,13 @@ const en = {
   'services.deliverables': 'What you get',
   'services.timeline': 'Timeline',
   'services.from': 'from',
+  'services.popular': 'Most requested',
 
   'work.eyebrow': 'Selected work',
   'work.title': 'Products designed, systems scaled, MVPs shipped.',
   'work.lead': 'A few recent projects — each one with the problem, the decisions and the result.',
   'work.readCase': 'Read case study',
+  'case.watch': 'Walkthrough',
 
   'process.eyebrow': 'How I work',
   'process.title': 'From a fuzzy idea to a product people use.',
@@ -85,7 +88,7 @@ const en = {
   'testimonials.eyebrow': 'Testimonials',
   'testimonials.title': 'What clients say',
 
-  'final.title': 'Have a product to design — or to ship?',
+  'final.title': 'Have a product to design — or to <em>ship?</em>',
   'final.lead':
     'Tell me where you are and where you want to go. In 30 minutes you’ll leave with a clear next step, whether we work together or not.',
 
@@ -98,7 +101,7 @@ const en = {
   'case.outcome': 'Outcome',
   'case.next': 'Next case',
   'case.back': 'All work',
-  'case.ctaTitle': 'Want results like this for your product?',
+  'case.ctaTitle': 'Want results like this for <em>your product?</em>',
   'case.gallery': 'Screens',
   'case.repo': 'View the code on GitHub',
   'video.play': 'Play',
@@ -119,6 +122,7 @@ export const ui: Record<Lang, Record<UIKey, string>> = {
     'nav.about': 'Sobre',
     'nav.skip': 'Pular para o conteúdo',
     'nav.main': 'Principal',
+    'nav.available': 'Disponível para novos projetos',
     'nav.language': 'Idioma',
     'a11y.newTab': '(abre em nova aba)',
     'a11y.tags': 'Tags',
@@ -134,7 +138,7 @@ export const ui: Record<Lang, Record<UIKey, string>> = {
       'Product Designer para startups de IA, SaaS em crescimento e fundadores não técnicos. Design de produtos com IA, sprints de design system e MVPs funcionais — da pesquisa ao produto no ar.',
 
     'hero.eyebrow': 'Marieli Galleani — Product Designer',
-    'hero.title': 'Product Designer que entrega.',
+    'hero.title': 'Product Designer que <em>entrega.</em>',
     'hero.subtitle':
       'Desenho produtos com IA, design systems escaláveis e MVPs funcionais — da pesquisa ao produto funcionando.',
     'hero.proof': 'Para startups de IA, times de SaaS em crescimento e fundadores não técnicos.',
@@ -146,11 +150,13 @@ export const ui: Record<Lang, Record<UIKey, string>> = {
     'services.deliverables': 'O que você recebe',
     'services.timeline': 'Prazo',
     'services.from': 'a partir de',
+    'services.popular': 'Mais procurado',
 
     'work.eyebrow': 'Projetos selecionados',
     'work.title': 'Produtos desenhados, sistemas escalados, MVPs no ar.',
     'work.lead': 'Alguns projetos recentes — cada um com o problema, as decisões e o resultado.',
     'work.readCase': 'Ler o case',
+    'case.watch': 'Vídeo',
 
     'process.eyebrow': 'Como eu trabalho',
     'process.title': 'De uma ideia vaga a um produto que as pessoas usam.',
@@ -173,7 +179,7 @@ export const ui: Record<Lang, Record<UIKey, string>> = {
     'testimonials.eyebrow': 'Depoimentos',
     'testimonials.title': 'O que dizem os clientes',
 
-    'final.title': 'Tem um produto para desenhar — ou para lançar?',
+    'final.title': 'Tem um produto para desenhar — ou para <em>lançar?</em>',
     'final.lead':
       'Me conta onde você está e onde quer chegar. Em 30 minutos você sai com um próximo passo claro, trabalhando comigo ou não.',
 
@@ -186,7 +192,7 @@ export const ui: Record<Lang, Record<UIKey, string>> = {
     'case.outcome': 'Resultado',
     'case.next': 'Próximo case',
     'case.back': 'Todos os projetos',
-    'case.ctaTitle': 'Quer resultados assim no seu produto?',
+    'case.ctaTitle': 'Quer resultados assim no <em>seu produto?</em>',
     'case.gallery': 'Telas',
     'case.repo': 'Ver o código no GitHub',
     'video.play': 'Reproduzir',
@@ -202,6 +208,7 @@ export const ui: Record<Lang, Record<UIKey, string>> = {
     'nav.about': 'Sobre mí',
     'nav.skip': 'Saltar al contenido',
     'nav.main': 'Principal',
+    'nav.available': 'Disponible para nuevos proyectos',
     'nav.language': 'Idioma',
     'a11y.newTab': '(se abre en una nueva pestaña)',
     'a11y.tags': 'Etiquetas',
@@ -217,7 +224,7 @@ export const ui: Record<Lang, Record<UIKey, string>> = {
       'Product Designer para startups de IA, SaaS en crecimiento y fundadores no técnicos. Diseño de productos con IA, sprints de design system y MVPs funcionales — de la investigación al producto funcionando.',
 
     'hero.eyebrow': 'Marieli Galleani — Product Designer',
-    'hero.title': 'Product Designer que lanza productos.',
+    'hero.title': 'Product Designer que <em>lanza productos.</em>',
     'hero.subtitle':
       'Diseño productos con IA, design systems escalables y MVPs funcionales — de la investigación a un producto que funciona.',
     'hero.proof': 'Para startups de IA, equipos SaaS en crecimiento y fundadores no técnicos.',
@@ -229,11 +236,13 @@ export const ui: Record<Lang, Record<UIKey, string>> = {
     'services.deliverables': 'Qué recibes',
     'services.timeline': 'Plazo',
     'services.from': 'desde',
+    'services.popular': 'El más pedido',
 
     'work.eyebrow': 'Proyectos seleccionados',
     'work.title': 'Productos diseñados, sistemas escalados, MVPs lanzados.',
     'work.lead': 'Algunos proyectos recientes — cada uno con el problema, las decisiones y el resultado.',
     'work.readCase': 'Leer el caso',
+    'case.watch': 'Video',
 
     'process.eyebrow': 'Cómo trabajo',
     'process.title': 'De una idea difusa a un producto que la gente usa.',
@@ -256,7 +265,7 @@ export const ui: Record<Lang, Record<UIKey, string>> = {
     'testimonials.eyebrow': 'Testimonios',
     'testimonials.title': 'Lo que dicen los clientes',
 
-    'final.title': '¿Tienes un producto para diseñar — o para lanzar?',
+    'final.title': '¿Tienes un producto para diseñar — o para <em>lanzar?</em>',
     'final.lead':
       'Cuéntame dónde estás y a dónde quieres llegar. En 30 minutos te llevas un próximo paso claro, trabajemos juntos o no.',
 
@@ -269,7 +278,7 @@ export const ui: Record<Lang, Record<UIKey, string>> = {
     'case.outcome': 'Resultado',
     'case.next': 'Siguiente caso',
     'case.back': 'Todos los proyectos',
-    'case.ctaTitle': '¿Quieres resultados así para tu producto?',
+    'case.ctaTitle': '¿Quieres resultados así para <em>tu producto?</em>',
     'case.gallery': 'Pantallas',
     'case.repo': 'Ver el código en GitHub',
     'video.play': 'Reproducir',
