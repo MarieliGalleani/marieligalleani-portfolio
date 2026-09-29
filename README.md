@@ -4,7 +4,7 @@ Portfólio de captação de clientes da **Marieli Galleani — Product Designer*
 Site estático em **Astro + TypeScript**, CSS próprio baseado em design tokens ([DESIGN.md](DESIGN.md)),
 cases em **MDX** via Content Collections.
 
-**Idiomas:** inglês (padrão, em `/`), português (`/pt/`) e espanhol (`/es/`), com seletor EN · PT · ES
+**Idiomas:** inglês (padrão, em `/`), português (`/pt/`) e espanhol (`/es/`), com menu de idioma
 no header, `hreflang` em todas as páginas e sitemap com as versões alternativas.
 
 - Zero JavaScript enviado ao navegador (só HTML + CSS)
@@ -183,7 +183,7 @@ A propagação costuma levar de minutos a algumas horas. Depois, emita o certifi
 | Português | `/pt/`, `/pt/work/slug/` | `ui.ts` → `pt`, `cases/pt/` |
 | Espanhol | `/es/`, `/es/work/slug/` | `ui.ts` → `es`, `cases/es/` |
 
-- O seletor EN · PT · ES leva para **a mesma página** no outro idioma.
+- O menu de idioma no header (`src/components/LanguageSwitcher.astro`, sem JavaScript) leva para **a mesma página** no outro idioma.
 - Toda página declara `<html lang>`, `hreflang` das versões e `og:locale`; o sitemap inclui as alternativas.
 - O TypeScript acusa erro se faltar alguma chave de texto em PT ou ES.
 

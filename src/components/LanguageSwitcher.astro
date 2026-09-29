@@ -12,8 +12,21 @@ const t = useTranslations(lang);
 const basePath = Astro.url.pathname.startsWith('/404') ? '/' : stripLang(Astro.url.pathname);
 ---
 
-<nav class="lang" aria-label={t('nav.language')}>
-  <ul role="list">
+<!-- Zero-JS dropdown: <details>/<summary> is keyboard and screen-reader accessible natively. -->
+<details class="lang">
+  <summary class="lang__toggle">
+    <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path>
+    </svg>
+    <span aria-hidden="true">{lang.toUpperCase()}</span>
+    <span class="visually-hidden">{t('nav.language')}: {languages[lang]}</span>
+    <svg class="lang__chevron" aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 4.5 6 7.5 9 4.5"></path>
+    </svg>
+  </summary>
+
+  <ul role="list" class="lang__menu card" aria-label={t('nav.language')}>
     {langs.map((l) => (
       <li>
         <a
@@ -22,38 +35,100 @@ const basePath = Astro.url.pathname.startsWith('/404') ? '/' : stripLang(Astro.u
           lang={locales[l].hreflang}
           aria-current={l === lang ? 'page' : undefined}
         >
-          <span aria-hidden="true">{l.toUpperCase()}</span>
-          <span class="visually-hidden">{languages[l]}</span>
+          <span>{languages[l]}</span>
+          <span class="lang__code" aria-hidden="true">{l.toUpperCase()}</span>
         </a>
       </li>
     ))}
   </ul>
-</nav>
+</details>
 
 <style>
-  .lang ul {
-    display: flex;
+  .lang {
+    position: relative;
   }
 
-  .lang a {
-    display: inline-grid;
-    place-items: center;
-    min-width: var(--size-touch);
+  .lang__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
     min-height: var(--size-touch);
+    padding-inline: var(--space-3);
     color: var(--color-text-muted);
-    font-size: var(--text-xs);
+    font-size: var(--text-sm);
     font-weight: var(--weight-semibold);
     letter-spacing: var(--tracking-wide);
+    border: var(--border-width) solid transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .lang__toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .lang__toggle:hover,
+  .lang[open] .lang__toggle {
+    color: var(--color-text);
+    border-color: var(--color-border-strong);
+  }
+
+  .lang__chevron {
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .lang[open] .lang__chevron {
+    transform: rotate(180deg);
+  }
+
+  .lang__menu {
+    position: absolute;
+    top: calc(100% + var(--space-2));
+    right: 0;
+    z-index: 20;
+    display: grid;
+    min-width: calc(var(--space-9) * 2);
+    padding: var(--space-2);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .lang__menu a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: var(--size-touch);
+    padding-inline: var(--space-3);
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
     text-decoration: none;
     border-radius: var(--radius-md);
   }
 
-  .lang a:hover {
+  .lang__menu a:hover {
+    background: var(--color-surface);
     color: var(--color-text);
   }
 
-  .lang a[aria-current="page"] {
+  .lang__menu a[aria-current="page"] {
+    background: var(--color-accent-soft);
     color: var(--color-accent);
-    text-decoration: underline;
+    font-weight: var(--weight-semibold);
+  }
+
+  .lang__code {
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-text-muted);
+  }
+
+  .lang__menu a[aria-current="page"] .lang__code {
+    color: var(--color-accent);
   }
 </style>
