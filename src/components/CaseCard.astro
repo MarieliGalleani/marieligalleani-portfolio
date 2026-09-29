@@ -1,0 +1,113 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  entry: CollectionEntry<'cases'>;
+  lang?: Lang;
+  /** Load the first card eagerly (above the fold on some screens). */
+  eager?: boolean;
+}
+
+const { entry, lang = 'en', eager = false } = Astro.props;
+const t = useTranslations(lang);
+const { title, client, outcome, tags, cover, coverAlt } = entry.data;
+const href = `/work/${entry.id}/`;
+---
+
+<article class="card case-card">
+  <Image
+    class="case-card__cover"
+    src={cover}
+    alt={coverAlt}
+    widths={[400, 640, 960]}
+    sizes="(min-width: 64rem) 24rem, (min-width: 48rem) 50vw, 100vw"
+    loading={eager ? 'eager' : 'lazy'}
+  />
+  <div class="case-card__body">
+    <p class="eyebrow">{client}</p>
+    <h3 class="case-card__title">
+      <a href={href}>{title}</a>
+    </h3>
+    <p class="case-card__outcome">{outcome}</p>
+    <ul class="tags" aria-label="Tags">
+      {tags.map((tag) => <li class="tag">{tag}</li>)}
+    </ul>
+    <p class="case-card__more" aria-hidden="true">{t('work.readCase')} →</p>
+  </div>
+</article>
+
+<style>
+  .case-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .case-card:hover,
+  .case-card:focus-within {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-lg);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .case-card:hover {
+      transform: translateY(calc(var(--space-1) * -1));
+    }
+  }
+
+  .case-card__cover {
+    width: 100%;
+    aspect-ratio: var(--ratio-cover);
+    object-fit: cover;
+  }
+
+  .case-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-5) var(--space-6) var(--space-6);
+  }
+
+  .case-card__title {
+    font-size: var(--text-xl);
+  }
+
+  .case-card__title a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  /* Whole card is clickable, while keeping a single, meaningful link. */
+  .case-card__title a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .case-card__title a:focus-visible {
+    box-shadow: none;
+  }
+
+  .case-card:has(a:focus-visible) {
+    box-shadow: var(--focus-ring);
+  }
+
+  .case-card__outcome {
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-accent);
+  }
+
+  .case-card__more {
+    margin-top: auto;
+    padding-top: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text);
+  }
+</style>

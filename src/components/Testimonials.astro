@@ -1,0 +1,97 @@
+---
+import { testimonials } from '@/data/testimonials';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="testimonials" class="section section--surface" aria-labelledby="testimonials-title">
+  <div class="container">
+    <header class="section__header">
+      <p class="eyebrow">{t('testimonials.eyebrow')}</p>
+      <h2 id="testimonials-title" class="section__title">{t('testimonials.title')}</h2>
+    </header>
+
+    <ul role="list" class="testimonials">
+      {testimonials.map((item) => (
+        <li class="card testimonial">
+          <figure>
+            <blockquote class="testimonial__quote">
+              <p>{item.quote}</p>
+            </blockquote>
+            <figcaption class="testimonial__author">
+              <span class="testimonial__avatar" aria-hidden="true">
+                {item.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+              </span>
+              <span>
+                <strong>{item.name}</strong>
+                <span class="testimonial__role">
+                  {item.role}, {item.company}
+                </span>
+              </span>
+            </figcaption>
+          </figure>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .testimonial {
+    padding: var(--space-6);
+  }
+
+  .testimonial figure {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    height: 100%;
+  }
+
+  .testimonial__quote {
+    font-size: var(--text-lg);
+    line-height: var(--leading-normal);
+  }
+
+  .testimonial__author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: auto;
+    font-size: var(--text-sm);
+  }
+
+  .testimonial__avatar {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: var(--size-touch);
+    height: var(--size-touch);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    border-radius: var(--radius-pill);
+    font-weight: var(--weight-bold);
+  }
+
+  .testimonial__role {
+    display: block;
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 64rem) {
+    .testimonials {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

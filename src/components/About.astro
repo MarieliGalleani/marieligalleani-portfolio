@@ -1,0 +1,95 @@
+---
+import BookButton from './BookButton.astro';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="about" class="section" aria-labelledby="about-title">
+  <div class="container about">
+    <header class="section__header about__header">
+      <p class="eyebrow">{t('about.eyebrow')}</p>
+      <h2 id="about-title" class="section__title">{t('about.title')}</h2>
+    </header>
+
+    <div class="about__body">
+      <p class="about__lead">
+        I’m a Product Designer who likes to see things live. I work with AI startups, growing SaaS
+        teams and non-technical founders to turn fuzzy ideas into products people understand and use.
+      </p>
+      <p>
+        My sweet spot is the space between design and build: I research, design and then help ship —
+        with design systems your engineers love, no-code builds or working code. Lately I’ve been
+        focused on AI products: making agents and automations visible, trustworthy and useful.
+      </p>
+      <p>
+        I’m based in <strong>Brazil</strong>, which means my working hours overlap with{' '}
+        <strong>US mornings</strong> and <strong>European afternoons</strong> — real-time calls,
+        fast feedback loops, no waiting a day for answers.
+      </p>
+      <ul role="list" class="about__facts">
+        <li><span>Based in</span> Brazil (UTC−3)</li>
+        <li><span>Overlap</span> US mornings · EU afternoons</li>
+        <li><span>Languages</span> English · Portuguese</li>
+      </ul>
+      <BookButton lang={lang} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .about__header {
+    margin-bottom: 0;
+  }
+
+  .about__body {
+    display: grid;
+    gap: var(--space-4);
+    justify-items: start;
+    max-width: var(--measure);
+  }
+
+  .about__lead {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-medium);
+  }
+
+  .about__facts {
+    display: grid;
+    gap: var(--space-2);
+    width: 100%;
+    margin-block: var(--space-2);
+    padding: var(--space-5);
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-sm);
+  }
+
+  .about__facts li {
+    display: grid;
+    grid-template-columns: var(--space-9) 1fr;
+    gap: var(--space-3);
+  }
+
+  .about__facts span {
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 64rem) {
+    .about {
+      grid-template-columns: 1fr 2fr;
+      align-items: start;
+      gap: var(--space-8);
+    }
+  }
+</style>

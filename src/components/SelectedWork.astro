@@ -1,0 +1,65 @@
+---
+import { getCollection } from 'astro:content';
+import CaseCard from './CaseCard.astro';
+import BookButton from './BookButton.astro';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+const cases = (await getCollection('cases', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<section id="work" class="section" aria-labelledby="work-title">
+  <div class="container">
+    <header class="section__header">
+      <p class="eyebrow">{t('work.eyebrow')}</p>
+      <h2 id="work-title" class="section__title">{t('work.title')}</h2>
+      <p class="section__lead">{t('work.lead')}</p>
+    </header>
+
+    <ul role="list" class="work-grid">
+      {cases.map((entry, i) => (
+        <li>
+          <CaseCard entry={entry} lang={lang} eager={i === 0} />
+        </li>
+      ))}
+    </ul>
+
+    <div class="section__cta">
+      <BookButton lang={lang} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .work-grid {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .work-grid > li {
+    display: flex;
+  }
+
+  .work-grid > li > :global(*) {
+    flex: 1;
+  }
+
+  @media (min-width: 48rem) {
+    .work-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .work-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

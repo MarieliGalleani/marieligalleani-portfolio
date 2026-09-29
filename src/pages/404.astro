@@ -1,0 +1,26 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BookButton from '@/components/BookButton.astro';
+---
+
+<BaseLayout title="Page not found — Marieli Galleani" description="This page doesn’t exist.">
+  <section class="section">
+    <div class="container not-found">
+      <p class="eyebrow">404</p>
+      <h1 class="section__title">This page didn’t ship.</h1>
+      <p class="section__lead">The link may be broken or the page may have moved.</p>
+      <div class="btn-group">
+        <a class="btn btn--secondary" href="/">Back to home</a>
+        <BookButton />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: grid;
+    gap: var(--space-4);
+    justify-items: start;
+  }
+</style>

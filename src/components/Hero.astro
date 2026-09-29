@@ -1,0 +1,53 @@
+---
+import BookButton from './BookButton.astro';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero__inner">
+    <p class="eyebrow">{t('hero.eyebrow')}</p>
+    <h1 id="hero-title" class="hero__title">{t('hero.title')}</h1>
+    <p class="hero__subtitle">{t('hero.subtitle')}</p>
+    <div class="btn-group">
+      <BookButton lang={lang} />
+      <a class="btn btn--secondary" href="#work">{t('cta.seeWork')}</a>
+    </div>
+    <p class="hero__proof">{t('hero.proof')}</p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: var(--space-9) var(--space-section);
+  }
+
+  .hero__inner {
+    display: grid;
+    gap: var(--space-5);
+    justify-items: start;
+  }
+
+  .hero__title {
+    max-width: var(--measure-headline);
+    font-size: var(--text-4xl);
+    line-height: var(--leading-tight);
+  }
+
+  .hero__subtitle {
+    max-width: var(--measure);
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+  }
+
+  .hero__proof {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+</style>

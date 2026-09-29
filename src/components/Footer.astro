@@ -1,0 +1,86 @@
+---
+import { site } from '@/config/site';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+const links = [
+  { href: site.social.linkedin, label: 'LinkedIn', external: true },
+  { href: site.social.github, label: 'GitHub', external: true },
+  { href: site.social.dribbble, label: 'Dribbble', external: true },
+  { href: `mailto:${site.email}`, label: site.email, external: false },
+];
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="footer__brand">
+      <strong>{site.name}</strong> · {site.role}
+    </p>
+    <nav aria-label="Social and contact">
+      <ul role="list" class="footer__links">
+        {links.map((l) => (
+          <li>
+            <a href={l.href} {...(l.external ? { target: '_blank', rel: 'noopener me' } : {})}>
+              {l.label}
+              {l.external && <span class="visually-hidden">(opens in a new tab)</span>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <p class="footer__copy">© {year} {site.name}. {t('footer.rights')}</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: var(--border-width) solid var(--color-border);
+    padding-block: var(--space-7);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .footer__inner {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .footer__brand strong {
+    color: var(--color-text);
+  }
+
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+  }
+
+  .footer__links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--size-touch);
+    color: var(--color-text);
+    font-weight: var(--weight-medium);
+  }
+
+  .footer__links a:hover {
+    color: var(--color-accent);
+  }
+
+  @media (min-width: 64rem) {
+    .footer__inner {
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+    }
+
+    .footer__links {
+      justify-content: center;
+    }
+  }
+</style>

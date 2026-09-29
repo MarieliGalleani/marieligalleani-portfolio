@@ -1,0 +1,27 @@
+---
+import { site } from '@/config/site';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  variant?: 'primary' | 'secondary';
+  size?: 'default' | 'small';
+  lang?: Lang;
+  label?: string;
+}
+
+const { variant = 'primary', size = 'default', lang = 'en', label } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<a
+  class:list={['btn', `btn--${variant}`, { 'btn--small': size === 'small' }]}
+  href={site.bookingUrl}
+  target="_blank"
+  rel="noopener"
+>
+  {label ?? t('cta.book')}
+  <span class="visually-hidden">(opens in a new tab)</span>
+  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+</a>

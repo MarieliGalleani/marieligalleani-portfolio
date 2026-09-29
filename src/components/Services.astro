@@ -1,0 +1,137 @@
+---
+import BookButton from './BookButton.astro';
+import { services } from '@/data/services';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="services" class="section section--surface" aria-labelledby="services-title">
+  <div class="container">
+    <header class="section__header">
+      <p class="eyebrow">{t('services.eyebrow')}</p>
+      <h2 id="services-title" class="section__title">{t('services.title')}</h2>
+      <p class="section__lead">{t('services.lead')}</p>
+    </header>
+
+    <ul role="list" class="services">
+      {services.map((s) => (
+        <li class:list={['card', 'service', { 'service--featured': s.featured }]}>
+          <h3 class="service__name">{s.name}</h3>
+          <p class="service__tagline">{s.tagline}</p>
+
+          <dl class="service__meta">
+            <div>
+              <dt>{t('services.for')}</dt>
+              <dd>{s.forWho}</dd>
+            </div>
+            <div>
+              <dt>{t('services.deliverables')}</dt>
+              <dd>
+                <ul class="service__list">
+                  {s.deliverables.map((d) => <li>{d}</li>)}
+                </ul>
+              </dd>
+            </div>
+            <div>
+              <dt>{t('services.timeline')}</dt>
+              <dd>{s.timeline}</dd>
+            </div>
+          </dl>
+
+          <div class="service__footer">
+            <p class="service__price">
+              <span>{t('services.from')}</span> {s.priceFrom}
+            </p>
+            <BookButton variant={s.featured ? 'primary' : 'secondary'} lang={lang} />
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .services {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .service {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-6);
+  }
+
+  .service--featured {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
+  }
+
+  .service__name {
+    font-size: var(--text-xl);
+  }
+
+  .service__tagline {
+    color: var(--color-text-muted);
+  }
+
+  .service__meta {
+    display: grid;
+    gap: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: var(--border-width) solid var(--color-border);
+    font-size: var(--text-sm);
+  }
+
+  .service__meta dt {
+    margin-bottom: var(--space-1);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .service__meta dd {
+    margin: 0;
+  }
+
+  .service__list {
+    display: grid;
+    gap: var(--space-1);
+    padding-left: var(--space-5);
+  }
+
+  .service__footer {
+    display: grid;
+    gap: var(--space-4);
+    margin-top: auto;
+    padding-top: var(--space-4);
+  }
+
+  .service__price {
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .service__price span {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-regular);
+    letter-spacing: var(--tracking-normal);
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 64rem) {
+    .services {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
