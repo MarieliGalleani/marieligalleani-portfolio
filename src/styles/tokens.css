@@ -1,16 +1,9 @@
 /*
  * Design tokens — mirror of DESIGN.md. Edit both together.
  * Components must only use these custom properties.
- * Direction: premium editorial. "Paper" in light mode, "Ink" in dark mode.
+ * Direction: modern SaaS agency — light canvas, dark "inverse" hero/CTA bands with
+ * emerald glow, rounded cards and bento grids.
  */
-
-@font-face {
-  font-family: "Instrument Serif";
-  src: url("/fonts/instrument-serif-400.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
 @font-face {
   font-family: "Instrument Serif";
@@ -31,43 +24,58 @@
 :root {
   color-scheme: light dark;
 
-  /* Color — Paper (light) */
-  --color-bg: #f3efe8;
-  --color-surface: #eae4d9;
-  --color-surface-raised: #fbf9f5;
-  --color-text: #151412;
-  --color-text-muted: #5f5a52;
-  --color-border: #dcd5c8;
-  --color-border-strong: #bfb6a6;
-  --color-accent: #7a5426;
-  --color-accent-hover: #5f3f18;
-  --color-on-accent: #fbf9f5;
-  --color-accent-soft: #eadfcb;
-  --color-success: #2f6b3f;
-  --color-focus: #7a5426;
-  --color-bg-translucent: rgb(243 239 232 / 0.82); /* sticky header */
-  --grain-opacity: 0.05;
+  /* Color — light canvas */
+  --color-bg: #f6f7f9;
+  --color-surface: #eef1f5;
+  --color-surface-raised: #ffffff;
+  --color-text: #0b0f17;
+  --color-text-muted: #586273;
+  --color-border: #e3e7ee;
+  --color-border-strong: #cfd6e0;
+  --color-accent: #08734f;
+  --color-accent-hover: #065c3f;
+  --color-on-accent: #ffffff;
+  --color-accent-soft: #e3f4ec;
+  --color-success: #08734f;
+  --color-focus: #08734f;
+  --color-bg-translucent: rgb(246 247 249 / 0.8);
+
+  /* Color — inverse bands (hero, final CTA, footer). Same in both modes. */
+  --inverse-bg: #070a0f;
+  --inverse-surface: #0f141c;
+  --inverse-surface-2: #151c27;
+  --inverse-text: #f3f5f8;
+  --inverse-muted: #9aa4b2;
+  --inverse-border: #1c2430;
+  --inverse-accent: #3ddc97;
+  --inverse-on-accent: #06120c;
+  --inverse-accent-soft: rgb(61 220 151 / 0.12);
+  --inverse-bg-translucent: rgb(15 20 28 / 0.72);
+  --glow-1: rgb(61 220 151 / 0.28);
+  --glow-2: rgb(56 128 255 / 0.22);
+  --grid-line: rgb(255 255 255 / 0.05);
+  --map-dot: rgb(255 255 255 / 0.2);
 
   /* Typography */
   --font-sans: "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
-  --font-serif: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --font-display: var(--font-serif);
+  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-display: var(--font-sans);
   --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
-  --text-base: 1.0625rem;
-  --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
-  --text-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem);
-  --text-2xl: clamp(1.75rem, 1.4rem + 1.5vw, 2.625rem);
-  --text-3xl: clamp(2.5rem, 1.7rem + 3.4vw, 4.5rem);
-  --text-4xl: clamp(3rem, 1.8rem + 5.5vw, 6.5rem);
-  --text-display: clamp(3.5rem, 1.6rem + 8.5vw, 9.5rem);
+  --text-base: 1rem;
+  --text-lg: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.25rem + 1.1vw, 2.125rem);
+  --text-3xl: clamp(2rem, 1.5rem + 2.4vw, 3.5rem);
+  --text-4xl: clamp(2.5rem, 1.6rem + 4vw, 4.75rem);
+  --text-display: clamp(2.75rem, 1.4rem + 5.6vw, 6rem);
 
-  --leading-display: 0.92;
-  --leading-tight: 1.02;
-  --leading-snug: 1.2;
+  --leading-display: 1;
+  --leading-tight: 1.08;
+  --leading-snug: 1.3;
   --leading-normal: 1.6;
 
   --weight-regular: 400;
@@ -75,17 +83,15 @@
   --weight-semibold: 600;
   --weight-bold: 700;
 
-  --tracking-display: -0.025em;
-  --tracking-tight: -0.015em;
+  --tracking-display: -0.045em;
+  --tracking-tight: -0.03em;
   --tracking-normal: 0;
-  --tracking-wide: 0.14em;
+  --tracking-wide: 0.12em;
 
   --measure: 62ch;
-  --measure-headline: 12ch;
-  --measure-short: 32ch;
-  --measure-title: 18ch;
-  --reel-item: clamp(18rem, 70vw, 34rem);
-  --scale-hover: 1.03;
+  --measure-short: 34ch;
+  --measure-title: 20ch;
+  --measure-headline: 16ch;
 
   /* Aspect ratios */
   --ratio-cover: 16 / 10;
@@ -101,56 +107,62 @@
   --space-8: 4rem;
   --space-9: 6rem;
   --space-10: 9rem;
-  --space-section: clamp(5rem, 3rem + 8vw, 11rem);
-  --gutter: clamp(1.25rem, 0.5rem + 3vw, 3.5rem);
-  --container-max: 84rem;
+  --space-section: clamp(4.5rem, 3rem + 6vw, 8.5rem);
+  --gutter: clamp(1.25rem, 0.5rem + 3vw, 3rem);
+  --container-max: 76rem;
   --container-narrow: 46rem;
   --size-touch: 2.75rem; /* 44px minimum touch target */
 
-  /* Radius — restrained: hairlines and pills, few rounded boxes */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.875rem;
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
   --radius-pill: 999px;
 
   /* Shadows & borders */
-  --shadow-sm: 0 1px 2px rgb(21 20 18 / 0.06);
-  --shadow-md: 0 12px 32px -12px rgb(21 20 18 / 0.18);
-  --shadow-lg: 0 40px 80px -30px rgb(21 20 18 / 0.35);
+  --shadow-sm: 0 1px 2px rgb(11 15 23 / 0.06);
+  --shadow-md: 0 10px 30px -12px rgb(11 15 23 / 0.16);
+  --shadow-lg: 0 30px 70px -25px rgb(11 15 23 / 0.35);
+  --shadow-accent: 0 8px 24px -10px var(--color-accent);
   --border-width: 1px;
-  --underline-offset: 0.22em;
-  --blur-md: 14px;
+  --underline-offset: 0.2em;
+  --blur-md: 16px;
   --focus-ring: 0 0 0 3px var(--color-bg), 0 0 0 5px var(--color-focus);
 
   /* Motion */
-  --duration-fast: 180ms;
-  --duration-base: 320ms;
-  --duration-slow: 900ms;
+  --duration-fast: 160ms;
+  --duration-base: 280ms;
+  --duration-slow: 800ms;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --scale-hover: 1.02;
+  --marquee-duration: 40s;
+  --route-duration: 3.6s; /* one light pulse travelling along a map route */
+  --route-stagger: 0.45s; /* delay between consecutive routes */
+  --route-dash: 0.2; /* pulse length as a fraction of the route (pathLength = 1) */
+  --pulse-duration: 2.4s; /* city pin ping */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Color — Ink (dark) */
-    --color-bg: #0c0c0d;
-    --color-surface: #141416;
-    --color-surface-raised: #1a1a1d;
-    --color-text: #eeeae3;
-    --color-text-muted: #9c978e;
-    --color-border: #232326;
-    --color-border-strong: #34343a;
-    --color-accent: #d9b783;
-    --color-accent-hover: #e8cba0;
-    --color-on-accent: #141210;
-    --color-accent-soft: #221d16;
-    --color-success: #8fcf9f;
-    --color-focus: #e8cba0;
-    --color-bg-translucent: rgb(12 12 13 / 0.78);
-    --grain-opacity: 0.07;
+    --color-bg: #0a0d13;
+    --color-surface: #10151d;
+    --color-surface-raised: #141a24;
+    --color-text: #f3f5f8;
+    --color-text-muted: #9aa4b2;
+    --color-border: #1f2733;
+    --color-border-strong: #2c3644;
+    --color-accent: #3ddc97;
+    --color-accent-hover: #6ee7b7;
+    --color-on-accent: #06120c;
+    --color-accent-soft: #0f2a1f;
+    --color-success: #3ddc97;
+    --color-focus: #6ee7b7;
+    --color-bg-translucent: rgb(10 13 19 / 0.78);
 
     --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.5);
-    --shadow-md: 0 12px 32px -12px rgb(0 0 0 / 0.6);
-    --shadow-lg: 0 40px 80px -30px rgb(0 0 0 / 0.8);
+    --shadow-md: 0 10px 30px -12px rgb(0 0 0 / 0.6);
+    --shadow-lg: 0 30px 70px -25px rgb(0 0 0 / 0.8);
   }
 }
 

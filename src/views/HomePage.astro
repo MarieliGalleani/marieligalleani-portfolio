@@ -1,39 +1,51 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero.astro';
+import Stats from '@/components/Stats.astro';
+import Challenges from '@/components/Challenges.astro';
 import Services from '@/components/Services.astro';
+import Process from '@/components/Process.astro';
 import SelectedWork from '@/components/SelectedWork.astro';
-import HowIWork from '@/components/HowIWork.astro';
 import About from '@/components/About.astro';
+import Pricing from '@/components/Pricing.astro';
 import Testimonials from '@/components/Testimonials.astro';
+import Faq from '@/components/Faq.astro';
 import FinalCTA from '@/components/FinalCTA.astro';
 import { site } from '@/config/site';
-import { useTranslations, type Lang } from '@/i18n/ui';
+import { agency } from '@/data/agency';
+import type { Lang } from '@/i18n/ui';
 
 interface Props {
   lang: Lang;
 }
 
 const { lang } = Astro.props;
-const t = useTranslations(lang);
+const a = agency[lang];
 ---
 
-<BaseLayout title={t('home.title')} description={t('home.description')} lang={lang}>
+<BaseLayout title={a.meta.title} description={a.meta.description} lang={lang}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     '@context': 'https://schema.org',
-    '@type': 'Person',
+    '@type': 'ProfessionalService',
     name: site.name,
-    jobTitle: site.role,
+    description: a.meta.description,
     url: site.url,
     email: `mailto:${site.email}`,
+    founder: { '@type': 'Person', name: site.founder },
+    areaServed: ['BR', 'MX', 'CO', 'AR', 'CL', 'PE', 'UY', 'EC'],
+    knowsLanguage: ['en', 'pt-BR', 'es'],
     address: { '@type': 'PostalAddress', addressCountry: 'BR' },
     sameAs: Object.values(site.social),
   })} />
   <Hero lang={lang} />
+  <Stats lang={lang} />
+  <Challenges lang={lang} />
   <Services lang={lang} />
+  <Process lang={lang} />
   <SelectedWork lang={lang} />
-  <HowIWork lang={lang} />
   <About lang={lang} />
+  <Pricing lang={lang} />
   <Testimonials lang={lang} />
+  <Faq lang={lang} />
   <FinalCTA lang={lang} />
 </BaseLayout>

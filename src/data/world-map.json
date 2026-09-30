@@ -1,0 +1,81 @@
+{
+  "width": 135,
+  "height": 64,
+  "points": {
+    "sf": {
+      "x": 21,
+      "y": 23.38,
+      "kind": "origin"
+    },
+    "toronto": {
+      "x": 38,
+      "y": 19.92,
+      "kind": "origin"
+    },
+    "ny": {
+      "x": 40,
+      "y": 21.65,
+      "kind": "origin"
+    },
+    "london": {
+      "x": 67.5,
+      "y": 15.59,
+      "kind": "origin"
+    },
+    "madrid": {
+      "x": 66,
+      "y": 21.65,
+      "kind": "origin"
+    },
+    "berlin": {
+      "x": 72.5,
+      "y": 15.59,
+      "kind": "origin"
+    },
+    "telaviv": {
+      "x": 80.5,
+      "y": 25.98,
+      "kind": "origin"
+    },
+    "saopaulo": {
+      "x": 50,
+      "y": 47.63,
+      "kind": "hub"
+    },
+    "mexico": {
+      "x": 30.5,
+      "y": 31.18,
+      "kind": "market"
+    },
+    "bogota": {
+      "x": 39.5,
+      "y": 36.37,
+      "kind": "market"
+    },
+    "quito": {
+      "x": 38,
+      "y": 38.97,
+      "kind": "market"
+    },
+    "lima": {
+      "x": 38.5,
+      "y": 43.3,
+      "kind": "market"
+    },
+    "santiago": {
+      "x": 40.5,
+      "y": 51.96,
+      "kind": "market"
+    },
+    "buenosaires": {
+      "x": 45.5,
+      "y": 51.96,
+      "kind": "market"
+    },
+    "montevideo": {
+      "x": 46,
+      "y": 52.83,
+      "kind": "market"
+    }
+  }
+}

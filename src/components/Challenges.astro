@@ -1,0 +1,66 @@
+---
+import Icon from './Icon.astro';
+import { agency } from '@/data/agency';
+import type { Lang } from '@/i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const c = agency[lang].challenges;
+---
+
+<section class="section section--surface" aria-labelledby="challenges-title">
+  <div class="container">
+    <header class="section__header">
+      <p class="badge">{c.badge}</p>
+      <h2 id="challenges-title" class="section__title" set:html={c.title} />
+      <p class="section__lead">{c.lead}</p>
+    </header>
+    <ul role="list" class="challenges">
+      {c.items.map((item) => (
+        <li class="card challenge reveal">
+          <span class="icon-tile"><Icon name={item.icon} /></span>
+          <h3 class="challenge__name">{item.name}</h3>
+          <p class="challenge__desc">{item.description}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .challenges {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .challenge {
+    display: grid;
+    gap: var(--space-3);
+    align-content: start;
+    padding: var(--space-6);
+  }
+
+  .challenge__name {
+    margin-top: var(--space-2);
+    font-size: var(--text-xl);
+  }
+
+  .challenge__desc {
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 48rem) {
+    .challenges {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .challenges {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
